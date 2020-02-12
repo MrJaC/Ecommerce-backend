@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Categories;
 class CategoriesController extends Controller
 {
        /**
@@ -27,5 +27,12 @@ class CategoriesController extends Controller
     public function create()
     {
         return view('categories/create-category');
+    }
+    public function add(){
+
+        $data = array(
+            'cat_name' =>
+        )
+        return
     }
 }

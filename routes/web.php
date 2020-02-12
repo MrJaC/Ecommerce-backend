@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 //Categories
 Route::get('/categories', 'CategoriesController@index')->name('categories');
 Route::get('/create-category', 'CategoriesController@create')->name('create cat');
-
+Route::post('/catadd','Categories@add');
 //SubCategories
 Route::get('/subcategories', 'SubCategoriesController@index')->name('subcategories');
 Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create subcat');
