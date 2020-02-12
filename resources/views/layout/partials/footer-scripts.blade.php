@@ -14,3 +14,18 @@
 <script src="{!! ('plugins/chart.js/Chart.min.js') !!}"></script>
 <script src="{!! ('js/demo.js') !!}"></script>
 <script src="{!! ('js/pages/dashboard3.js') !!}"></script>
+
+<!-- page script -->
+<script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+      });
+    });
+  </script>
