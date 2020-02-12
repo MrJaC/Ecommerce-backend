@@ -29,6 +29,9 @@ Route::get('/dashboard', function () {
 Route::get('/categories', function () {
     return view('categories/categories');
 });
+Route::get('/createCat', function () {
+    return view('categories/create');
+});
 //SubCategories
 Route::get('/subcategories', function () {
     return view('subcategories/subcategories');
