@@ -22,6 +22,10 @@ Route::get('/register', function () {
 Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
 });
+//Categories
+Route::get('/categories', function () {
+    return view('categories/categories');
+});
 
 Auth::routes();
 
