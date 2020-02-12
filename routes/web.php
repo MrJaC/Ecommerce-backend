@@ -12,6 +12,9 @@
 */
 
 //Auth routes
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('login');
 });
@@ -26,7 +29,11 @@ Route::get('/dashboard', function () {
 Route::get('/categories', function () {
     return view('categories/categories');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//SubCategories
+Route::get('/subcategories', function () {
+    return view('subcategories/subcategories');
+});
+//Products
+Route::get('/products', function () {
+    return view('products/products');
+});
