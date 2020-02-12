@@ -24,7 +24,35 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                                <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Create Form</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="category-name">Category name</label>
+                      <input type="text" class="form-control" id="cat-name" name="cat-name" placeholder="Enter category name">
+                    </div>
+                  <!-- /.card-body -->
 
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
