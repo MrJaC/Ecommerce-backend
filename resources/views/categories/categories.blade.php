@@ -44,7 +44,27 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($category as $cat)
+                            <tr>
+                            <td>{{$cat->id}}</td>
+                            <td>{{$cat->cat_name}}</td>
+                            <td>{{$cat->cat_img}}</td>
+                            <td>
+                                <div class="btn-group">
+                                <button type="button" class="btn btn-default">Action</button>
+                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                  <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div>
+                                </button>
+                              </div></td>
+                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                         <tr>

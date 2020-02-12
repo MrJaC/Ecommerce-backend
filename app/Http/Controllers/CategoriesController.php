@@ -25,7 +25,10 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('categories/categories');
+       //get data
+       $cat = app(Categories::class)->getCat();
+
+        return view('categories/categories', ['category' => $cat]);
     }
     public function create()
     {
@@ -34,7 +37,11 @@ class CategoriesController extends Controller
     public function add(Request $request){
 
         $catName = $request->input('cat-name');
-        $q = app(Categories::class)->addCat($catName);
-        //return redirect('/categories');
+
+        $data = array(
+            'cat_name' => $catName
+        );
+        $q = app(Categories::class)->addCat($data);
+        return redirect('/categories');
     }
 }

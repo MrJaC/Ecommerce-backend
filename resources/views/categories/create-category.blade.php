@@ -36,6 +36,7 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form role="form" action="/catadd" method="post">
+                    @csrf
                   <div class="card-body">
                     <div class="form-group">
                       <label for="category-name">Category name</label>
