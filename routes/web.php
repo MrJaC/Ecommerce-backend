@@ -34,4 +34,7 @@ Route::get('/subcategories', 'SubCategoriesController@index')->name('subcategori
 Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create subcat');
 //Products
 Route::get('/products', 'ProductsController@index')->name('products');
-Route::get('/createproducts', 'ProductsController@index')->name('create products');
+Route::get('/create-products', 'ProductsController@index')->name('create products');
+//Customers
+Route::get('/customers', 'CustomersController@index')->name('customers');
+Route::get('/create-customers', 'CustomersController@index')->name('create customers');
