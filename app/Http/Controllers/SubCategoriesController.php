@@ -24,4 +24,8 @@ class SubCategoriesController extends Controller
     {
         return view('subcategories/subcategories');
     }
+    public function create()
+    {
+        return view('subcategories/create-subcategory');
+    }
 }

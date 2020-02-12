@@ -26,17 +26,12 @@ Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
 });
 //Categories
-Route::get('/categories', function () {
-    return view('categories/categories');
-});
-Route::get('/createCat', function () {
-    return view('categories/create');
-});
+Route::get('/categories', 'CategoriesController@index')->name('categories');
+Route::get('/create-category', 'CategoriesController@create')->name('create cat');
+
 //SubCategories
-Route::get('/subcategories', function () {
-    return view('subcategories/subcategories');
-});
+Route::get('/subcategories', 'SubCategoriesController@index')->name('subcategories');
+Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create subcat');
 //Products
-Route::get('/products', function () {
-    return view('products/products');
-});
+Route::get('/products', 'ProductsController@index')->name('products');
+Route::get('/createproducts', 'ProductsController@index')->name('create products');

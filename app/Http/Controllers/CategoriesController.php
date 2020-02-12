@@ -24,8 +24,8 @@ class CategoriesController extends Controller
     {
         return view('categories/categories');
     }
-    public function createCat()
+    public function create()
     {
-        return view('categories/create');
+        return view('categories/create-category');
     }
 }
