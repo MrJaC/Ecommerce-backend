@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categories;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
+
 class CategoriesController extends Controller
 {
        /**
@@ -28,11 +31,10 @@ class CategoriesController extends Controller
     {
         return view('categories/create-category');
     }
-    public function add(){
+    public function add(Request $request){
 
-        $data = array(
-            'cat_name' =>
-        )
-        return
+        $catName = $request->input('cat-name');
+        $q = app(Categories::class)->addCat($catName);
+        //return redirect('/categories');
     }
 }
