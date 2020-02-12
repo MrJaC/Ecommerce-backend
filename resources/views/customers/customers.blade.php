@@ -38,17 +38,25 @@
                         <tr>
                           <th>ID</th>
                           <th>Customer Name</th>
+                          <th>Customer Email</th>
                           <th>Actions</th>
 
                         </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($customers as $cus)
+                            <tr>
+                            <td>{{$cus->id}}</td>
+                            <td>{{$cus->name}}</td>
+                            <td>{{$cus->email}}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
                             <th>ID</th>
                             <th>Customer Name</th>
+                            <th>Customer Email</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>

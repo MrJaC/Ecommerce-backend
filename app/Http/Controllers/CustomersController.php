@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Customers;
+use Illuminate\Support\Facades\Log;
 class CustomersController extends Controller
 {
     /**
@@ -22,7 +23,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return view('customers/customers');
+        $customers = app(Customers::class)->getCustomers();
+        Log::debug('Customers', ['customers' => $customers]);
+        return view('customers/customers', ['customers' => $customers]);
     }
     public function create()
     {
