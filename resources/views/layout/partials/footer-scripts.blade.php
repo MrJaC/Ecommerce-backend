@@ -10,6 +10,8 @@
 <!-- DataTables -->
 <script src="{!! ('plugins/datatables/jquery.dataTables.js') !!}"></script>
 <script src="{!! ('plugins/datatables-bs4/js/dataTables.bootstrap4.js') !!}"></script>
+<!-- Select2 -->
+<script src="{!!('plugins/select2/js/select2.full.min.js') !!}"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="{!! ('plugins/chart.js/Chart.min.js') !!}"></script>
 <script src="{!! ('js/demo.js') !!}"></script>
@@ -27,5 +29,7 @@
         "info": true,
         "autoWidth": false,
       });
+          //Initialize Select2 Elements
+    $('.select2').select2()
     });
   </script>

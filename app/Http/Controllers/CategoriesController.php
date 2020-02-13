@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Categories;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 
 class CategoriesController extends Controller
 {
@@ -43,5 +44,11 @@ class CategoriesController extends Controller
         );
         $q = app(Categories::class)->addCat($data);
         return redirect('/categories');
+    }
+    public function delete(Request $request){
+        $urId = $request;
+        echo route('delete.id', ['id' => 1]);
+        Log::debug('message');
+        Log::debug($urId);
     }
 }

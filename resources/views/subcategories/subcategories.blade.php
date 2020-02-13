@@ -40,10 +40,32 @@
                           <th>Subcategory Name</th>
                           <th>Category Name</th>
                           <th>Image</th>
-
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach ($subcategories as $subcat)
+                            <tr>
+                        <td>{{$subcat->id}}</td>
+                        <td>{{$subcat->subcat_name}}</td>
+                        <td>{{$subcat->cat_name}}</td>
+                            <td>{{$subcat->image}}</td>
+                            <td>
+                                <div class="btn-group">
+                                <button type="button" class="btn btn-default">Action</button>
+                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                  <div class="dropdown-menu" role="menu">
+                                  <a class="dropdown-item" href="/categories/edit/">Edit</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="/categories/delete/">Delete</a>
+                                  </div>
+                                </button>
+                              </div></td>
+                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
@@ -51,6 +73,7 @@
                           <th>Subcategory Name</th>
                           <th>Category Name</th>
                           <th>Image</th>
+                          <th>Actions</th>
                         </tr>
                         </tfoot>
                       </table>

@@ -38,6 +38,7 @@
                 <form role="form" action="/catadd" method="post">
                     @csrf
                   <div class="card-body">
+
                     <div class="form-group">
                       <label for="category-name">Category name</label>
                       <input type="text" class="form-control" id="cat-name" name="cat-name" placeholder="Enter category name">

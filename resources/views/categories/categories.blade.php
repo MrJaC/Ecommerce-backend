@@ -55,11 +55,11 @@
                                 <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                   <span class="sr-only">Toggle Dropdown</span>
                                   <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" href="/edit">Edit</a>
+                                  <a class="dropdown-item" href="/categories/edit/{{$cat->id}}">Edit</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/delete">Delete</a>
+                                  <a class="dropdown-item" href="/categories/delete/{{$cat->id}}">Delete</a>
                                   </div>
                                 </button>
                               </div></td>
