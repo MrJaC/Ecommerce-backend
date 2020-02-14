@@ -52,7 +52,7 @@ class CategoriesController extends Controller
         Log::debug($urId);
     }
 
-    public function catEdit(){
+    public function cat_edit(){
         Log::debug('Did we hit?');
 
         return view('categories/edit-category');

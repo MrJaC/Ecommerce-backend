@@ -26,22 +26,33 @@ Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
 });
 //Categories
-Route::get('/categories', 'CategoriesController@index')->name('categories');
-Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
-Route::get('/edit-category', 'CategoriesController@catEdit')->name('edit-cat');
-Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
-/*Route::get('/delete/{id}', function ($id) {
-    return $id;
-});*/
-Route::post('/catadd','CategoriesController@add');
+Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
 
+    Route::get('/', 'CategoriesController@index')->name('categories');
+    Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
+    Route::get('/edit-category', 'CategoriesController@cat_edit')->name('edit-cat');
+    Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
+    Route::post('/catadd', 'CategoriesController@add');
+});
 //SubCategories
-Route::get('/subcategories', 'SubCategoriesController@index')->name('subcategories');
-Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create subcat');
-Route::post('/subadd','SubCategoriesController@add');
+Route::group(['prefix' => 'subcategories', 'as' => 'subcategories.'], function () {
+
+    Route::get('/', 'SubCategoriesController@index')->name('subcategories');
+    Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create-subcat');
+    Route::post('/subadd', 'SubCategoriesController@add');
+});
+
+
 //Products
-Route::get('/products', 'ProductsController@index')->name('products');
-Route::get('/create-products', 'ProductsController@index')->name('create products');
+Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+
+    Route::get('/', 'ProductsController@index')->name('products');
+    Route::get('/create-products', 'ProductsController@index')->name('create-products');
+});
+
 //Customers
-Route::get('/customers', 'CustomersController@index')->name('customers');
-Route::get('/create-customers', 'CustomersController@index')->name('create customers');
+Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
+
+    Route::get('/', 'CustomersController@index')->name('customers');
+    Route::get('/create-customers', 'CustomersController@index')->name('create-customers');
+});
