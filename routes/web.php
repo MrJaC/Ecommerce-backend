@@ -27,7 +27,8 @@ Route::get('/dashboard', function () {
 });
 //Categories
 Route::get('/categories', 'CategoriesController@index')->name('categories');
-Route::get('/create-category', 'CategoriesController@create')->name('create cat');
+Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
+Route::get('/edit-category', 'CategoriesController@catEdit')->name('edit-cat');
 Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
 /*Route::get('/delete/{id}', function ($id) {
     return $id;
