@@ -12,10 +12,9 @@
 <script src="{{ asset ('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-<!-- OPTIONAL SCRIPTS -->
-<script src="{{ asset ('plugins/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset ('js/demo.js') }}"></script>
-<script src="{{ asset ('js/pages/dashboard3.js') }}"></script>
+<!-- OPTIONAL SCRIPTS
+<script src="{{ asset ('plugins/chart.js/Chart.min.js') }}"></script>-->
+
 
 <!-- page script -->
 <script>

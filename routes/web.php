@@ -28,7 +28,7 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
 
     Route::get('/', 'CategoriesController@index')->name('categories');
     Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
-    Route::get('/edit-category', 'CategoriesController@cat_edit')->name('edit-cat');
+    Route::get('/edit-category/{id}/{name}', 'CategoriesController@catEdit')->name('edit-cat');
 
     Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
     Route::post('/catadd', 'CategoriesController@add')->name('add-cat');

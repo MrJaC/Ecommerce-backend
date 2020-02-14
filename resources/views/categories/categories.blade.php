@@ -50,17 +50,9 @@
                             <td>{{$cat->cat_name}}</td>
                             <td>{{$cat->cat_img}}</td>
                             <td>
-                                <div class="btn-group">
-                                <button type="button" class="btn btn-default">Action</button>
-                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                  <span class="sr-only">Toggle Dropdown</span>
-                                  <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" href="{{ route('categories.edit-cat') }}/{{$cat->id}}">Edit</a>
-                                    <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="/categories/delete/{{$cat->id}}">Delete</a>
-                                  </div>
-                                </button>
-                              </div></td>
+                            <a  class="btn btn-default btn-flat" href="{{ route('categories.edit-cat',['id' => $cat->id, 'name' => $cat->cat_name])}}">Edit</a>
+                                <a class="btn btn-default btn-flat" href="/categories/delete/{{$cat->id}}">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
