@@ -13,11 +13,9 @@
 
 //Auth routes
 Auth::routes();
+//default
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', function () {
-    return view('login');
-});
 Route::get('/register', function () {
     return view('register');
 });
@@ -31,15 +29,16 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
     Route::get('/', 'CategoriesController@index')->name('categories');
     Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
     Route::get('/edit-category', 'CategoriesController@cat_edit')->name('edit-cat');
+
     Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
-    Route::post('/catadd', 'CategoriesController@add');
+    Route::post('/catadd', 'CategoriesController@add')->name('add-cat');
 });
 //SubCategories
 Route::group(['prefix' => 'subcategories', 'as' => 'subcategories.'], function () {
 
     Route::get('/', 'SubCategoriesController@index')->name('subcategories');
     Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create-subcat');
-    Route::post('/subadd', 'SubCategoriesController@add');
+    Route::post('/subadd', 'SubCategoriesController@add')->name('add-subcat');
 });
 
 

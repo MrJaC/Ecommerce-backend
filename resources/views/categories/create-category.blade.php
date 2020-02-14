@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="/catadd" method="post">
+                <form role="form" action="{{ route('categories.add-cat') }}" method="post">
                     @csrf
                   <div class="card-body">
 

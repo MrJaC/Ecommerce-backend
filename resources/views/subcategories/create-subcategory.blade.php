@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="/subadd" method="post">
+                <form role="form" action="{{ route('subcategories.add-subcat') }}" method="post">
                     @csrf
                   <div class="card-body">
                     <div class="form-group">

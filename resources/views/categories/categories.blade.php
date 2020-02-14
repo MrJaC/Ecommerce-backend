@@ -55,7 +55,7 @@
                                 <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                                   <span class="sr-only">Toggle Dropdown</span>
                                   <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" href="/edit-category">Edit</a>
+                                  <a class="dropdown-item" href="{{ route('categories.edit-cat') }}/{{$cat->id}}">Edit</a>
                                     <div class="dropdown-divider"></div>
                                   <a class="dropdown-item" href="/categories/delete/{{$cat->id}}">Delete</a>
                                   </div>
