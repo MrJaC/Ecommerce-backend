@@ -46,7 +46,8 @@ Route::group(['prefix' => 'subcategories', 'as' => 'subcategories.'], function (
 Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
 
     Route::get('/', 'ProductsController@index')->name('products');
-    Route::get('/create-products', 'ProductsController@index')->name('create-products');
+    Route::get('/create-products', 'ProductsController@create')->name('create-products');
+    Route::post('/addprod', 'ProductsController@add')->name('add-products');
 });
 
 //Customers

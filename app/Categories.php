@@ -24,4 +24,9 @@ class Categories extends Model
         $cat = DB::select('select * from categories');
         return $cat;
     }
+    public function editCat($id,$data){
+        $cat = DB::table('categories')->where('id', $id)->update($data);
+        return $cat;
+
+    }
 }
