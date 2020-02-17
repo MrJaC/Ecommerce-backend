@@ -45,11 +45,6 @@ class CategoriesController extends Controller
         $q = app(Categories::class)->addCat($data);
         return redirect('/categories');
     }
-    public function delete($id){
-        $delete = app(Categories::class)->delete($id);
-
-        return view('/categories');
-    }
 
     public function catEdit($id, $name){
 
