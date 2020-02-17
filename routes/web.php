@@ -56,3 +56,9 @@ Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
     Route::get('/', 'CustomersController@index')->name('customers');
     Route::get('/create-customers', 'CustomersController@index')->name('create-customers');
 });
+//Vendors
+Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
+
+    Route::get('/', 'VendorsController@index')->name('vendors');
+    Route::get('/create-vendors', 'VendorsController@index')->name('create-vendors');
+});
