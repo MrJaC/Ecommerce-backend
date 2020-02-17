@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-            <form role="form" action="{{ }}" method="post">
+            <form role="form" action="{{ route('categories.update')}}" method="post">
                     @csrf
                   <div class="card-body">
 

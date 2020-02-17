@@ -25,6 +25,7 @@ class SubCategoriesController extends Controller
     public function index()
     {
         $data = app(SubCategories::class)->getData();
+        error_log(print_r($data,true));
        // Log::debug('Data');
         return view('subcategories/subcategories', ['subcategories' => $data]);
     }

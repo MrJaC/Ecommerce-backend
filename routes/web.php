@@ -32,6 +32,7 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
 
     Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
     Route::post('/catadd', 'CategoriesController@add')->name('add-cat');
+    Route::post('/cat-update', 'CategoriesController@update')->name('update');
 });
 //SubCategories
 Route::group(['prefix' => 'subcategories', 'as' => 'subcategories.'], function () {
