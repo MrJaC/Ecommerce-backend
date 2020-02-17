@@ -30,7 +30,7 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
     Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
     Route::get('/edit-category/{id}/{name}', 'CategoriesController@catEdit')->name('edit-cat');
 
-    Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete.id');
+    Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete');
     Route::post('/catadd', 'CategoriesController@add')->name('add-cat');
     Route::post('/cat-update', 'CategoriesController@update')->name('update');
 });
@@ -62,4 +62,10 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
 
     Route::get('/', 'VendorsController@index')->name('vendors');
     Route::get('/create-vendors', 'VendorsController@index')->name('create-vendors');
+});
+//User Profile
+Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+
+    Route::get('/', 'UserProfileController@index')->name('profile');
+    Route::get('/edit-profile/{id}/{name}', 'UserProfileController@edit')->name('edit-profile');
 });

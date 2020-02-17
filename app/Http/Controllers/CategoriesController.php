@@ -45,11 +45,10 @@ class CategoriesController extends Controller
         $q = app(Categories::class)->addCat($data);
         return redirect('/categories');
     }
-    public function delete(Request $request){
-        $urId = $request;
-        echo route('delete.id', ['id' => 1]);
-        Log::debug('message');
-        Log::debug($urId);
+    public function delete($id){
+        $delete = app(Categories::class)->delete($id);
+
+        return view('/categories');
     }
 
     public function catEdit($id, $name){
