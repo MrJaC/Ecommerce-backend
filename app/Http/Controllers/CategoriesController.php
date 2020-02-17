@@ -58,7 +58,7 @@ class CategoriesController extends Controller
 
       return view('categories/edit-category', ['id' => $id ,'name' => $name]);
     }
-    public function update(Request $request){
+    public function update(Request $request, $id){
 
         error_log(print_r($request->id,true));
 
