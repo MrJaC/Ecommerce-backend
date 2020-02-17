@@ -20,9 +20,7 @@ class Categories extends Model
         }
 
     }
-    public function delete($id){
 
-    }
     public function getCat(){
         $cat = DB::select('select * from categories');
         return $cat;
