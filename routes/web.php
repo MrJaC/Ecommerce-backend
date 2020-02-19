@@ -30,7 +30,7 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
     Route::get('/create-category', 'CategoriesController@create')->name('create-cat');
     Route::get('/edit-category/{id}/{name}', 'CategoriesController@catEdit')->name('edit-cat');
 
-    Route::post('/delete/{id}', 'CategoriesController@delete')->name('delete');
+    Route::get('/cat-delete', 'CategoriesController@delete')->name('delete');
     Route::post('/catadd', 'CategoriesController@add')->name('add-cat');
     Route::post('/cat-update', 'CategoriesController@update')->name('update');
 });

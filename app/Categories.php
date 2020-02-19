@@ -30,4 +30,8 @@ class Categories extends Model
         return $cat;
 
     }
+    public function deleteCat($id){
+        $subcat = DB::table('categories')->where('id', $id)->delete();
+        return $subcat;
+    }
 }
