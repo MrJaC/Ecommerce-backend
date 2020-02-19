@@ -49,14 +49,14 @@
                             <tbody>
                                 @foreach ($products as $prod)
                                 <tr>
-                                <td>{{$prod->id}}</td>
+                                <td>{{$prod->prod_id}}</td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
-                                <td>{{$prod->product_cat}}</td>
-                                <td>{{$prod->product_subcat}}</td>
+                                <td>{{$prod->cat_name}}</td>
+                                <td>{{$prod->subcat_name}}</td>
                                 <td>
-                                <a  class="btn btn-default btn-flat" href="{{ route('categories.edit-cat',['id' => $prod->id, 'name' => $prod->product_name])}}">Edit</a>
-                                    <a class="btn btn-default btn-flat" href="/categories/delete/{{$prod->id}}">Delete</a>
+                                <a  class="btn btn-default btn-flat" href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Edit</a>
+                                <a class="btn btn-default btn-flat" href="{{ route('products.delete', ['id' => $prod->prod_id])}}">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

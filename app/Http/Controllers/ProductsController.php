@@ -53,4 +53,14 @@ class ProductsController extends Controller
         $q = app(Products::class)->addProd($data);
         return redirect('/products');
     }
+
+    public function update($id, $name){
+
+        return view('products/edit-products', ['id' => $id ,'name' => $name]);
+      }
+      public function delete(Request $request)
+      {
+          $q = app(Products::class)->deleteProd($request->id);
+          return redirect('/products');
+      }
 }
