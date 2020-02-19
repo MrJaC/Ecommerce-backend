@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($subcategories as $subcat)
                             <tr>
-                        <td>{{$subcat->id}}</td>
+                        <td>{{$subcat->sub_id}}</td>
                         <td>{{$subcat->subcat_name}}</td>
                         <td>{{$subcat->cat_name}}</td>
                             <td>{{$subcat->image}}</td>

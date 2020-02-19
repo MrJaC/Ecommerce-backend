@@ -19,9 +19,15 @@ class SubCategories extends Model
 
     }
     public function getData(){
-        $data = DB::table('subcategories')
-        ->leftJoin('categories', 'subcategories.cat_id', '=','categories.id')
+        $data = DB::table('subcategories AS subcat')
+        ->leftJoin('categories AS cat', 'subcat.cat_id', '=','cat.id')
         ->get();
+        error_log(print_r($data,true));
         return $data;
+    }
+    public function editSubCat($id,$data){
+        $cat = DB::table('subcategories')->where('id', $id)->update($data);
+        return $subcat;
+
     }
 }
