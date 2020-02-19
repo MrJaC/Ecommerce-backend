@@ -39,7 +39,9 @@ Route::group(['prefix' => 'subcategories', 'as' => 'subcategories.'], function (
 
     Route::get('/', 'SubCategoriesController@index')->name('subcategories');
     Route::get('/create-subcategory', 'SubCategoriesController@create')->name('create-subcat');
+    Route::get('/edit-subcategory/{id}/{name}', 'SubCategoriesController@subCatEdit')->name('edit-subcat');
     Route::post('/subadd', 'SubCategoriesController@add')->name('add-subcat');
+    Route::post('/sub-update', 'SubCategoriesController@update')->name('update');
 });
 
 

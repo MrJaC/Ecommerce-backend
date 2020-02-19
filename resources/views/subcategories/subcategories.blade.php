@@ -51,17 +51,9 @@
                         <td>{{$subcat->cat_name}}</td>
                             <td>{{$subcat->image}}</td>
                             <td>
-                                <div class="btn-group">
-                                <button type="button" class="btn btn-default">Action</button>
-                                <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                  <span class="sr-only">Toggle Dropdown</span>
-                                  <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" href="/categories/edit/">Edit</a>
-                                    <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="/categories/delete/">Delete</a>
-                                  </div>
-                                </button>
-                              </div></td>
+                                <a  class="btn btn-default btn-flat" href="{{ route('subcategories.edit-subcat',['id' => $subcat->sub_id, 'name' => $subcat->subcat_name])}}">Edit</a>
+                                <a class="btn btn-default btn-flat" href="/">Delete</a>
+                                    </td>
                             </tr>
                             @endforeach
                         </tbody>
