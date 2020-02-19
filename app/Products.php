@@ -7,9 +7,22 @@ use DB;
 class Products extends Model
 {
     public function getProducts(){
-        $prod = DB::table('products AS prod')
-        ->leftJoin('categories AS cat', 'prod.product_cat', '=', 'cat.id')
-        ->leftJoin('subcategories AS sub', 'prod.product_subcat', '=' , 'sub.sub_id')
+        $prod = DB::table('products')
+        ->select(
+            'products.prod_id',
+            'products.product_name',
+            'products.product_price',
+            'products.product_cat',
+            'products.product_subcat',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+        )
+        ->leftJoin('categories','products.product_cat', '=', 'categories.id')
+        ->leftJoin('subcategories', 'products.product_subcat', '=', 'subcategories.sub_id')
         ->get();
         error_log(print_r($prod,true));
         return $prod;
@@ -30,7 +43,7 @@ class Products extends Model
         return $prod;
     }
     public function deleteProd($id){
-        $q = DB::table('products')->where('id', $id)->delete();
+        $q = DB::table('products')->where('prod_id', $id)->delete();
         return $q;
     }
 }

@@ -56,7 +56,7 @@
                                 <option selected="">Please Select</option>
                                 @foreach ($subcategory as $subcat )
 
-                                <option value="{{$subcat->id}}">{{$subcat->subcat_name}}</option>
+                                <option value="{{$subcat->sub_id}}">{{$subcat->subcat_name}}</option>
                                 @endforeach
 
 
