@@ -51,8 +51,9 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
 
     Route::get('/', 'ProductsController@index')->name('products');
     Route::get('/create-products', 'ProductsController@create')->name('create-products');
-    Route::get('/edit-products/{id}/{name}', 'ProductsController@update')->name('edit-products');
+    Route::get('/edit-products/{id}/{name}', 'ProductsController@edit')->name('edit-products');
     Route::post('/addprod', 'ProductsController@add')->name('add-products');
+    Route::post('/prod-update', 'ProductsController@update')->name('update');
     Route::get('/products-delete', 'ProductsController@delete')->name('delete');
 });
 

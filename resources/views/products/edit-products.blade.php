@@ -7,13 +7,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Create Product</h1>
+          <h1 class="m-0 text-dark">Edit Product: {{$name}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item">Products</li>
-              <li class="breadcrumb-item active">Create</li>
+              <li class="breadcrumb-item active">Edit: {{$name}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,18 +31,21 @@
                                   <!-- general form elements -->
               <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">Create Form</h3>
+                    <h3 class="card-title">Edit Form</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form role="form" action="{{ route('products.add-products') }}" method="post">
+                  <form role="form" action="{{ route('products.update', ['id' =>$id]) }}" method="post">
                       @csrf
                     <div class="card-body">
                       <div class="form-group">
                           <label>Categories</label>
                           <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;">
-                              <option selected="">Please Select</option>
-                              @foreach ($errors as $cat )
+                            @foreach ($currentprod as $curprod )
+                          <option value="{{$curprod->product_cat}}" selected="">Current: {{$curprod->cat_name}}</option>
+                            @endforeach
+                            <option>Please Select</option>
+                              @foreach ($categories as $cat )
 
                               <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
                               @endforeach
@@ -53,8 +56,11 @@
                         <div class="form-group">
                             <label>SubCategories</label>
                             <select class="form-control select2" name="prod-subcat" id="prod-subcat" style="width: 100%;">
-                                <option selected="">Please Select</option>
-                                @foreach ($subcategory ?? '' as $subcat )
+                                @foreach ($currentprod as $curprod )
+                                <option value="{{$curprod->product_subcat}}" selected="">Current: {{$curprod->subcat_name}}</option>
+                                @endforeach
+                                <option>Please Select</option>
+                                @foreach ($subcategories  as $subcat )
 
                                 <option value="{{$subcat->id}}">{{$subcat->subcat_name}}</option>
                                 @endforeach
@@ -64,11 +70,11 @@
                           </div>
                       <div class="form-group">
                         <label for="category-name">Product name</label>
-                        <input type="text" class="form-control" id="product-name" name="product-name" placeholder="Enter product name">
+                        <input type="text" class="form-control" id="product-name" name="product-name" placeholder="{{$curprod->product_name}}" value="{{$curprod->product_name}}">
                       </div>
                       <div class="form-group">
                         <label for="category-name">Product price</label>
-                        <input type="text" class="form-control" id="product-price" name="product-price" placeholder="Enter product price">
+                        <input type="text" class="form-control" id="product-price" name="product-price" placeholder="{{$curprod->product_price}}" value="{{$curprod->product_price}}">
                       </div>
                     <!-- /.card-body -->
 

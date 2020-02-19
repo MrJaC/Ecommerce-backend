@@ -53,10 +53,34 @@ class ProductsController extends Controller
         $q = app(Products::class)->addProd($data);
         return redirect('/products');
     }
+    public function edit($id, $name){
+        $cat = app(Categories::class)->getCat();
+        $subcat = app(SubCategories::class)->getData();
+        $curProd = app(Products::class)->getCurrProducts($id);
 
-    public function update($id, $name){
+        return view('products/edit-products', [
+            'id' => $id,
+            'name' => $name,
+            'categories' => $cat,
+            'subcategories' => $subcat,
+            'currentprod' => $curProd
+        ]);
+    }
+    public function update(Request $request){
 
-        return view('products/edit-products', ['id' => $id ,'name' => $name]);
+        $prodName = $request->input('product-name');
+        $prodPrice = $request->input('product-price');
+        $prodCat = $request->input('prod-cat');
+        $prodSubcat = $request->input('prod-subcat');
+
+        $data = array(
+            'product_name' => $prodName,
+            'product_price' => $prodPrice,
+            'product_cat' => $prodCat,
+            'product_subcat' => $prodSubcat
+        );
+        $q = app(Products::class)->editProduct($request->id,$data);
+        return redirect('/products');
       }
       public function delete(Request $request)
       {

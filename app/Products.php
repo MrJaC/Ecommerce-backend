@@ -38,8 +38,29 @@ class Products extends Model
         }
 
     }
+    public function getCurrProducts($id){
+        $prod = DB::table('products')
+        ->select(
+            'products.prod_id',
+            'products.product_name',
+            'products.product_price',
+            'products.product_cat',
+            'products.product_subcat',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+        )
+        ->leftJoin('categories','products.product_cat', '=', 'categories.id')
+        ->leftJoin('subcategories', 'products.product_subcat', '=', 'subcategories.sub_id')
+        ->where('products.prod_id', '=', $id)
+        ->get();
+        return $prod;
+    }
     public function editProduct($id,$data){
-        $prod = DB::table('products')->where('id', $id)->update($data);
+        $prod = DB::table('products')->where('prod_id', $id)->update($data);
         return $prod;
     }
     public function deleteProd($id){
