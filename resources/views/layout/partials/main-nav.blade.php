@@ -26,7 +26,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item  menu-closed">
             <a href="/dashboard" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-columns"></i>
               <p>
                 Dashboard
 
@@ -35,7 +35,7 @@
           </li>
           <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Orders
                 <i class="right fas fa-angle-left"></i>
@@ -104,7 +104,7 @@
           </li>
           <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-archive"></i>
               <p>
                 Products
                 <i class="right fas fa-angle-left"></i>
@@ -150,7 +150,7 @@
           </li>
           <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Customers
                 <i class="right fas fa-angle-left"></i>
@@ -173,7 +173,7 @@
               <li class="nav-header">Settings</li>
               <li class="nav-item has-treeview menu-closed">
                 <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-cogs"></i>
                   <p>
                     Payment Settings
                     <i class="right fas fa-angle-left"></i>

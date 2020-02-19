@@ -48,14 +48,16 @@ class CategoriesController extends Controller
 
     public function catEdit($id, $name){
 
-
-
       return view('categories/edit-category', ['id' => $id ,'name' => $name]);
     }
-    public function update(Request $request, $id){
+    public function update(Request $request){
 
         error_log(print_r($request->id,true));
+        $data = array(
+            'cat_name' => $request->input('cat-name')
 
-        return redirect('/categories');
+        );
+        $q = app(Categories::class)->editCat($request->id,$data);
+        return redirect('/categories' );
     }
 }
