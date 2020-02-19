@@ -52,7 +52,7 @@
                             <td>{{$subcat->image}}</td>
                             <td>
                                 <a  class="btn btn-default btn-flat" href="{{ route('subcategories.edit-subcat',['id' => $subcat->sub_id, 'name' => $subcat->subcat_name])}}">Edit</a>
-                                <a class="btn btn-default btn-flat" href="/">Delete</a>
+                            <a class="btn btn-default btn-flat" href="{{route('subcategories.delete', ['id' => $subcat->sub_id])}}">Delete</a>
                                     </td>
                             </tr>
                             @endforeach

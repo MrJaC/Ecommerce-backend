@@ -37,5 +37,10 @@ class SubCategories extends Model
         $subcat = DB::table('subcategories')->where('sub_id', $id)->update($data);
         return $subcat;
 
+
+    }
+    public function deleteCat($id){
+        $subcat = DB::table('subcategories')->where('sub_id', $id)->delete();
+        return $subcat;
     }
 }
