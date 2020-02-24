@@ -96,14 +96,14 @@
 
                               <div class="mb-3">
                                 <textarea class="textarea" placeholder="Place some text here"
-                                          style="width: 50%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                          style="width: 50%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name="description"></textarea>
                               </div>
                     </div>
                 <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="category-name">Product SKU</label>
-                        <input type="text" class="form-control" id="product-price" name="product-price" placeholder="Enter product price">
+                        <input type="text" class="form-control" id="product-price" name="product-sku" placeholder="Enter product price">
                       </div>
                 </div>
             </div>
