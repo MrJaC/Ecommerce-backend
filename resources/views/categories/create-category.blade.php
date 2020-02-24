@@ -38,7 +38,13 @@
                 <form role="form" action="{{ route('categories.add-cat') }}" method="post">
                     @csrf
                   <div class="card-body">
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
 
+                    @endif
                     <div class="form-group">
                       <label for="category-name">Category name</label>
                       <input type="text" class="form-control" id="cat-name" name="cat-name" placeholder="Enter category name">

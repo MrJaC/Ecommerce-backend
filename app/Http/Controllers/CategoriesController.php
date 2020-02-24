@@ -43,6 +43,12 @@ class CategoriesController extends Controller
             'cat_name' => $catName
         );
         $q = app(Categories::class)->addCat($data);
+        if($q == true){
+            return redirect('/categories')->with('message', 'Category added');
+        }
+        else{
+            return back()->with('message', 'Failed category add');
+        }
         return redirect('/categories');
     }
 

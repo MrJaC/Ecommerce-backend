@@ -31,6 +31,13 @@
                     <div class="card-header">
                       <h3 class="card-title">View all categories</h3>
                     </div>
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table id="example2" class="table table-bordered table-hover">
