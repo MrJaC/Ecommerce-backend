@@ -39,6 +39,10 @@ class ProductsController extends Controller
     }
     public function add(Request $request){
 
+
+        $request->validate([
+            'product_main_image' => 'required|image|mimes:jpeg,png,jpg,gif'
+        ]);
         $prodName = $request->input('product-name');
         $prodPrice = $request->input('product-price');
         $prodCat = $request->input('prod-cat');
@@ -46,6 +50,8 @@ class ProductsController extends Controller
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
         $prodImg = $request->input('product-main-image');
+
+
         $data = array(
             'product_name' => $prodName,
             'product_price' => $prodPrice,
