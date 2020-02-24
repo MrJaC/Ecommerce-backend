@@ -55,6 +55,7 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::post('/addprod', 'ProductsController@add')->name('add-products');
     Route::post('/prod-update', 'ProductsController@update')->name('update');
     Route::get('/products-delete', 'ProductsController@delete')->name('delete');
+    Route::get('/products-gallery', 'ProductsController@gallery')->name('gallery');
 });
 
 //Customers

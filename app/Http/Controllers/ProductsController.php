@@ -87,4 +87,8 @@ class ProductsController extends Controller
           $q = app(Products::class)->deleteProd($request->id);
           return redirect('/products');
       }
+
+      public function gallery(){
+          return view('products/gallery');
+      }
 }
