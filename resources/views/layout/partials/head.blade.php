@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}} ">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}} ">
+      <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('css/adminlte.min.css')}}">
 <!-- Google Font: Source Sans Pro -->
