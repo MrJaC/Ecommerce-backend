@@ -27,7 +27,7 @@
           <section class="content">
               <div class="container-fluid">
                   <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                                   <!-- general form elements -->
               <div class="card card-primary">
                   <div class="card-header">
@@ -38,37 +38,43 @@
                   <form role="form" action="{{ route('products.add-products') }}" method="post">
                       @csrf
                     <div class="card-body">
-                      <div class="form-group">
-                          <label>Categories</label>
-                          <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
-                              <option selected="">Please Select</option>
-                              @foreach ($category as $cat )
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Categories</label>
+                                    <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
+                                        <option selected="">Please Select</option>
+                                        @foreach ($category as $cat )
 
-                              <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
-                              @endforeach
+                                        <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
+                                        @endforeach
 
 
-                          </select>
+                                    </select>
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Subcategories</label>
+                                    <select class="form-control select2" name="prod-subcat" id="prod-subcat" style="width: 100%;" required>
+                                        <option selected="">Please Select</option>
+                                        @foreach ($subcategory as $subcat )
+
+                                        <option value="{{$subcat->sub_id}}">{{$subcat->subcat_name}}</option>
+                                        @endforeach
+
+
+                                    </select>
+                                  </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>SubCategories</label>
-                            <select class="form-control select2" name="prod-subcat" id="prod-subcat" style="width: 100%;" required>
-                                <option selected="">Please Select</option>
-                                @foreach ($subcategory as $subcat )
-
-                                <option value="{{$subcat->sub_id}}">{{$subcat->subcat_name}}</option>
-                                @endforeach
-
-
-                            </select>
-                          </div>
                       <div class="form-group">
                         <label for="category-name">Product name</label>
                         <input type="text" class="form-control" id="product-name" name="product-name" placeholder="Enter product name">
                       </div>
                       <div class="form-group">
                         <label for="category-name">Product price</label>
-                        <input type="text" class="form-control" id="product-price" name="product-price" placeholder="Enter product price">
+                        <input type="number" class="form-control" id="product-price" name="product-price" placeholder="Enter product price">
                       </div>
                     <!-- /.card-body -->
                       <div class="form-group">
@@ -90,13 +96,32 @@
 
                               <div class="mb-3">
                                 <textarea class="textarea" placeholder="Place some text here"
-                                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                          style="width: 50%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                               </div>
-
-
                     </div>
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="category-name">Product SKU</label>
+                        <input type="text" class="form-control" id="product-price" name="product-price" placeholder="Enter product price">
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Product main Image</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="product-main-image" name="product-main-image">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary pull-right">Submit</button>
                     </div>
                   </form>
                 </div>

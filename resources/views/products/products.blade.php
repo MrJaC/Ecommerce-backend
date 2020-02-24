@@ -37,6 +37,7 @@
                         <thead>
                         <tr>
                           <th>ID</th>
+                          <th>Product Image</th>
                           <th>Product Name</th>
                           <th>Product Price</th>
                           <th>Product Category</th>
@@ -50,6 +51,7 @@
                                 @foreach ($products as $prod)
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
+                                <td></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
                                 <td>{{$prod->cat_name}}</td>
@@ -65,6 +67,7 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
+                            <th>Product Image</th>
                             <th>Product Name</th>
                             <th>Product Price</th>
                             <th>Product Category</th>
