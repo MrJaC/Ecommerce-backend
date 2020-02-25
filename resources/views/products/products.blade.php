@@ -29,8 +29,16 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Product list</h3>
+                      <h3 class="card-title">Product list  <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('products.create-products') }}">Add Product </a></h3>
+
                     </div>
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table id="example2" class="table table-bordered table-hover">
@@ -57,7 +65,7 @@
                                 <td>{{$prod->cat_name}}</td>
                                 <td>{{$prod->subcat_name}}</td>
                                 <td>
-                                <a  class="btn btn-default btn-flat" href="#">View </a>
+                                <a  class="btn btn-default btn-flat" href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">View </a>
                                 <a  class="btn btn-default btn-flat" href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Edit</a>
                                 <a class="btn btn-default btn-flat" href="{{ route('products.gallery')}}">Gallery</a>
                                 <a class="btn btn-default btn-flat" href="{{ route('products.delete', ['id' => $prod->prod_id])}}">Delete</a>

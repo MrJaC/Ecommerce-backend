@@ -107,11 +107,21 @@ class ProductsController extends Controller
     public function delete(Request $request)
     {
         $q = app(Products::class)->deleteProd($request->id);
-        return redirect('/products');
+        if ($q == true) {
+            return redirect('/products')->with('message', 'Product deleted');
+        } else {
+            return back()->with('message', 'Failed product delete');
+        }
     }
 
     public function gallery()
     {
         return view('products/gallery');
+    }
+    public function view($id, $name){
+        return view('products/product-view', [
+            'id' => $id,
+            'name' => $name,
+        ]);
     }
 }
