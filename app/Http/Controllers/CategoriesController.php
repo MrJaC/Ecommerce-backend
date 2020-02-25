@@ -49,7 +49,7 @@ class CategoriesController extends Controller
         else{
             return back()->with('message', 'Failed category add');
         }
-        return redirect('/categories');
+
     }
 
     public function catEdit($id, $name){
@@ -64,11 +64,21 @@ class CategoriesController extends Controller
 
         );
         $q = app(Categories::class)->editCat($request->id,$data);
-        return redirect('/categories' );
+        if($q == true){
+            return redirect('/categories')->with('message', 'Category updated');
+        }
+        else{
+            return back()->with('message', 'Failed category update');
+        }
     }
     public function delete(Request $request)
     {
         $q = app(Categories::class)->deleteCat($request->id);
-        return redirect('/categories');
+        if($q == true){
+            return redirect('/categories')->with('message', 'Category deleted');
+        }
+        else{
+            return back()->with('message', 'Failed category delete');
+        }
     }
 }
