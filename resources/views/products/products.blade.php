@@ -51,12 +51,13 @@
                                 @foreach ($products as $prod)
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
-                                <td><img src="{{ asset($prod->product_main_image)}}" /></td>
+                                <td><img src="{{ asset($prod->product_main_image)}}" ></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
                                 <td>{{$prod->cat_name}}</td>
                                 <td>{{$prod->subcat_name}}</td>
                                 <td>
+                                <a  class="btn btn-default btn-flat" href="#">View </a>
                                 <a  class="btn btn-default btn-flat" href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Edit</a>
                                 <a class="btn btn-default btn-flat" href="{{ route('products.gallery')}}">Gallery</a>
                                 <a class="btn btn-default btn-flat" href="{{ route('products.delete', ['id' => $prod->prod_id])}}">Delete</a>
