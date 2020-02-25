@@ -35,7 +35,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form role="form" action="{{ route('products.add-products') }}" method="post">
+                  <form role="form" action="{{ route('products.add-products') }}" method="post" enctype="multipart/form-data">
                       @csrf
                     <div class="card-body">
                         <div class="row">
@@ -103,7 +103,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="category-name">Product SKU</label>
-                        <input type="text" class="form-control" id="product-price" name="product-sku" placeholder="Enter product price">
+                        <input type="text" class="form-control" id="product-sku" name="product-sku" placeholder="Enter product price">
                       </div>
                 </div>
             </div>
@@ -111,11 +111,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleInputFile">Product main Image</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="product-main-image" name="product-main-image">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                          </div>
+
+
+                            <input type="file"  id="product-main-image" name="product-main-image" placeholder="Choose your image">
+
+
                         </div>
                       </div>
                 </div>
