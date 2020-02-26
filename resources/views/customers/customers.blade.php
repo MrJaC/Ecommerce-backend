@@ -52,7 +52,18 @@
                             <td>{{$cus->name}}</td>
                             <td>{{$cus->email}}</td>
                             <td>{{$cus->created_at}}</td>
-                            <td></td>
+                            <td>
+                                @if ($cus->role == 1)
+                                 Admin
+                            @elseif ($cus->role == 2)
+                                Employee
+                                @elseif ($cus->role == 3)
+                                Customer
+                                @elseif ($cus->role == 4)
+                                Vendor
+                            @endif
+
+                            </td>
                             <td>
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-default">Action</button>
