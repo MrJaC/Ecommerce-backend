@@ -17,6 +17,8 @@ class Products extends Model
             'products.product_main_image',
             'products.product_sku',
             'products.product_description',
+            'products.product_amount',
+            'products.user_id',
             'categories.id',
             'categories.cat_name',
             'categories.cat_img',
