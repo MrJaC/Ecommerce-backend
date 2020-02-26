@@ -46,6 +46,7 @@
                         <tr>
                           <th>ID</th>
                           <th>Product Image</th>
+                          <th>Vendor Name</th>
                           <th>Product Name</th>
                           <th>Product Price</th>
                           <th>Product Category</th>
@@ -59,7 +60,9 @@
                                 @foreach ($products as $prod)
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
+
                                 <td><img src="{{'storage/'. $prod->product_main_image }}" ></td>
+                                <td></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
                                 <td>{{$prod->cat_name}}</td>
@@ -78,6 +81,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Product Image</th>
+                            <th>Vendor Name</th>
                             <th>Product Name</th>
                             <th>Product Price</th>
                             <th>Product Category</th>
