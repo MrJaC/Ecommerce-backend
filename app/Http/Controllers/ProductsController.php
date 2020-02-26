@@ -47,7 +47,7 @@ class ProductsController extends Controller
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
 
-        $path = $request->file('product-main-image')->store('public/main-images');
+        $path = $request->file('product-main-image')->store('main-images');
         /*if ($files = $request->file('product-main-image')) {
             $destinationPath = 'public/images/'; // upload path
             $imageProductName = date('YmdHis') . "." . $files->getClientOriginalExtension();

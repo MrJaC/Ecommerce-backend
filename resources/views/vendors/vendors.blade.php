@@ -36,10 +36,20 @@
                       <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>Vendor Name</th>
-                          <th>User Name</th>
-                          <th>Actions</th>
+                            <th>Actions</th>
+                            <th style="display:none;">Id</th>
+                            <th>Logo</th>
+                            <th>Business Name</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Landline</th>
+                            <th>Category</th>
+                            <th>Subcategory</th>
+                            <th>Service Locations</th>
+                            <th>Valid from</th>
+                            <th>Valid to</th>
+                            <th>Details</th>
+                            <th>Approval Status</th>
 
                         </tr>
                         </thead>
@@ -49,10 +59,20 @@
 
                         <tfoot>
                         <tr>
-                            <th>ID</th>
-                            <th>Vendor Name</th>
-                            <th>User Name</th>
                             <th>Actions</th>
+                            <th style="display:none;">Id</th>
+                            <th>Logo</th>
+                            <th>Business Name</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Landline</th>
+                            <th>Category</th>
+                            <th>Subcategory</th>
+                            <th>Service Locations</th>
+                            <th>Valid from</th>
+                            <th>Valid to</th>
+                            <th>Details</th>
+                            <th>Approval Status</th>
                         </tr>
                         </tfoot>
                       </table>
