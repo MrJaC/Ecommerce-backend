@@ -114,9 +114,14 @@ class ProductsController extends Controller
         }
     }
 
-    public function gallery()
+    public function gallery($id, $name)
     {
-        return view('products/gallery');
+        $curProd = app(Products::class)->getCurrProducts($id);
+        return view('products/gallery',[
+            'id' => $id,
+            'name' => $name,
+            'currentprod' => $curProd
+        ]);
     }
     public function view($id, $name){
 

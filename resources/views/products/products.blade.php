@@ -67,7 +67,7 @@
                                 <td>
                                 <a  class="btn btn-default btn-flat" href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">View </a>
                                 <a  class="btn btn-default btn-flat" href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Edit</a>
-                                <a class="btn btn-default btn-flat" href="{{ route('products.gallery')}}">Gallery</a>
+                                <a class="btn btn-default btn-flat" href="{{ route('products.product-gallery',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Gallery</a>
                                 <a class="btn btn-default btn-flat" href="{{ route('products.delete', ['id' => $prod->prod_id])}}">Delete</a>
                                     </td>
                                 </tr>

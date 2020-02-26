@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}} ">
       <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/ekko-lightbox/ekko-lightbox.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('css/adminlte.min.css')}}">
 <!-- Google Font: Source Sans Pro -->

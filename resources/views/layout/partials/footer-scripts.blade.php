@@ -13,6 +13,7 @@
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{ asset('plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
 <!-- OPTIONAL SCRIPTS
 <script src="{{ asset ('plugins/chart.js/Chart.min.js') }}"></script>-->
 
@@ -31,6 +32,12 @@
       });
           //Initialize Select2 Elements
     $('.select2').select2();
-    $('.textarea').summernote()
+    $('.textarea').summernote();
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
     });
   </script>
