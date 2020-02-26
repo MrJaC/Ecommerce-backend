@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 class ProductsController extends Controller
 {
     /**
@@ -46,13 +47,17 @@ class ProductsController extends Controller
         $prodSubcat = $request->input('prod-subcat');
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
-
+        $prodStock = $request->input('product-stock');
         $path = $request->file('product-main-image')->store('main-images');
         /*if ($files = $request->file('product-main-image')) {
             $destinationPath = 'public/images/'; // upload path
             $imageProductName = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $imageProductName);
          }*/
+
+         //get user auth id
+
+        $id = Auth::id();
         $data = array(
             'product_name' => $prodName,
             'product_price' => $prodPrice,
@@ -60,10 +65,12 @@ class ProductsController extends Controller
             'product_subcat' => $prodSubcat,
             'product_description' => $prodDescription,
             'product_sku' => $prodSky,
-            'product_main_image' => $path
+            'product_main_image' => $path,
+            'product_amount' => $prodStock,
+            'user_id' => $id
         );
         //Log::debug('Check', $data);
-        error_log(print_r($data, true));
+
         $q = app(Products::class)->addProd($data);
 
         if ($q == true) {
