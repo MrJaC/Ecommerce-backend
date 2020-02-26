@@ -40,6 +40,7 @@
                           <th>Customer Name</th>
                           <th>Customer Email</th>
                           <th>Created at:</th>
+                          <th>Role</th>
                           <th>Actions</th>
 
                         </tr>
@@ -51,6 +52,7 @@
                             <td>{{$cus->name}}</td>
                             <td>{{$cus->email}}</td>
                             <td>{{$cus->created_at}}</td>
+                            <td></td>
                             <td>
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-default">Action</button>
@@ -74,6 +76,7 @@
                             <th>Customer Name</th>
                             <th>Customer Email</th>
                             <th>Created at:</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>
