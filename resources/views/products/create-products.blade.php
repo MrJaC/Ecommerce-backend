@@ -106,6 +106,12 @@
                         <input type="text" class="form-control" id="product-sku" name="product-sku" placeholder="Enter product price">
                       </div>
                 </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="category-name">Product Stock Amount</label>
+                    <input type="number" class="form-control" id="product-price" name="product-stock" placeholder="Enter product stock">
+                  </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
