@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Profile</h1>
+            <h1>Profile: {{$user->name}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
+              <li class="breadcrumb-item active">User Profile: {{$user->name}}</li>
             </ol>
           </div>
         </div>
@@ -34,9 +34,17 @@
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+            <h3 class="profile-username text-center">{{$user->name}}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+            <p class="text-muted text-center">                                @if ($user->role == 1)
+                Admin
+           @elseif ($user->role == 2)
+               Employee
+               @elseif ($user->role == 3)
+               Customer
+               @elseif ($user->role == 4)
+               Vendor
+           @endif</p>
 
 
 

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class UserProfileController extends Controller
 {
     public function __construct()
@@ -17,8 +17,9 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-       // $customers = app(Customers::class)->getCustomers();
-        //Log::debug('Customers', ['customers' => $customers]);
-        return view('profile/profile');
+        $user = Auth::user();
+
+        Log::debug($user);
+        return view('profile/profile', [ 'user' => $user]);
     }
 }
