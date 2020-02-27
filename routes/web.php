@@ -19,6 +19,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/register', function () {
     return view('register');
 });
+//Register
+Route::get('/register', 'RegisterController@index')->name('register');
+
 //Dashboard route
 Route::get('/dashboard', function () {
     return view('dashboard/dashboard');
