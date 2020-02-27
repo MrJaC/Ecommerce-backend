@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Categories;
+use App\Products;
+use App\SubCategories;
+use Illuminate\Support\Facades\Auth;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +27,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard/dashboard');
+        /*
+         Get all data
+
+        */
+        $cat = app(Categories::class)->getCat();
+        $prod = app(Products::class)->getProducts();
+        $subcat = app(SubCategories::class)->getData();
+        $users = DB::table('users')->get();
+        return view('dashboard/dashboard',
+    [
+        'cat' => $cat,
+        'subcat' => $subcat,
+        'products' => $prod,
+        'users' => $users
+
+    ]);
     }
+
+
 }
