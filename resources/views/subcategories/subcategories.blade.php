@@ -29,8 +29,15 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">View all subcategories</h3>
+                      <h3 class="card-title">View all subcategories <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('subcategories.add-subcat')}}"> Add Subcategory </a></h3>
                     </div>
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table id="example2" class="table table-bordered table-hover">
