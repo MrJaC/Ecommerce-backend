@@ -101,12 +101,18 @@ class ProductsController extends Controller
         $prodPrice = $request->input('product-price');
         $prodCat = $request->input('prod-cat');
         $prodSubcat = $request->input('prod-subcat');
-
+        $prodDescription = $request->input('description');
+        $prodSky = $request->input('product-sku');
+        $prodStock = $request->input('product-stock');
         $data = array(
             'product_name' => $prodName,
             'product_price' => $prodPrice,
             'product_cat' => $prodCat,
-            'product_subcat' => $prodSubcat
+            'product_subcat' => $prodSubcat,
+            'product_description' => $prodDescription,
+            'product_sku' => $prodSky,
+            //'product_main_image' => $path,
+            'product_amount' => $prodStock,
         );
         $q = app(Products::class)->editProduct($request->id, $data);
         return redirect('/products');
