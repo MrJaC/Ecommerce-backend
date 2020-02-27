@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+
 class ProductsController extends Controller
 {
     /**
@@ -55,7 +58,7 @@ class ProductsController extends Controller
             $files->move($destinationPath, $imageProductName);
          }*/
 
-         //get user auth id
+        //get user auth id
 
         $id = Auth::id();
         $data = array(
@@ -130,21 +133,49 @@ class ProductsController extends Controller
     public function gallery($id, $name)
     {
         $curProd = app(Products::class)->getCurrProducts($id);
-        return view('products/gallery',[
+        return view('products/gallery', [
             'id' => $id,
             'name' => $name,
             'currentprod' => $curProd
         ]);
     }
-    public function view($id, $name){
+    public function view($id, $name)
+    {
 
         $curProd = app(Products::class)->getCurrProducts($id);
 
-        error_log(print_r($curProd,true));
+        error_log(print_r($curProd, true));
         return view('products/product-view', [
             'id' => $id,
             'name' => $name,
             'currentprod' => $curProd
         ]);
+    }
+    public function displayImage($filename)
+    {
+        $path = app(Storage::get($filename));
+
+
+
+        if (!File::exists($path)) {
+
+            abort(404);
+        }
+
+
+
+        $file = File::get($path);
+
+        $type = File::mimeType($path);
+
+
+
+        $response = Response::make($file, 200);
+
+        $response->header("Content-Type", $type);
+
+
+
+        return $response;
     }
 }

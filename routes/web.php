@@ -81,3 +81,6 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/', 'UserProfileController@index')->name('profile');
     Route::get('/edit-profile/{id}/{name}', 'UserProfileController@edit')->name('edit-profile');
 });
+
+//test image
+Route::get('/{filename}', 'ProductsController@displayImage')->name('image.displayImage');

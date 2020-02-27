@@ -61,7 +61,7 @@
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
 
-                                <td><img src="{{asset($prod->product_main_image)}}" ></td>
+                                <td><img src="{{ route('image.displayImage',$prod->product_main_image) }}" ></td>
                                 <td></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
