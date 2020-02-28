@@ -102,6 +102,8 @@ class ProductsController extends Controller
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
         $prodStock = $request->input('product-stock');
+        $path = $request->file('product-main-image')->store('public/main-images');
+        $fileName = str_replace("public/main-images/", "", $path);
         $data = array(
             'product_name' => $prodName,
             'product_price' => $prodPrice,
@@ -109,7 +111,7 @@ class ProductsController extends Controller
             'product_subcat' => $prodSubcat,
             'product_description' => $prodDescription,
             'product_sku' => $prodSky,
-            //'product_main_image' => $path,
+            'product_main_image' => $fileName,
             'product_amount' => $prodStock,
         );
         $q = app(Products::class)->editProduct($request->id, $data);
