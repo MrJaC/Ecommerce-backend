@@ -20,7 +20,7 @@ Route::get('/register', function () {
     return view('register');
 });
 //Register
-Route::get('/register', 'RegisterController@index')->name('register');
+Route::get('/register', 'Auth\RegisterController@index')->name('register');
 
 //Dashboard route
 Route::get('/dashboard', function () {
