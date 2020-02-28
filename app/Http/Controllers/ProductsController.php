@@ -139,10 +139,9 @@ class ProductsController extends Controller
             'currentprod' => $curProd
         ]);
     }
-    public function addImage($id, $name){
+    public function addImage($id){
         return view('products/gallery-add', [
-            'id' => $id,
-            'name' => $name,
+            'id' => $id
         ]);
     }
     public function view($id, $name)
