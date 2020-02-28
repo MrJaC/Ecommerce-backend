@@ -167,7 +167,6 @@ class ProductsController extends Controller
             'product_img' => $path
         );
 
-
         $q = app(Products::class)->addImage($data);
         if ($q == true) {
             return redirect('/products')->with('message', 'Product Image added');

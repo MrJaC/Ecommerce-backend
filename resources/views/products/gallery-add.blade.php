@@ -33,18 +33,19 @@
                     <div class="card-header">
                       <h3 class="card-title">Add Images</h3>
                     </div>
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+
+                    @endif
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" action="{{ route('products.image-upload',['id' => $id]) }}" method="post">
                         @csrf
                       <div class="card-body">
-                        @if ($message = Session::get('message'))
-                        <div class="alert alert-danger alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $message }}</strong>
-                        </div>
 
-                        @endif
                         <div class="form-group">
                           <label for="Image Upload">Image</label>
                           <input type="file"  id="product-main-image" name="product-main-image" placeholder="Choose your image">
