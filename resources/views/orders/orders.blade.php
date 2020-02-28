@@ -55,7 +55,7 @@
                             </thead>
     
                                 <tbody>
-                                    @foreach ($products as $prod)
+                                    @foreach ($errors as $prod)
                                     <tr>
                                     <td>{{$prod->prod_id}}</td>
     
