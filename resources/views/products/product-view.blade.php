@@ -21,7 +21,7 @@
     </div>
 
     <!-- Main content -->
-    <section class="content">
+
 
       <!-- Default box -->
       <div class="card card-solid">
@@ -38,10 +38,12 @@
               <div class="col-12 product-image-thumbs">
                 @foreach ($currentprod as $prod)
 
-                <div class="product-image-thumb active"> <img src="{{ url('storage/'.$prod->product_main_image) }}" class="product-image" alt="Product Image"></div>
+                <div class="product-image-thumb active"> <img src="{{ url('storage/main-images/'.$prod->product_main_image) }}" class="product-image" alt="Product Image"></div>
+                @endforeach
+                @foreach ($gallery as $gal )
+                <div class="product-image-thumb" ><img src="{{ url('storage/main-images/'.$gal->product_img) }}" class="product-image" alt="Product Image"></div>
                 @endforeach
 
-                <div class="product-image-thumb" ><img src="../../dist/img/prod-2.jpg" alt="Product Image"></div>
 
               </div>
             </div>
@@ -115,7 +117,7 @@
       </div>
       <!-- /.card -->
 
-    </section>
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

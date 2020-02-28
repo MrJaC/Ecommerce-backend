@@ -52,6 +52,10 @@ class Products extends Model
             return false;
         }
     }
+    public function getProductImages($id){
+        $prod = DB::table('product_gallery')->where('product_id', '=', $id)->get();
+        return $prod;
+    }
     public function getCurrProducts($id){
         $prod = DB::table('products')
         ->select(

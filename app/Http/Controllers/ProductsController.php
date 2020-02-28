@@ -128,10 +128,12 @@ class ProductsController extends Controller
     public function gallery($id, $name)
     {
         $curProd = app(Products::class)->getCurrProducts($id);
+        $imageGallery = app(Products::class)->getProductImages($id);
         return view('products/gallery', [
             'id' => $id,
             'name' => $name,
-            'currentprod' => $curProd
+            'currentprod' => $curProd,
+            'gallery' => $imageGallery
         ]);
     }
     public function addImage($id, $name)
@@ -145,12 +147,13 @@ class ProductsController extends Controller
     {
 
         $curProd = app(Products::class)->getCurrProducts($id);
-
+        $imageGallery = app(Products::class)->getProductImages($id);
         error_log(print_r($curProd, true));
         return view('products/product-view', [
             'id' => $id,
             'name' => $name,
-            'currentprod' => $curProd
+            'currentprod' => $curProd,
+            'gallery' => $imageGallery
         ]);
     }
     public function imageUpload(Request $request)
