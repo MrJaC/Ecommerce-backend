@@ -61,7 +61,7 @@
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
 
-                                <td><img class="product-image-thumb" src="{{ url('storage/'.$prod->product_main_image) }}" ></td>
+                                <td><img class="product-image-thumb" src="{{ url('storage/main-images/'.$prod->product_main_image) }}" ></td>
                                 <td></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>

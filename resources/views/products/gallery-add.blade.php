@@ -42,13 +42,13 @@
                     @endif
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('products.image-upload',['id' => $id]) }}" method="post">
+                    <form role="form" action="{{ route('products.image-upload',['id' => $id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                       <div class="card-body">
 
                         <div class="form-group">
                           <label for="Image Upload">Image</label>
-                          <input type="file"  id="product-main-image" name="product-main-image" placeholder="Choose your image">
+                          <input type="file"  id="gallery-image" name="gallery-image" placeholder="Choose your image">
                         </div>
                       <!-- /.card-body -->
 

@@ -51,14 +51,9 @@ class ProductsController extends Controller
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
         $prodStock = $request->input('product-stock');
-        $path = $request->file('product-main-image')->store('main-images');
-        /*if ($files = $request->file('product-main-image')) {
-            $destinationPath = 'public/images/'; // upload path
-            $imageProductName = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $imageProductName);
-         }*/
+        $path = $request->file('product-main-image')->store('public/main-images');
+        $fileName = str_replace("public/main-images/", "", $path);
 
-        //get user auth id
 
         $id = Auth::id();
         $data = array(
@@ -68,7 +63,7 @@ class ProductsController extends Controller
             'product_subcat' => $prodSubcat,
             'product_description' => $prodDescription,
             'product_sku' => $prodSky,
-            'product_main_image' => $path,
+            'product_main_image' => $fileName,
             'product_amount' => $prodStock,
             'user_id' => $id
         );
@@ -139,10 +134,11 @@ class ProductsController extends Controller
             'currentprod' => $curProd
         ]);
     }
-    public function addImage($id)
+    public function addImage($id, $name)
     {
         return view('products/gallery-add', [
-            'id' => $id
+            'id' => $id,
+            'name' => $name
         ]);
     }
     public function view($id, $name)
@@ -160,11 +156,13 @@ class ProductsController extends Controller
     public function imageUpload(Request $request)
     {
 
-        $path = $request->file('product-main-image')->store('main-images');
+        $path = $request->file('gallery-image')->store('public/main-images');
+        $fileName = str_replace("public/main-images/", "", $path);
+
 
         $data = array(
             'product_id' => $request->id,
-            'product_img' => $path
+            'product_img' => $fileName
         );
 
         $q = app(Products::class)->addImage($data);

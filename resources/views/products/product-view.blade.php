@@ -31,7 +31,7 @@
             <h3 class="d-inline-block d-sm-none">{{$name}}</h3>
               <div class="col-12">
                 @foreach ($currentprod as $prod)
-                <img src="{{ url('storage/'.$prod->product_main_image) }}" class="product-image" alt="Product Image">
+                <img src="{{ url('storage/main-images/'.$prod->product_main_image) }}" class="product-image" alt="Product Image">
                 @endforeach
 
               </div>
