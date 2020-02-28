@@ -59,6 +59,7 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::post('/prod-update', 'ProductsController@update')->name('update');
     Route::get('/products-delete', 'ProductsController@delete')->name('delete');
     Route::get('/products-gallery', 'ProductsController@gallery')->name('gallery');
+    Route::post('/product-image-upload', 'ProductsController@imageUpload')->name('image-upload');
     Route::get('/product-view/{id}/{name}', 'ProductsController@view')->name('view-product');
     Route::get('/product-gallery-add/{id}/{name}', 'ProductsController@addImage')->name('add-image');
     Route::get('/product-gallery/{id}/{name}', 'ProductsController@gallery')->name('product-gallery');

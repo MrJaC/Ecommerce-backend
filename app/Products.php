@@ -43,6 +43,15 @@ class Products extends Model
         }
 
     }
+    public function addImage($data){
+        $query = DB::table('product_gallery')->insert($data);
+        if($query){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public function getCurrProducts($id){
         $prod = DB::table('products')
         ->select(

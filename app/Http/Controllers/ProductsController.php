@@ -139,7 +139,8 @@ class ProductsController extends Controller
             'currentprod' => $curProd
         ]);
     }
-    public function addImage($id){
+    public function addImage($id)
+    {
         return view('products/gallery-add', [
             'id' => $id
         ]);
@@ -156,9 +157,27 @@ class ProductsController extends Controller
             'currentprod' => $curProd
         ]);
     }
+    public function imageUpload(Request $request)
+    {
+
+        $path = $request->file('product-main-image')->store('main-images');
+
+        $data = array(
+            'product_id' => $request->id,
+            'product_img' => $path
+        );
+
+
+        $q = app(Products::class)->addImage($data);
+        if ($q == true) {
+            return redirect('/products')->with('message', 'Product Image added');
+        } else {
+            return back()->with('message', 'Failed Image upload');
+        }
+    }
     public function displayImage($filename)
     {
-        $path = app(Storage::get('storage/'.$filename));
+        $path = app(Storage::get('storage/' . $filename));
 
 
 
@@ -183,5 +202,4 @@ class ProductsController extends Controller
 
         return $response;
     }
-
 }
