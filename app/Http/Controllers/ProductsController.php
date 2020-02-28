@@ -153,7 +153,7 @@ class ProductsController extends Controller
     }
     public function displayImage($filename)
     {
-        $path = app(Storage::get($filename));
+        $path = app(Storage::get('storage/'.$filename));
 
 
 
