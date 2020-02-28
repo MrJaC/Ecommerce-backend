@@ -139,6 +139,12 @@ class ProductsController extends Controller
             'currentprod' => $curProd
         ]);
     }
+    public function addImage($id, $name){
+        return view('products/gallery-add', [
+            'id' => $id,
+            'name' => $name,
+        ]);
+    }
     public function view($id, $name)
     {
 
@@ -178,4 +184,5 @@ class ProductsController extends Controller
 
         return $response;
     }
+
 }
