@@ -39,7 +39,7 @@ class HomeController extends Controller
     [
         'cat' => $cat,
         'subcat' => $subcat,
-        'products' => $prod,
+        'product' => $prod,
         'users' => $users
 
     ]);

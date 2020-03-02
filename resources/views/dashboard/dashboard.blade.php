@@ -55,11 +55,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $prod)
+                        @foreach ($product as $prod)
                         <tr>
                         <td>{{$prod->prod_id}}</td>
 
-                        <td><img src="{{ route('image.displayImage',$prod->product_main_image) }}" ></td>
+                        <td><img class="product-image-thumb" src="{{ url('storage/main-images/',$prod->product_main_image) }}" ></td>
                         <td>{{$prod->product_name}}</td>
                         <td></td>
                         <td>R{{$prod->product_price}}</td>
