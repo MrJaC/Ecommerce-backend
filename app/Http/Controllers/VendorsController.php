@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
+use App\Vendor;
 class VendorsController extends Controller
 {
     public function __construct()
@@ -19,7 +20,7 @@ class VendorsController extends Controller
      */
     public function index()
     {
-        //$prod = app(Products::class)->getProducts();
-        return view('vendors/vendors');
+        $vendors = app(Vendor::class)->getVendors();
+        return view('vendors/vendors',['vendors' => $vendors]);
     }
 }
