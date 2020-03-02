@@ -34,13 +34,13 @@ class HomeController extends Controller
         $cat = app(Categories::class)->getCat();
         $prod = app(Products::class)->getProducts();
         $subcat = app(SubCategories::class)->getData();
-        $users = DB::table('users')->get();
+        $user = DB::table('users')->get();
         return view('dashboard/dashboard',
     [
         'cat' => $cat,
         'subcat' => $subcat,
         'product' => $prod,
-        'users' => $users
+        'users' => $user
 
     ]);
     }

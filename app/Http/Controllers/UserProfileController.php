@@ -48,7 +48,7 @@ class UserProfileController extends Controller
         $q = app(UserProfile::class)->add($data);
 
         if($q == true){
-            return view('profile/profile')->with('message', 'Profile added');
+            return view('profile/profile',['user' => $user])->with('message', 'Profile added');
         }else{
             return back()->with('message', 'Something went wrong UP1');
         }
