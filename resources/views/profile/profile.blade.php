@@ -30,7 +30,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                  src="{{ url('storage/user/user-images/'.$user->user_image) }}"
                        alt="User profile picture">
                 </div>
 
