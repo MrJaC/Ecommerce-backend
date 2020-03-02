@@ -20,9 +20,13 @@ class UserProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $hasProfile = false;
+        if(app(UserProfile::class)->check($user->id) == true){
+            $hasProfile = true;
+        }
 
-        Log::debug($user);
-        return view('profile/profile', [ 'user' => $user]);
+
+        return view('profile/profile', [ 'user' => $user, 'hasProfile' => $hasProfile]);
     }
     public function add(Request $request){
 
@@ -37,6 +41,24 @@ class UserProfileController extends Controller
             'country'  => $request->input('country')        );
 
         $q = app(UserProfile::class)->add($data);
+
+        if($q == true){
+            return view('profile/profile', ['user' => $user])->with('message', 'Profile added');
+        }else{
+            return back()->with('message', 'Something went wrong UP1');
+        }
+    }
+    public function edit(Request $request){
+        $user = Auth::user()->id;
+        $data = array(
+            'address' => $request->input('address'),
+            'landline_number'  => $request->input('landline'),
+            'mobile_number' => $request->input('mobile'),
+            'city' => $request->input('city'),
+            'state' => $request->input('state'),
+            'country'  => $request->input('country')        );
+
+        $q = app(UserProfile::class)->update($id, $data);
 
         if($q == true){
             return view('profile/profile', ['user' => $user])->with('message', 'Profile updated');

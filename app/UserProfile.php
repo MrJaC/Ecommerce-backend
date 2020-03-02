@@ -16,4 +16,14 @@ class UserProfile extends Model
             return false;
         }
     }
+    public function check($id){
+
+        if(DB::table('user_details')->where('used_id',$id)->first()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }
