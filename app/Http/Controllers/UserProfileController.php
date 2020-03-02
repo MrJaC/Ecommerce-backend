@@ -23,10 +23,15 @@ class UserProfileController extends Controller
         $hasProfile = false;
         if(app(UserProfile::class)->check($user->id) == true){
             $hasProfile = true;
+            $details = app(UserProfile::class)->getDetails($user->id);
+            error_log(print_r($details,true));
+            return view('profile/profile', [ 'user' => $user, 'hasProfile' => $hasProfile, 'userDetails' => $details]);
+        }else{
+            return view('profile/profile', [ 'user' => $user, 'hasProfile' => $hasProfile]);
         }
 
 
-        return view('profile/profile', [ 'user' => $user, 'hasProfile' => $hasProfile]);
+        //return view('profile/profile', [ 'user' => $user, 'hasProfile' => $hasProfile]);
     }
     public function add(Request $request){
 
@@ -43,12 +48,13 @@ class UserProfileController extends Controller
         $q = app(UserProfile::class)->add($data);
 
         if($q == true){
-            return view('profile/profile', ['user' => $user])->with('message', 'Profile added');
+            return view('profile/profile')->with('message', 'Profile added');
         }else{
             return back()->with('message', 'Something went wrong UP1');
         }
     }
     public function edit(Request $request){
+
         $user = Auth::user()->id;
         $data = array(
             'address' => $request->input('address'),
@@ -56,14 +62,15 @@ class UserProfileController extends Controller
             'mobile_number' => $request->input('mobile'),
             'city' => $request->input('city'),
             'state' => $request->input('state'),
-            'country'  => $request->input('country')        );
+            'country'  => $request->input('country')
+        );
 
-        $q = app(UserProfile::class)->update($id, $data);
+        $q = app(UserProfile::class)->updateProfile($user->id, $data);
 
         if($q == true){
-            return view('profile/profile', ['user' => $user])->with('message', 'Profile updated');
+            return view('profile/profile')->with('message', 'Profile updated');
         }else{
-            return back()->with('message', 'Something went wrong UP1');
+            return back()->with('message', 'Something went wrong UP2');
         }
     }
 }
