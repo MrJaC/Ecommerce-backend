@@ -80,6 +80,7 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 
     Route::get('/', 'VendorProfileController@index')->name('vendor-profile');
+    Route::post('/addprofile', 'VendorProfileController@add')->name('profile-add');
 
 });
 //User Profile
