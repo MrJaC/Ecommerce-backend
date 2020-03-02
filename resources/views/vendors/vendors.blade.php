@@ -45,9 +45,6 @@
                             <th>Landline</th>
                             <th>Category</th>
                             <th>Subcategory</th>
-                            <th>Service Locations</th>
-                            <th>Valid from</th>
-                            <th>Valid to</th>
                             <th>Details</th>
                             <th>Approval Status</th>
 
@@ -55,6 +52,52 @@
                         </thead>
 
                             <tbody>
+                                @foreach ($vendors as $ven)
+                                <tr>
+                                    <td></td>
+
+                                    <td><img class="product-image-thumb" src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" ></td>
+                                    <td>{{ $ven->vendor_business_name}}</td>
+                                <td>{{ $ven->name}}</td>
+                                <td>{{ $ven->vendor_mobile}}</td>
+                                <td>{{ $ven->vendor_landline}}</td>
+                                <td>{{ $ven->cat_name}}</td>
+                                <td>{{ $ven->subcat_name}}</td>
+                                <td>                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-{{$ven->id}}">
+                                    View Details
+                                  </button>
+                                <!--Modal-->
+                                <div class="modal fade" id="modal-{{$ven->id}}">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">{{ $ven->vendor_business_name}}</h4>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                         <p>{{ $ven->vendor_address_street}}</p>
+                                         <p>{{ $ven->vendor_address_number }}</p>
+                                            <p>{{ $ven->vendor_address_suburb }}</p>
+                                                <p>{{ $ven->vendor_address_postcode}}</p>
+                                                    <p> {{ $ven->vendor_website}}</p>
+                                                        <p> {{ $ven->vendor_email}}</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                        </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                  </div>
+                                <!--End Modal-->
+                                </td>
+                                <td></td>
+                                </tr>
+                                @endforeach
                             </tbody>
 
                         <tfoot>
@@ -68,9 +111,6 @@
                             <th>Landline</th>
                             <th>Category</th>
                             <th>Subcategory</th>
-                            <th>Service Locations</th>
-                            <th>Valid from</th>
-                            <th>Valid to</th>
                             <th>Details</th>
                             <th>Approval Status</th>
                         </tr>

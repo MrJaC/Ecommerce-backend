@@ -28,9 +28,13 @@ class Vendor extends Model
             'subcategories.sub_id',
             'subcategories.cat_id',
             'subcategories.subcat_name',
+            'users.id',
+            'users.name',
+            'users.email'
         )
         ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')->get();
+        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')->get();
         return $vendor;
     }
 }
