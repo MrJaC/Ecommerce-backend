@@ -36,7 +36,8 @@
 
             <h3 class="profile-username text-center">{{$user->name}}</h3>
 
-            <p class="text-muted text-center">                                @if ($user->role == 1)
+            <p class="text-muted text-center">
+                 @if ($user->role == 1)
                 Admin
            @elseif ($user->role == 2)
                Employee
@@ -105,48 +106,53 @@
               <div class="card-body">
                 <div class="tab-content">
                   <!-- /.tab-pane -->
+                  @if ($message = Session::get('message'))
+                  <div class="alert alert-success alert-block">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                          <strong>{{ $message }}</strong>
+                  </div>
 
-                  <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
+                  @endif
+                  <div class="tab-pane active" id="settings">
+                  <form class="form-horizontal" action="{{ route('profile.user-profile-add')}}" method="post">
+                    @csrf
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Mobile</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label">Landline</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <input type="number" class="form-control" id="landline" name="landline" placeholder="Landline">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                            <textarea type="text" class="form-control" id="address" name="address" placeholder="Address"></textarea>
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                        <label for="inputExperience" class="col-sm-2 col-form-label">City</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                        <label for="inputSkills" class="col-sm-2 col-form-label">State</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                          <input type="text" class="form-control" id="state" name="state" placeholder="State">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Country</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="country" name="country" placeholder="Country">
                         </div>
                       </div>
+
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Submit</button>

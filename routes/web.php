@@ -88,6 +88,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 
     Route::get('/', 'UserProfileController@index')->name('profile');
     Route::get('/edit-profile/{id}/{name}', 'UserProfileController@edit')->name('edit-profile');
+    Route::post('/add-user-profile', 'UserProfileController@add')->name('user-profile-add');
 });
 //Orders
 
