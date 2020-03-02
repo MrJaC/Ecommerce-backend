@@ -77,6 +77,11 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::get('/', 'VendorsController@index')->name('vendors');
     Route::get('/create-vendors', 'VendorsController@index')->name('create-vendors');
 });
+Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
+
+    Route::get('/', 'VendorProfileController@index')->name('vendor-profile');
+
+});
 //User Profile
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 
