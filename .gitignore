@@ -2,3 +2,4 @@ node_modules
 storage/oauth-private.key
 storage/oauth-public.key
 .env
+app.zip
