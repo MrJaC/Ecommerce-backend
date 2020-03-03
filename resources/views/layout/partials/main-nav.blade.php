@@ -43,15 +43,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/orders" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/create-category" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create</p>
                 </a>
               </li>
             </ul>
