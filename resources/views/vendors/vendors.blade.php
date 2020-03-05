@@ -43,7 +43,7 @@
                       <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>Actions</th>
+                            <th>Approval Status</th>
                             <th>Logo</th>
                             <th>Business Name</th>
                             <th>Name</th>
@@ -52,33 +52,31 @@
                             <th>Category</th>
                             <th>Subcategory</th>
                             <th>Details</th>
-                            <th>Approval Status</th>
 
+                            <th>Actions</th>
                         </tr>
                         </thead>
 
                             <tbody>
                                 @foreach ($vendors as $ven)
                                 <tr>
-                                    <td>
-                                    <a href="{{ route('vendors.edit-vendor', ['id' => $ven->id, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
-                                    <a href="{{ route('vendors.delete-vendor', ['id' => $ven->id])}}"><i class="far fa-trash-alt"></i></a>
-                                    </td>
+                                    <td>Approved</td>
+
                                     <td><a href="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" data-toggle="lightbox" data-title="{{$ven->vendor_logo}}">
                                         <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
                                       </a></td>
 
-                                    <td>{{ $ven->vendor_business_name}}</td>
+                                <td>{{ $ven->vendor_business_name}}</td>
                                 <td>{{ $ven->name}}</td>
                                 <td>{{ $ven->vendor_mobile}}</td>
                                 <td>{{ $ven->vendor_landline}}</td>
                                 <td>{{ $ven->cat_name}}</td>
                                 <td>{{ $ven->subcat_name}}</td>
-                                <td>                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-{{$ven->id}}">
+                                <td>                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-{{$ven->vendorID}}">
                                     View Details
                                   </button>
                                 <!--Modal-->
-                                <div class="modal fade" id="modal-{{$ven->id}}">
+                                <div class="modal fade" id="modal-{{$ven->vendorID}}">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -106,25 +104,15 @@
                                   </div>
                                 <!--End Modal-->
                                 </td>
-                                <td>Approved</td>
+                                <td>
+                                    <a href="{{ route('vendors.edit-vendor', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
+                                    <a href="{{ route('vendors.delete-vendor', ['id' => $ven->vendorID])}}"><i class="far fa-trash-alt"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
 
-                        <tfoot>
-                        <tr>
-                            <th>Actions</th>
-                            <th>Logo</th>
-                            <th>Business Name</th>
-                            <th>Name</th>
-                            <th>Mobile</th>
-                            <th>Landline</th>
-                            <th>Category</th>
-                            <th>Subcategory</th>
-                            <th>Details</th>
-                            <th>Approval Status</th>
-                        </tr>
-                        </tfoot>
+
                       </table>
                     </div>
                     <!-- /.card-body -->

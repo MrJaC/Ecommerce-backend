@@ -26,6 +26,8 @@ class VendorsController extends Controller
     public function index()
     {
         $vendors = app(Vendor::class)->getVendors();
+
+        error_log(print_r($vendors,true));
         return view('vendors/vendors', ['vendors' => $vendors]);
     }
     public function edit($id, $name)
@@ -34,7 +36,7 @@ class VendorsController extends Controller
         $subcat = app(SubCategories::class)->getData();
         $curProd = app(Vendor::class)->getVendorDetail($id);
         $customers = app(Customers::class)->getCustomers();
-
+        error_log(print_r($id,true));
         error_log(print_r('Data',true));
         $data = array('id' => $id,
         'name' => $name,

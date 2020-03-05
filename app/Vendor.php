@@ -8,7 +8,7 @@ class Vendor extends Model
 {
     public function getVendors(){
         $vendor = DB::table('vendors')->select(
-            'vendors.id',
+            'vendors.id AS vendorID',
             'vendors.vendor_logo',
             'vendors.vendor_business_name',
             'vendors.user_id',
@@ -40,7 +40,7 @@ class Vendor extends Model
 
     public function getVendorDetail($id){
         $vendor = DB::table('vendors')->select(
-            'vendors.id',
+            'vendors.id AS vendorID',
             'vendors.vendor_logo',
             'vendors.vendor_business_name',
             'vendors.user_id',
