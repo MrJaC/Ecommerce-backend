@@ -55,8 +55,10 @@
                                 @foreach ($vendors as $ven)
                                 <tr>
                                     <td></td>
+                                    <td><a href="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" data-toggle="lightbox" data-title="{{$ven->vendor_logo}}">
+                                        <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
+                                      </a></td>
 
-                                    <td><img class="product-image-thumb" src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" ></td>
                                     <td>{{ $ven->vendor_business_name}}</td>
                                 <td>{{ $ven->name}}</td>
                                 <td>{{ $ven->vendor_mobile}}</td>
