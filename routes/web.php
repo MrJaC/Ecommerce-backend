@@ -13,8 +13,13 @@
 
 //Auth routes
 Auth::routes();
-//default
+//default middlewear
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/vendor', 'VendorController@index')->name('admin')->middleware('admin');
+Route::get('/staff', 'StaffController@index')->name('admin')->middleware('admin');
+Route::get('/customer', 'CustomerController@index')->name('admin')->middleware('admin');
+
 
 Route::get('/register', function () {
     return view('register');
@@ -98,7 +103,7 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/create-staff', 'StaffController@create')->name('create-staff');
     Route::post('/add-staff', 'StaffController@add')->name('add-staff');
 
-});
+})->middleware(['admin']);
 //Orders
 
 Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
