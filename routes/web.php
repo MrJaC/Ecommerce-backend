@@ -95,6 +95,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
 
     Route::get('/', 'StaffController@index')->name('staff');
+    Route::get('/create-staff', 'StaffController@create')->name('create-staff');
     Route::post('/add-staff', 'StaffController@add')->name('add-staff');
 
 });
