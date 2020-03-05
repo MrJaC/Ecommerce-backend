@@ -54,7 +54,10 @@
                             <tbody>
                                 @foreach ($vendors as $ven)
                                 <tr>
-                                    <td></td>
+                                    <td>
+                                    <a href="{{ route('vendors.edit-vendor', ['id' => $ven->id, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
+                                    <a href="{{ route('vendors.delete-vendor', ['id' => $ven->id])}}"><i class="far fa-trash-alt"></i></a>
+                                    </td>
                                     <td><a href="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" data-toggle="lightbox" data-title="{{$ven->vendor_logo}}">
                                         <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
                                       </a></td>
@@ -97,7 +100,7 @@
                                   </div>
                                 <!--End Modal-->
                                 </td>
-                                <td></td>
+                                <td>Approved</td>
                                 </tr>
                                 @endforeach
                             </tbody>
