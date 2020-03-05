@@ -204,7 +204,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="/create-customers" class="nav-link">
+                        <a href="/create-staff" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Create</p>
                         </a>

@@ -25,7 +25,8 @@ class StaffController extends Controller
     public function edit($id)
     {
     }
-    public function create($id)
+    public function create()
     {
+        return view('staff/create-staff');
     }
 }
