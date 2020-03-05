@@ -7,7 +7,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Edit Vendor {{$name}}</h1>
+                <h1 class="m-0 text-dark">Edit Vendor: {{$name}}</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -36,7 +36,7 @@
                           </div>
                           <!-- /.card-header -->
                           <!-- form start -->
-                        <form role="form" action="{{ route('vendors.update-vendor', ['id' => $id])}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ route('vendors.update-vendor', ['id' => $id]) }}" method="post" enctype="multipart/form-data">
                               @csrf
                             <div class="card-body">
                               @if ($message = Session::get('message'))

@@ -76,4 +76,12 @@ class Vendor extends Model
 
         return $vendor;
     }
+    public function updateVendor($id, $data){
+        $vendor = DB::table('vendors')->where('id',$id)->update($data);
+        if($vendor == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

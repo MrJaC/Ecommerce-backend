@@ -122,4 +122,61 @@ class VendorsController extends Controller
             return back()->with('message', 'Error occured VP2');
         }
     }
+
+    public function update(Request $request){
+
+
+        //get user id
+        $id = $request->input('user');
+
+        $vendorName = $request->input('business-name');
+        $vendorLandline = $request->input('landline');
+        $vendorMobile = $request->input('mobile-number');
+        $vendorAStreet = $request->input('address-street');
+        $vendorAnumber = $request->input('address-number');
+        $vendorASuburb = $request->input('address-suburb');
+        $vendorAPstcode = $request->input('address-postcode');
+        $vendorCategory = $request->input('prod-cat');
+        $vendorSubCategory = $request->input('prod-subcat');
+        $vendorWebsite = $request->input('website');
+        $vendorEmail = $request->input('email');
+        $fileName = "";
+        //image logo
+
+        if($request->file('business-logo') != null){
+            $path = $request->file('business-logo')->store('public/business-logo');
+            $fileName = str_replace("public/business-logo/", "", $path);
+        }else{
+            $curProd = app(Vendor::class)->getVendorDetail($request->id);
+            foreach($curProd as $cur){
+                $fileName = $cur->vendor_logo;
+            }
+        }
+
+
+        $data = array(
+            'vendor_logo' => $fileName,
+            'vendor_business_name' => $vendorName,
+            'user_id' => $id,
+            'vendor_mobile' => $vendorMobile,
+            'vendor_category' => $vendorCategory,
+            'vendor_subcategory' => $vendorSubCategory,
+            'vendor_address_street' => $vendorAStreet,
+            'vendor_address_number' => $vendorAnumber,
+            'vendor_address_suburb' => $vendorASuburb,
+            'vendor_address_postcode' => $vendorAPstcode,
+            'vendor_website' => $vendorWebsite,
+            'vendor_email' => $vendorEmail,
+            'vendor_landline' => $vendorLandline
+        );
+        error_log(print_r('update',true));
+        error_log(print_r($data,true));
+        $q = app(Vendor::class)->updateVendor($request->id,$data);
+
+        if ($q == true) {
+            return redirect('/vendors')->with('message', 'Updated Vendor');
+        } else {
+            return back()->with('message', 'Error occured V3');
+        }
+    }
 }
