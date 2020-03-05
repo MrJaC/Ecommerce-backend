@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Products;
 use App\Categories;
 use App\Subcategories;
+use App\Vendor;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
@@ -40,7 +41,8 @@ class ProductsController extends Controller
     {
         $cat = app(Categories::class)->getCat();
         $subcat = app(SubCategories::class)->getData();
-        return view('products/create-products', ['category' => $cat, 'subcategory' => $subcat]);
+        $vendors = app(Vendor::class)->getVendors();
+        return view('products/create-products', ['category' => $cat, 'subcategory' => $subcat, 'vendors' => $vendors]);
     }
     public function add(Request $request)
     {

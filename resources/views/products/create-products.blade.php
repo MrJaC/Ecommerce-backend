@@ -124,6 +124,20 @@
 
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Vendor</label>
+                            <select class="form-control select2" name="vendor" id="vendor" style="width: 100%;" required>
+                                <option>Please Select</option>
+                                @foreach ($vendors as $ven )
+
+                                <option value="{{$ven->id}}">{{$ven->vendor_business_name}}</option>
+                                @endforeach
+
+
+                            </select>
+                          </div>
+                    </div>
                 </div>
             </div>
                     <div class="card-footer">
