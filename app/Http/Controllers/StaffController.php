@@ -18,4 +18,11 @@ class StaffController extends Controller
 
         return view('staff/staff', ['staff'=> $data]);
     }
+    public function delete($id){
+
+    }
+    public function edit($id){
+
+    }
+    public function create($id){}
 }
