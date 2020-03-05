@@ -119,7 +119,7 @@
                         <label for="exampleInputFile">Product main Image</label>
 
 
-                            <input type="file"  id="product-main-image" name="product-main-image" placeholder="Choose your image">
+                            <input type="file"  id="product-main-image" name="product-main-image" placeholder="Choose your image" required>
 
 
                         </div>
@@ -131,7 +131,7 @@
                                 <option>Please Select</option>
                                 @foreach ($vendors as $ven )
 
-                                <option value="{{$ven->id}}">{{$ven->vendor_business_name}}</option>
+                                <option value="{{$ven->vendorID}}">{{$ven->vendor_business_name}}</option>
                                 @endforeach
 
 

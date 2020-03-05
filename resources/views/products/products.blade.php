@@ -64,7 +64,7 @@
                                     <img src="{{ url('storage/main-images/'.$prod->product_main_image) }}" class="product-image-thumb" alt="{{$prod->product_main_image}}"/>
                                   </a></td>
 
-                                <td></td>
+                                <td>{{$prod->vendor_business_name}}</td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
                                 <td>{{$prod->cat_name}}</td>

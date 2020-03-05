@@ -18,6 +18,7 @@ class Products extends Model
             'products.product_sku',
             'products.product_description',
             'products.product_amount',
+            'products.vendor_id',
             'products.user_id',
             'categories.id',
             'categories.cat_name',
@@ -25,9 +26,12 @@ class Products extends Model
             'subcategories.sub_id',
             'subcategories.cat_id',
             'subcategories.subcat_name',
+            'vendors.id AS vendorID',
+            'vendors.vendor_business_name'
         )
         ->leftJoin('categories','products.product_cat', '=', 'categories.id')
         ->leftJoin('subcategories', 'products.product_subcat', '=', 'subcategories.sub_id')
+        ->leftJoin('vendors', 'products.vendor_id','=', 'vendors.id')
         ->get();
         error_log(print_r($prod,true));
         return $prod;
