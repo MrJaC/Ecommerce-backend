@@ -91,6 +91,13 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::post('/add-user-profile', 'UserProfileController@add')->name('user-profile-add');
     Route::post('/update-user-profile', 'UserProfileController@update')->name('user-profile-update');
 });
+//Staff
+Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
+
+    Route::get('/', 'StaffController@index')->name('staff');
+    Route::post('/add-staff', 'StaffController@add')->name('add-staff');
+
+});
 //Orders
 
 Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {

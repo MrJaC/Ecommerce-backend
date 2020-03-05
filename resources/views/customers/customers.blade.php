@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Customers</h1>
+            <h1 class="m-0 text-dark">Users</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Customers</li>
+              <li class="breadcrumb-item">Users</li>
               <li class="breadcrumb-item active">View</li>
             </ol>
           </div><!-- /.col -->
@@ -29,7 +29,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">View all customers</h3>
+                      <h3 class="card-title">View all Users</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -37,8 +37,8 @@
                         <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Customer Name</th>
-                          <th>Customer Email</th>
+                          <th>Users Name</th>
+                          <th>Users Email</th>
                           <th>Created at:</th>
                           <th>Role</th>
                           <th>Actions</th>
@@ -58,7 +58,7 @@
                             @elseif ($cus->role == 2)
                                 Employee
                                 @elseif ($cus->role == 3)
-                                Customer
+                                Users
                                 @elseif ($cus->role == 4)
                                 Vendor
                             @endif
@@ -84,8 +84,8 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Customer Name</th>
-                            <th>Customer Email</th>
+                            <th>Users Name</th>
+                            <th>Users Email</th>
                             <th>Created at:</th>
                             <th>Role</th>
                             <th>Actions</th>
