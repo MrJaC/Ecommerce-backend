@@ -37,4 +37,10 @@ class Vendor extends Model
         ->leftJoin('users', 'vendors.user_id', '=', 'users.id')->get();
         return $vendor;
     }
+
+    public function deleteVendor($id){
+        $vendor = DB::table('vendors')->where('id', $id)->delete();
+
+        return $vendor;
+    }
 }

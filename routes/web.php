@@ -80,9 +80,10 @@ Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
 Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
 
     Route::get('/', 'VendorsController@index')->name('vendors');
-    Route::get('/create-vendors', 'VendorsController@index')->name('create-vendors');
+    Route::get('/create-vendors', 'VendorsController@create')->name('create-vendors');
     Route::get('/edit-vendor/{id}/{name}', 'VendorsController@edit')->name('edit-vendor');
     Route::post('/update-vendor', 'VendorsController@update')->name('update-vendor');
+    Route::post('/add-vendor', 'VendorsController@add')->name('add-vendor');
     Route::get('/delete-vendor', 'VendorsController@delete')->name('delete-vendor');
 
 });
