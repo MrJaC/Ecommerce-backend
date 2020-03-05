@@ -57,8 +57,8 @@
                             <td>{{$cat->cat_name}}</td>
                             <td>{{$cat->cat_img}}</td>
                             <td>
-                            <a  class="btn btn-default btn-flat" href="{{ route('categories.edit-cat',['id' => $cat->id, 'name' => $cat->cat_name])}}">Edit</a>
-                            <a class="btn btn-default btn-flat" href="{{ route('categories.delete', ['id' => $cat->id])}}">Delete</a>
+                            <a   href="{{ route('categories.edit-cat',['id' => $cat->id, 'name' => $cat->cat_name])}}"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('categories.delete', ['id' => $cat->id])}}"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endforeach
