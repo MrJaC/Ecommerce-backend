@@ -11,13 +11,14 @@ use App\Categories;
 use App\Subcategories;
 use App\VendorProfile;
 use App\Customers;
+
 class VendorsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-        /**
+    /**
      * Show the application vendors.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -25,22 +26,38 @@ class VendorsController extends Controller
     public function index()
     {
         $vendors = app(Vendor::class)->getVendors();
-        return view('vendors/vendors',['vendors' => $vendors]);
+        return view('vendors/vendors', ['vendors' => $vendors]);
     }
-    public function edit($id,$name){
-        return view('vendors/edit-vendor', ['id' => $id, 'name' => $name]);
+    public function edit($id, $name)
+    {
+        $cat = app(Categories::class)->getCat();
+        $subcat = app(SubCategories::class)->getData();
+        $curProd = app(Vendor::class)->getVendorDetail($id);
+        $customers = app(Customers::class)->getCustomers();
+        return view(
+            'vendors/edit-vendor',
+            [
+                'id' => $id,
+                'name' => $name,
+                'category' => $cat,
+                'subcategory' => $subcat,
+                'current' => $curProd,
+                'customers' => $customers
+            ]
+        );
     }
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $v = app(Vendor::class)->deleteVendor($request->id);
-        if($v == true){
+        if ($v == true) {
             return redirect('/vendors')->with('message', 'Vendor deleted');
-        }
-        else{
+        } else {
             return back()->with('message', 'Failed vendor delete');
         }
     }
 
-    public function create(){
+    public function create()
+    {
         $cat = app(Categories::class)->getCat();
         $subcat = app(SubCategories::class)->getData();
         $customers = app(Customers::class)->getCustomers();
@@ -57,7 +74,7 @@ class VendorsController extends Controller
 
         $vendorName = $request->input('business-name');
         $vendorLandline = $request->input('landline');
-        $vendorMobile= $request->input('mobile-number');
+        $vendorMobile = $request->input('mobile-number');
         $vendorAStreet = $request->input('address-street');
         $vendorAnumber = $request->input('address-number');
         $vendorASuburb = $request->input('address-suburb');
@@ -88,12 +105,10 @@ class VendorsController extends Controller
         );
         $q = app(VendorProfile::class)->add($data);
 
-        if($q == true){
+        if ($q == true) {
             return redirect('/vendors')->with('message', 'Created Vendor');
-        }
-        else{
-            return back()->with('message','Error occured VP2');
+        } else {
+            return back()->with('message', 'Error occured VP2');
         }
     }
-
 }
