@@ -34,6 +34,15 @@ class VendorsController extends Controller
         $subcat = app(SubCategories::class)->getData();
         $curProd = app(Vendor::class)->getVendorDetail($id);
         $customers = app(Customers::class)->getCustomers();
+
+        error_log(print_r('Data',true));
+        $data = array('id' => $id,
+        'name' => $name,
+        'category' => $cat,
+        'subcategory' => $subcat,
+        'current' => $curProd,
+        'customers' => $customers);
+        error_log(print_r($data,true));
         return view(
             'vendors/edit-vendor',
             [

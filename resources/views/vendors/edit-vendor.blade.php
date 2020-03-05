@@ -36,7 +36,7 @@
                           </div>
                           <!-- /.card-header -->
                           <!-- form start -->
-                        <form role="form" action="{{ route('vendors.add-vendor')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ route('vendors.update-vendor', ['id' => $id])}}" method="post" enctype="multipart/form-data">
                               @csrf
                             <div class="card-body">
                               @if ($message = Session::get('message'))
@@ -49,7 +49,10 @@
                               <div class="form-group">
                                 <label>User</label>
                                 <select class="form-control select2" name="user" id="user" style="width: 100%;" required>
-                                    <option selected="">Please Select User</option>
+                                    @foreach($current ?? '' as $curr)
+                                <option value="{{$curr->id}}">{{$curr->email}}</option>
+                                    @endforeach
+
                                     @foreach ($customers ?? '' as $cus )
 
                                     <option value="{{$cus->id}}">{{$cus->email}}</option>
@@ -64,6 +67,10 @@
 
                                       <input type="file"  id="business-logo" name="business-logo" placeholder="Choose your image">
 
+
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Current Image</label>
 
                                   </div>
                               <div class="form-group">
@@ -106,7 +113,7 @@
                                   <label>Categories</label>
                                   <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
                                       <option selected="">Please Select</option>
-                                      @foreach ($category as $cat )
+                                      @foreach ($category ?? '' as $cat )
 
                                       <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
                                       @endforeach

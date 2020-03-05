@@ -29,7 +29,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Vendors list</h3>
+                      <h3 class="card-title">Vendors list <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a></h3>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">
@@ -44,7 +44,6 @@
                         <thead>
                         <tr>
                             <th>Actions</th>
-                            <th style="display:none;">Id</th>
                             <th>Logo</th>
                             <th>Business Name</th>
                             <th>Name</th>
@@ -115,7 +114,6 @@
                         <tfoot>
                         <tr>
                             <th>Actions</th>
-                            <th style="display:none;">Id</th>
                             <th>Logo</th>
                             <th>Business Name</th>
                             <th>Name</th>
