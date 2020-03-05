@@ -103,7 +103,7 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/create-staff', 'StaffController@create')->name('create-staff');
     Route::post('/add-staff', 'StaffController@add')->name('add-staff');
 
-})->middleware(['admin']);
+});
 //Orders
 
 Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
