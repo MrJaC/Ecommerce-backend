@@ -46,7 +46,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $cus)
+                            @foreach ($staff ?? '' as $cus)
                             <tr>
                             <td>{{$cus->id}}</td>
                             <td>{{$cus->name}}</td>

@@ -13,16 +13,19 @@ class StaffController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index()
+    {
         $data = app(Staff::class)->getStaff();
-
-        return view('staff/staff', ['staff'=> $data]);
+        //error_log(print_r($data,true));
+        return view('staff/staff', ['staff' => $data]);
     }
-    public function delete($id){
-
+    public function delete($id)
+    {
     }
-    public function edit($id){
-
+    public function edit($id)
+    {
     }
-    public function create($id){}
+    public function create($id)
+    {
+    }
 }

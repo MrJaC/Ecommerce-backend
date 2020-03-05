@@ -8,7 +8,7 @@ use DB;
 class Staff extends Model
 {
     public function getStaff(){
-        $staff = DB::table('users')->where('role', '=','1')->where('role', '=','2')->get();
+        $staff = DB::table('users')->where('role', '=', 1)->get();
         return $staff;
     }
 }
