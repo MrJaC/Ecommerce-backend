@@ -135,7 +135,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('products.create-products') }}" class="nav-link">
+                <a href="{{ route('vendors.create-vendors') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
@@ -204,7 +204,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="/create-staff" class="nav-link">
+                        <a href="{{ route('staff.create-staff')}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Create</p>
                         </a>
