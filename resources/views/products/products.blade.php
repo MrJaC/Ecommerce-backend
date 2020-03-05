@@ -60,18 +60,20 @@
                                 @foreach ($products as $prod)
                                 <tr>
                                 <td>{{$prod->prod_id}}</td>
+                                <td><a href="{{ url('storage/main-images/'.$prod->product_main_image) }}" data-toggle="lightbox" data-title="{{$prod->product_main_image}}">
+                                    <img src="{{ url('storage/main-images/'.$prod->product_main_image) }}" class="product-image-thumb" alt="{{$prod->product_main_image}}"/>
+                                  </a></td>
 
-                                <td><img class="product-image-thumb" src="{{ url('storage/main-images/'.$prod->product_main_image) }}" ></td>
                                 <td></td>
                                 <td>{{$prod->product_name}}</td>
                                 <td>R{{$prod->product_price}}</td>
                                 <td>{{$prod->cat_name}}</td>
                                 <td>{{$prod->subcat_name}}</td>
                                 <td>
-                                <a  class="btn btn-default btn-flat" href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">View </a>
-                                <a  class="btn btn-default btn-flat" href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Edit</a>
-                                <a class="btn btn-default btn-flat" href="{{ route('products.product-gallery',['id' => $prod->prod_id, 'name' => $prod->product_name])}}">Gallery</a>
-                                <a class="btn btn-default btn-flat" href="{{ route('products.delete', ['id' => $prod->prod_id])}}">Delete</a>
+                                <a  href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}"><i class="far fa-eye"></i></a>
+                                <a  href="{{ route('products.edit-products',['id' => $prod->prod_id, 'name' => $prod->product_name])}}"><i class="far fa-edit"></i></a>
+                                <a  href="{{ route('products.product-gallery',['id' => $prod->prod_id, 'name' => $prod->product_name])}}"><i class="far fa-images"></i></a>
+                                <a href="{{ route('products.delete', ['id' => $prod->prod_id])}}"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
