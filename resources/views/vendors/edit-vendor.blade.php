@@ -61,6 +61,7 @@
 
                                 </select>
                               </div>
+                              @foreach($current as $ven)
                               <div class="form-group">
                                   <label for="exampleInputFile">Business logo</label>
 
@@ -72,47 +73,52 @@
                                   <div class="form-group">
                                       <label>Current Image</label>
 
+                                      <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
+
                                   </div>
                               <div class="form-group">
                                   <label for="category-name">Business name</label>
-                                  <input type="text" class="form-control" id="business-name" name="business-name" placeholder="Enter your business name" required>
+                                  <input type="text" class="form-control" id="business-name" name="business-name"  value="{{$ven->vendor_business_name}}" placeholder="Enter your business name" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Landline</label>
-                                  <input type="text" class="form-control" id="landline" name="landline" placeholder="Enter your landline">
+                                  <input type="text" class="form-control" id="landline" name="landline" value="{{$ven->vendor_landline}}" placeholder="Enter your landline">
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Mobile</label>
-                                  <input type="text" class="form-control" id="mobile-number" name="mobile-number" placeholder="Enter your mobile number" required>
+                                  <input type="text" class="form-control" id="mobile-number" name="mobile-number" value="{{$ven->vendor_mobile}}" placeholder="Enter your mobile number" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Address Street</label>
-                                  <input type="text" class="form-control" id="address-street" name="address-street" placeholder="Enter your street address" required>
+                                  <input type="text" class="form-control" id="address-street" name="address-street" value="{{$ven->vendor_address_street}}" placeholder="Enter your street address" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Address Number</label>
-                                  <input type="text" class="form-control" id="address-number" name="mobile-number" placeholder="Enter your address number" required>
+                                  <input type="text" class="form-control" id="address-number" name="mobile-number" value="{{$ven->vendor_address_number}}" placeholder="Enter your address number" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Address Suburb</label>
-                                  <input type="text" class="form-control" id="address-suburb" name="address-suburb" placeholder="Enter your suburb" required>
+                                  <input type="text" class="form-control" id="address-suburb" name="address-suburb" value="{{$ven->vendor_address_suburb}}" placeholder="Enter your suburb" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Address PostCode</label>
-                                  <input type="text" class="form-control" id="address-postcode" name="address-postcode" placeholder="Enter your postcode" required>
+                                  <input type="text" class="form-control" id="address-postcode" name="address-postcode" value="{{$ven->vendor_address_postcode}}" placeholder="Enter your postcode" required>
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Website</label>
-                                  <input type="text" class="form-control" id="website" name="website" placeholder="Enter website address">
+                                  <input type="text" class="form-control" id="website" name="website" value="{{$ven->vendor_website}}" placeholder="Enter website address">
                                 </div>
                                 <div class="form-group">
                                   <label for="category-name">Email</label>
-                                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                                  <input type="email" class="form-control" id="email" name="email" value="{{$ven->vendor_email}}" placeholder="Enter your email" required>
                                 </div>
+                                @endforeach
                                 <div class="form-group">
                                   <label>Categories</label>
                                   <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
-                                      <option selected="">Please Select</option>
+                                    @foreach($current ?? '' as $curr)
+                                    <option value="{{$curr->cat_id}}">{{$curr->cat_name}}</option>
+                                        @endforeach
                                       @foreach ($category ?? '' as $cat )
 
                                       <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
@@ -124,7 +130,9 @@
                                 <div class="form-group">
                                   <label>Subcategories</label>
                                   <select class="form-control select2" name="prod-subcat" id="prod-subcat" style="width: 100%;" required>
-                                      <option selected="">Please Select</option>
+                                    @foreach($current ?? '' as $curr)
+                                    <option value="{{$curr->sub_id}}">{{$curr->subcat_name}}</option>
+                                        @endforeach
                                       @foreach ($subcategory ?? '' as $subcat )
 
                                       <option value="{{$subcat->sub_id}}">{{$subcat->subcat_name}}</option>
