@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                       <label for="category-name">Category name</label>
-                    <input type="text" class="form-control" id="cat-name" name="cat-name" placeholder="{{$name}}">
+                    <input type="text" class="form-control" id="cat-name" name="cat-name" value="{{ $name }}" placeholder="{{$name}}">
                     </div>
                   <!-- /.card-body -->
 
