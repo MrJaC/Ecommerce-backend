@@ -52,7 +52,6 @@
                             <th>Category</th>
                             <th>Subcategory</th>
                             <th>Details</th>
-
                             <th>Actions</th>
                         </tr>
                         </thead>
