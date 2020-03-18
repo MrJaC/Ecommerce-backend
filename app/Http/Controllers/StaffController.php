@@ -37,6 +37,7 @@ class StaffController extends Controller
     }
     public function edit($id)
     {
+        return view('staff/edit-staff');
     }
     public function create()
     {

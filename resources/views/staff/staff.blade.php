@@ -29,7 +29,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">View all Staff</h3>
+                    <h3 class="card-title">View all Staff <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('staff.create-staff') }}">Add Staff </a></h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -65,7 +65,8 @@
 
                             </td>
                             <td>
-                                TBA
+                                <a href="#"><i class="far fa-edit"></i></a>
+                                <a href="#"><i class="far fa-trash-alt"></i></a>
                             </td>
                             </tr>
                             @endforeach
