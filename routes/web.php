@@ -74,7 +74,9 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
 Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
 
     Route::get('/', 'CustomersController@index')->name('customers');
-    Route::get('/create-customers', 'CustomersController@index')->name('create-customers');
+    Route::get('/create-customers', 'CustomersController@create')->name('create-customers');
+    Route::get('/edit-customers', 'CustomersController@edit')->name('edit-customer');
+    //Route::get('/create-customers', 'CustomersController@index')->name('create-customers');
 });
 //Vendors
 Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
@@ -104,7 +106,10 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
 
     Route::get('/', 'StaffController@index')->name('staff');
     Route::get('/create-staff', 'StaffController@create')->name('create-staff');
-    Route::post('/add-staff', 'StaffController@add')->name('add-staff');
+    Route::get('/edit-staff/{id}/{name}', 'StaffController@staffEdit')->name('edit-staff');
+    Route::post('/add-staff', 'StaffController@addStaff')->name('add-staff');
+    Route::get('/delete-staff', 'StaffController@delete')->name('delete-staff');
+    Route::get('/update-staff', 'StaffController@update')->name('update-staff');
 });
 //Orders
 

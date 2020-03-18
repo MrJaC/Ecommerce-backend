@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Staff;
 use App\User;
-
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 class StaffController extends Controller
 {
     public function __construct()
@@ -24,10 +24,9 @@ class StaffController extends Controller
         //error_log(print_r($data,true));
         return view('staff/staff', ['staff' => $data]);
     }
-    public function delete($id)
+    public function delete(Request $request)
     {
-       $staff = DB::delete('delete users where id = ?', [$id]);
-
+       $staff = app(Staff::class)->deleteStaff($request->id);
         if($staff == true){
             return redirect('/staff')->with('message', 'Staff deleted');
         }
@@ -35,12 +34,30 @@ class StaffController extends Controller
             return back()->with('message', 'Failed staff delete');
         }
     }
-    public function edit($id)
+    public function staffEdit($id, $name)
     {
-        return view('staff/edit-staff');
+        return view('staff/edit-staff', ['id' => $id, 'name' => $name]);
     }
     public function create()
     {
         return view('staff/create-staff');
+    }
+    public function addStaff(Request $request){
+
+        //Check email exists
+        $staffCheck =  app(Staff::class)->checkEmail($request->input('email'));
+        $data = array(
+            'name' => $request->input('staff-name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'role' => $request->input('role')
+        );
+        if($staffCheck != true){
+            app(Staff::class)->addStaff($data);
+            return redirect('/staff')->with('message', 'Staff Added');
+        }else{
+            return back()->with('message', 'Email already exists!');
+        }
+
     }
 }

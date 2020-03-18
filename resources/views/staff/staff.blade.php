@@ -31,6 +31,13 @@
                     <div class="card-header">
                     <h3 class="card-title">View all Staff <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('staff.create-staff') }}">Add Staff </a></h3>
                     </div>
+                    @if ($message = Session::get('message'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                    </div>
+
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table id="example2" class="table table-bordered table-hover">
@@ -65,8 +72,8 @@
 
                             </td>
                             <td>
-                                <a href="#"><i class="far fa-edit"></i></a>
-                                <a href="#"><i class="far fa-trash-alt"></i></a>
+                            <a href="{{ route('staff.edit-staff', ['id' => $cus->id, 'name' => $cus->name]) }}"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('staff.delete-staff', ['id' => $cus->id])}}"><i class="far fa-trash-alt"></i></a>
                             </td>
                             </tr>
                             @endforeach
