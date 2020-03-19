@@ -32,7 +32,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('staff.edit-staff') }}" method="post">
+                    <form role="form" action="{{ route('staff.update-staff') }}" method="post">
                         @csrf
                       <div class="card-body">
                         @if ($message = Session::get('message'))
@@ -44,23 +44,33 @@
                         @endif
                         <div class="form-group">
                           <label for="category-name">Staff Name</label>
-                          <input type="text" class="form-control" id="staff-name" name="staff-name" placeholder="" required>
+                        <input type="text" class="form-control" id="staff-name" name="staff-name" value="{{$name}}" placeholder="{{$name}}" required>
                         </div>
+                        @foreach($data as $staff)
                         <div class="form-group">
                             <label for="category-name">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{$staff->email}}" placeholder="{{$staff->email}}" required>
                           </div>
                           <div class="form-group">
                             <label for="category-name">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password" required>
                           </div>
                           <div class="form-group">
                               <label for="staff-type">Staff Type</label>
                           <select id="role" type="text" class="form-control" name="role" required>
+                            <option value="{{$staff->role}}">Current:
+                                @if ($staff->role == 1)
+                                Admin
+                           @elseif ($staff->role == 2)
+                               Employee
+
+                           @endif
+                            </option>
                             <option value="2">Employee</option>
                             <option value="1">Admin</option>
                         </select>
                     </div>
+                    @endforeach
                       <!-- /.card-body -->
 
                       <div class="card-footer">

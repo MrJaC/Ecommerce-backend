@@ -36,7 +36,9 @@ class StaffController extends Controller
     }
     public function staffEdit($id, $name)
     {
-        return view('staff/edit-staff', ['id' => $id, 'name' => $name]);
+        $staffData = app(Staff::class)->getStaffData($id);
+
+        return view('staff/edit-staff', ['id' => $id, 'name' => $name, 'data' => $staffData]);
     }
     public function create()
     {

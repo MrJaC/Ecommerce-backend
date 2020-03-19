@@ -11,6 +11,12 @@ class Staff extends Model
         $staff = DB::table('users')->where('role', '=', 1)->get();
         return $staff;
     }
+
+    public function getStaffData($id){
+        $staff = DB::table('users')->where('id', '=', $id)->get();
+
+        return $staff;
+    }
     public function deleteStaff($id){
         $query = DB::table('users')->where('id', $id)->delete();
         if($query){
