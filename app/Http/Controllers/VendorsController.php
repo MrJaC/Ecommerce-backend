@@ -27,7 +27,7 @@ class VendorsController extends Controller
     {
         $vendors = app(Vendor::class)->getVendors();
 
-        error_log(print_r($vendors,true));
+        error_log(print_r($vendors, true));
         return view('vendors/vendors', ['vendors' => $vendors]);
     }
     public function edit($id, $name)
@@ -36,15 +36,17 @@ class VendorsController extends Controller
         $subcat = app(SubCategories::class)->getData();
         $curProd = app(Vendor::class)->getVendorDetail($id);
         $customers = app(Customers::class)->getCustomers();
-        error_log(print_r($id,true));
-        error_log(print_r('Data',true));
-        $data = array('id' => $id,
-        'name' => $name,
-        'category' => $cat,
-        'subcategory' => $subcat,
-        'current' => $curProd,
-        'customers' => $customers);
-        error_log(print_r($data,true));
+        error_log(print_r($id, true));
+        error_log(print_r('Data', true));
+        $data = array(
+            'id' => $id,
+            'name' => $name,
+            'category' => $cat,
+            'subcategory' => $subcat,
+            'current' => $curProd,
+            'customers' => $customers
+        );
+        error_log(print_r($data, true));
         return view(
             'vendors/edit-vendor',
             [
@@ -123,7 +125,8 @@ class VendorsController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
 
         //get user id
@@ -143,12 +146,12 @@ class VendorsController extends Controller
         $fileName = "";
         //image logo
 
-        if($request->file('business-logo') != null){
+        if ($request->file('business-logo') != null) {
             $path = $request->file('business-logo')->store('public/business-logo');
             $fileName = str_replace("public/business-logo/", "", $path);
-        }else{
+        } else {
             $curProd = app(Vendor::class)->getVendorDetail($request->id);
-            foreach($curProd as $cur){
+            foreach ($curProd as $cur) {
                 $fileName = $cur->vendor_logo;
             }
         }
@@ -169,9 +172,9 @@ class VendorsController extends Controller
             'vendor_email' => $vendorEmail,
             'vendor_landline' => $vendorLandline
         );
-        error_log(print_r('update',true));
-        error_log(print_r($data,true));
-        $q = app(Vendor::class)->updateVendor($request->id,$data);
+        error_log(print_r('update', true));
+        error_log(print_r($data, true));
+        $q = app(Vendor::class)->updateVendor($request->id, $data);
 
         if ($q == true) {
             return redirect('/vendors')->with('message', 'Updated Vendor');

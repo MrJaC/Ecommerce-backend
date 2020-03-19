@@ -24,6 +24,12 @@ Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('details', 'UserController@details');
 });
+//API GROUP
+Route::group(['prefix' => 'v1', 'name' => 'v1'], function(){
+    //Categories + Subcategories
+    Route::group(['prefix' => 'cat', 'name' => 'category.'], function(){
+        Route::get('/category', 'Api\CategoryAPIController@index')->name('category');
+    });
 
-
-Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
+});
+//Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
