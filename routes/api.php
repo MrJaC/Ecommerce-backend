@@ -24,3 +24,9 @@ Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('details', 'UserController@details');
 });
+
+Route::group(['prefix' => 'api', 'api.'], function(){
+    Route::group(['prefix' => 'categories', 'categories.'],function(){
+        Route::get('/category', 'API\CategoriesAPIController@index')->name('categories');
+    });
+});
