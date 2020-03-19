@@ -19,10 +19,17 @@ class SubCategories extends Model
 
     }
     public function getData(){
-        $data = DB::table('subcategories AS subcat')
-        ->leftJoin('categories AS cat', 'subcat.cat_id', '=','cat.id')
-        ->get();
-        error_log(print_r($data,true));
+        $data = DB::Table('subcategories')->select(
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'subcategories.image',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img'
+        )
+        ->leftJoin('categories', 'subcategories.sub_id', '=', 'categories.id')->get();
+
         return $data;
     }
     public function getCurrData($id){
