@@ -65,7 +65,8 @@
 
                             </td>
                             <td>
-                                TBA</td>
+                                <a href="{{ route('customers.edit-customer', ['id' => $cus->id, 'name' => $cus->name]) }}"><i class="far fa-edit"></i></a>
+                            <a href="{{ route('customers.delete-customer', ['id' => $cus->id])}}"><i class="far fa-trash-alt"></i></a>
                             </tr>
                             @endforeach
                         </tbody>

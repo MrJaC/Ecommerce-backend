@@ -75,8 +75,9 @@ Route::group(['prefix' => 'customers', 'as' => 'customers.'], function () {
 
     Route::get('/', 'CustomersController@index')->name('customers');
     Route::get('/create-customers', 'CustomersController@create')->name('create-customers');
-    Route::get('/edit-customers/{id}/{name}', 'CustomersController@edit')->name('edit-customer');
-    //Route::get('/create-customers', 'CustomersController@index')->name('create-customers');
+    Route::get('/edit-customers/{id}/{name}', 'CustomersController@editCustomer')->name('edit-customer');
+    Route::get('/delete-customer', 'CustomersController@deleteCus')->name('delete-customer');
+
 });
 //Vendors
 Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
