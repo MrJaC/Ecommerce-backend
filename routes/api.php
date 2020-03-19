@@ -26,10 +26,20 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 //API GROUP
 Route::group(['prefix' => 'v1', 'name' => 'v1'], function(){
-    //Categories + Subcategories
+    //Categories
     Route::group(['prefix' => 'cat', 'name' => 'category.'], function(){
         Route::get('/category', 'Api\CategoryAPIController@index')->name('category');
     });
-
+    //Subcategories
+    Route::group(['prefix' => 'subcat', 'name' => 'subcategory'],function(){
+        Route::get('/subcategories', 'Api\SubcategoriesAPIController@index')->name('subcategories');
+    });
+    //Vendors
+    Route::group(['prefix' => 'ven', 'vendors' => 'vendors'],function(){
+        Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
+    });
+    Route::group(['prefix' => 'ven', 'vendors' => 'vendors'],function(){
+        Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
+    });
 });
 //Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
