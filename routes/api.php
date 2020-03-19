@@ -35,11 +35,11 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function(){
         Route::get('/subcategories', 'Api\SubcategoriesAPIController@index')->name('subcategories');
     });
     //Vendors
-    Route::group(['prefix' => 'ven', 'vendors' => 'vendors'],function(){
+    Route::group(['prefix' => 'ven', 'name' => 'vendors'],function(){
         Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
     });
-    Route::group(['prefix' => 'ven', 'vendors' => 'vendors'],function(){
-        Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
+    Route::group(['prefix' => 'prod', 'name' => 'products'],function(){
+        Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
     });
 });
 //Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
