@@ -11,6 +11,7 @@ use App\Staff;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 class StaffController extends Controller
 {
     public function __construct()
@@ -26,11 +27,10 @@ class StaffController extends Controller
     }
     public function delete(Request $request)
     {
-       $staff = app(Staff::class)->deleteStaff($request->id);
-        if($staff == true){
+        $staff = app(Staff::class)->deleteStaff($request->id);
+        if ($staff == true) {
             return redirect('/staff')->with('message', 'Staff deleted');
-        }
-        else{
+        } else {
             return back()->with('message', 'Failed staff delete');
         }
     }
@@ -44,7 +44,8 @@ class StaffController extends Controller
     {
         return view('staff/create-staff');
     }
-    public function addStaff(Request $request){
+    public function addStaff(Request $request)
+    {
 
         //Check email exists
         $staffCheck =  app(Staff::class)->checkEmail($request->input('email'));
@@ -54,12 +55,11 @@ class StaffController extends Controller
             'password' => Hash::make($request->input('password')),
             'role' => $request->input('role')
         );
-        if($staffCheck != true){
+        if ($staffCheck != true) {
             app(Staff::class)->addStaff($data);
             return redirect('/staff')->with('message', 'Staff Added');
-        }else{
+        } else {
             return back()->with('message', 'Email already exists!');
         }
-
     }
 }

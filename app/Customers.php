@@ -12,4 +12,19 @@ class Customers extends Model
         return $customers;
 
     }
+    public function getCustomerSingle($id){
+
+        $customer = DB::table('users')->where('id', '=', $id)->get();
+
+        return $customer;
+    }
+    public function deleteCustomer($id){
+        $customer = DB::Table('users')->where('id', '=', $id)->delete();
+
+        if($customer){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
