@@ -40,10 +40,10 @@ class CustomersController extends Controller
 
         return view('customers/edit-customer', ['id' => $id, 'data' => $data, 'name' => $name]);
     }
-    public function deleteCus($id)
+    public function deleteCus(Request $request)
     {
 
-        $q = app(Customers::class)->deleteCustomer($id);
+        $q = app(Customers::class)->deleteCustomer($request->id);
 
         if ($q) {
             return redirect('customers')->with('message', 'Customer Deleted');
