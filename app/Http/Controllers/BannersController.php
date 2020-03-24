@@ -13,7 +13,7 @@ class BannersController extends Controller
 
     public function index(){
 
-        $data = app(Banners::class)->getData();
+        $data = app(Banners::class)->getBanners();
 
         return view('banners/banners', ['data' => $data]);
     }

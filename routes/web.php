@@ -117,6 +117,11 @@ Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
 
     Route::get('/', 'OrdersController@index')->name('orders');
 });
+//Banners
+Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
+
+    Route::get('/', 'BannersController@index')->name('banners');
+});
 
 //test image
 Route::get('/{filename}', 'ProductsController@displayImage')->name('image.displayImage');
