@@ -38,8 +38,13 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function(){
     Route::group(['prefix' => 'ven', 'name' => 'vendors'],function(){
         Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
     });
+    //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'],function(){
         Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
+    });
+    //Banners
+    Route::group(['prefix' => 'bann', 'name' => 'banners'],function(){
+        Route::get('/banners', 'Api\BannersAPIController@index')->name('banners');
     });
 });
 //Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
