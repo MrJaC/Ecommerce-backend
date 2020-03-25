@@ -46,7 +46,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function(){
         Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
     });
     //Banners
-    Route::group(['prefix' => 'bann', 'name' => 'banners'],function(){
+    Route::group(['prefix' => 'ban', 'name' => 'banners'],function(){
         Route::get('/banners', 'Api\BannersAPIController@index')->name('banners');
     });
 });
