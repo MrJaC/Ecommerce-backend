@@ -121,6 +121,7 @@ Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
 Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
 
     Route::get('/', 'BannersController@index')->name('banners');
+    Route::post('/add-banner', 'BannersController@add')->name('add-banner');
 });
 
 //test image

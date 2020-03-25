@@ -12,4 +12,13 @@ class Banners extends Model
 
         return $ban;
     }
+    public function addData($data){
+        $q = DB::table('banners')->insert($data);
+        if($q){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
