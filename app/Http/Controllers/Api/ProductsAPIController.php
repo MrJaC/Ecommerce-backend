@@ -22,4 +22,18 @@ class ProductsAPIController extends Controller
         $prod = app(Products::class)->getProducts();
         return response()->json($prod);
     }
+
+    public function getProductID(Request $request){
+
+        if(!$data = app(Products::class)->getCurrProducts($request->id)){
+            return response()->json([
+                'message' => 'No Data',
+            ],401);
+        }else{
+            return response()->json([
+                'message' => 'sucess',
+                'data' => $data
+            ],201);
+        }
+    }
 }

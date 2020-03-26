@@ -45,6 +45,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {
         Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
+        Route::get('/get-products', 'Api\ProductsAPIController@getProductID')->name('product-id');
     });
     //Banners
     Route::group(['prefix' => 'ban', 'name' => 'banners'], function () {
