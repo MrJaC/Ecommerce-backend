@@ -50,4 +50,10 @@ class SubCategories extends Model
         $subcat = DB::table('subcategories')->where('sub_id', $id)->delete();
         return $subcat;
     }
+
+    public function getSubcats($id){
+        $subcat = DB::table('subcategories')->where('cat_id', '=', $id)->get();
+
+        return $subcat;
+    }
 }
