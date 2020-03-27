@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+
 class ProductsAPIController extends Controller
 {
     public function index()
@@ -23,17 +24,18 @@ class ProductsAPIController extends Controller
         return response()->json($prod);
     }
 
-    public function getProductID(Request $request){
+    public function getProductID(Request $request)
+    {
 
-        if(!$data = app(Products::class)->getCurrProducts($request->id)){
+        if (!$data = app(Products::class)->getCurrProducts($request->id)) {
             return response()->json([
                 'message' => 'No Data',
-            ],401);
-        }else{
+            ], 401);
+        } else {
             return response()->json([
                 'message' => 'sucess',
                 'data' => $data
-            ],201);
+            ], 201);
         }
     }
 }
