@@ -35,6 +35,7 @@ class ProductsController extends Controller
     public function index()
     {
         $prod = app(Products::class)->getProducts();
+        error_log(print_r($prod,true));
         return view('products/products', ['products' => $prod]);
     }
     public function create()

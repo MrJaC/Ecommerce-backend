@@ -22,7 +22,7 @@ class Categories extends Model
     }
 
     public function getCat(){
-        $cat = DB::select('select * from categories');
+        $cat = DB::table('categories')->get();
         return $cat;
     }
     public function editCat($id,$data){

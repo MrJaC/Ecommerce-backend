@@ -8,9 +8,17 @@ use App\Categories;
 class CategoryAPIController extends Controller
 {
     public function index(){
-
         $cat = app(Categories::class)->getCat();
-
-        return response()->json($cat);
+       // error_log(print_r($cat,true));
+        if (app(Categories::class)->getCat()->isEmpty()) {
+            return response()->json([
+                'message' => 'No Data',
+            ], 401);
+        } else {
+            return response()->json([
+                'message' => 'success',
+                'data' =>  $cat
+            ], 201);
+        }
     }
 }

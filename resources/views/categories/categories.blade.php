@@ -55,7 +55,9 @@
                             <tr>
                             <td>{{$cat->id}}</td>
                             <td>{{$cat->cat_name}}</td>
-                            <td>{{$cat->cat_img}}</td>
+                            <td><a href="{{ url('storage/cat/'.$cat->cat_img) }}" data-toggle="lightbox" data-title="{{$cat->cat_img}}">
+                                <img src="{{ url('storage/cat/'.$cat->cat_img) }}" class="product-image-thumb" alt="{{$cat->cat_img}}"/>
+                              </a></td>
                             <td>
                             <a   href="{{ route('categories.edit-cat',['id' => $cat->id, 'name' => $cat->cat_name])}}"><i class="far fa-edit"></i></a>
                             <a href="{{ route('categories.delete', ['id' => $cat->id])}}"><i class="far fa-trash-alt"></i></a>

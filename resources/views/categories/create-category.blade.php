@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{ route('categories.add-cat') }}" method="post">
+                <form role="form" action="{{ route('categories.add-cat') }}" method="post" enctype="multipart/form-data">
                     @csrf
                   <div class="card-body">
                     @if ($message = Session::get('message'))
@@ -50,7 +50,15 @@
                       <input type="text" class="form-control" id="cat-name" name="cat-name" placeholder="Enter category name">
                     </div>
                   <!-- /.card-body -->
+                  <div class="form-group">
+                    <label for="exampleInputFile">Category image</label>
 
+
+                        <input type="file"  id="cat-img" name="cat-img" placeholder="Choose your image" required>
+
+
+                    </div>
+                  </div>
                   <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>

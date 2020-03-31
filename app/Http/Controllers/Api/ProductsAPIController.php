@@ -20,8 +20,18 @@ class ProductsAPIController extends Controller
 {
     public function index()
     {
-        $prod = app(Products::class)->getProducts();
-        return response()->json($prod);
+
+        //return response()->json($prod);
+        if ($prod = app(Products::class)->getProducts()->isEmpty()) {
+            return response()->json([
+                'message' => 'No Data',
+            ], 401);
+        } else {
+            return response()->json([
+                'message' => 'success',
+                'data' => $prod
+            ], 201);
+        }
     }
 
     public function getProductID(Request $request)

@@ -17,17 +17,23 @@ class SubcategoriesAPIController extends Controller
     }
 
     public function getSubCat(Request $request){
-       $id = $request->id;
+        $id = $request->id;
         $data = app(Subcategories::class)->getSubcats($id);
         error_log(print_r($request->id,true));
         error_log(print_r($data,true));
+        if($data != true){
+            return response()->json(
+                [
+                    'message' => 'success',
+                    'data' => $data
 
-        return response()->json(
-            [
-                'message' => 'success',
-                'data' => $data
+                ],201);
+        }else{
+            return response()->json(
+                ['message' => 'No data'],201
+            );
+        }
 
-            ],201);
 
     }
 }
