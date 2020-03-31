@@ -7,7 +7,10 @@ use App\Categories;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 class CategoriesController extends Controller
 {
        /**
@@ -38,9 +41,11 @@ class CategoriesController extends Controller
     public function add(Request $request){
 
         $catName = $request->input('cat-name');
-
+        $path = $request->file('cat-img')->store('public/cat');
+        $fileName = str_replace("public/cat/", "", $path);
         $data = array(
-            'cat_name' => $catName
+            'cat_name' => $catName,
+            'cat_img' => $fileName
         );
         $q = app(Categories::class)->addCat($data);
         if($q == true){

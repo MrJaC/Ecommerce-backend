@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Staff;
+
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -47,22 +49,30 @@ class AuthController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ]);
-        $user = new User;
-        $user->name = $request->fName." ".$request->lName;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = 3;
-        $user->save();
-        return response()->json([
-            'message' => 'Successfully created user!'
-        ], 201);
+            //laziness
+        $staffCheck =  app(Staff::class)->checkEmail($request->input('email'));
+        if ($staffCheck != true) {
+            $user = new User;
+            $user->name = $request->fName . " " . $request->lName;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role = 3;
+            $user->save();
+            return response()->json([
+                'message' => 'Successfully created user!'
+            ], 201);
+        } else {
+            return response()->json([
+                'message' => 'Email Exists'
+            ], 201);
+        }
     }
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
         return response()->json([
             'message' => 'Successfully logged out'
-        ]);
+        ],201);
     }
 
     /**
