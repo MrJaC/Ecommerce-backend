@@ -27,6 +27,7 @@ class ProductsAPIController extends Controller
                 'message' => 'No Data',
             ], 401);
         } else {
+            $prod = app(Products::class)->getProducts();
             return response()->json([
                 'message' => 'success',
                 'data' => $prod
@@ -47,5 +48,34 @@ class ProductsAPIController extends Controller
                 'data' => $data
             ], 201);
         }
+    }
+
+    public function getProdIDViaSub(Request $request){
+
+    }
+    public function addProd(Request $request){
+
+        $prod = array(
+            'user_id' => $request->user_id,
+            'product_name' => $request->prod_name,
+            'product_price' => $request->prod_price,
+            'product_cat' => $request->prod_cat,
+            'product_subcat' => $request->prod_subcat,
+            'product_description' => $request->prod_desc,
+            'product_sku' => $request->prod_sku,
+            'product_amount' => $request->prod_amount,
+            'vendor_id' => $request->user_vendor_id,
+        );
+        error_log(print_r($prod,true));
+
+        if(!$data = app(Products::class)->addProd($prod)){
+            return response()->json([
+                'message' => 'Error adding product'
+            ], 401);
+        }else{
+            return response()->json(['message' => 'Product Added!'],201);
+        }
+
+
     }
 }

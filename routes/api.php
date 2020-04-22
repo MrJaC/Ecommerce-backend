@@ -25,6 +25,7 @@ Route::group([
         Route::get('logout', 'Auth\AuthController@logout');
         Route::get('user', 'Auth\AuthController@user');
     });
+    Route::post('userdetails', 'Auth\AuthController@userdetails');
 });
 
 //API GROUP
@@ -41,11 +42,15 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     //Vendors
     Route::group(['prefix' => 'ven', 'name' => 'vendors'], function () {
         Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
+        Route::get('/get-vendor', 'Api\VendorsAPIController@getMyVendors');
+        Route::post('/add-vend-product', 'Api\VendorsAPIController@addVendorProduct');
+        Route::get('/get-my-products', 'Api\VendorsAPIController@getMyVendorProducts');
     });
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {
         Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
         Route::get('/get-products', 'Api\ProductsAPIController@getProductID')->name('product-id');
+        Route::post('add-products', 'Api\ProductsAPIController@addProd');
     });
     //Banners
     Route::group(['prefix' => 'ban', 'name' => 'banners'], function () {

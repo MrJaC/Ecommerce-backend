@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Staff;
+use App\UserProfile;
 
 class AuthController extends Controller
 {
@@ -79,7 +80,29 @@ class AuthController extends Controller
             'message' => 'Successfully logged out'
         ],201);
     }
-
+    public function userdetails(Request $request){
+        //error_log(print_r($request,true));
+        $id = $request->id;
+        $data = [
+            'address' => $request->address,
+            'landline_number' => $request->landline,
+            'mobile_number' => $request->mobile,
+            'city' => $request->city,
+            'state' => $request->province,
+            'country' => $request->country
+        ];
+        $userData = app(UserProfile::class)->updateProfile($id,$data);
+        if($userData == true){
+            return response()->json([
+                'message' => 'Details updated'
+            ],201);
+        }else{
+            return response()->json([
+                'message' => 'Something went wrong ERR_UP1'
+            ],201);
+        }
+        error_log(print_r($data,true));
+    }
     /**
      * Get the authenticated User
      *

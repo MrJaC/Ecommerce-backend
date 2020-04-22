@@ -35,7 +35,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form role="form" action="{{ route('products.update', ['id' =>$id]) }}" method="post">
+                  <form role="form" action="{{ route('products.update', ['id' =>$id]) }}" method="post" enctype="multipart/form-data" >
                       @csrf
                     <div class="card-body">
                         <div class="row">
