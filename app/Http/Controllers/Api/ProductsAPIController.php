@@ -51,7 +51,17 @@ class ProductsAPIController extends Controller
     }
 
     public function getProdIDViaSub(Request $request){
-
+        if ($data = app(Products::class)->getProdViaSub($request->subID,$request->catID)->IsEmpty()) {
+            return response()->json([
+                'message' => 'No Data',
+            ], 401);
+        } else {
+            $data = app(Products::class)->getProdViaSub($request->subID,$request->catID);
+            return response()->json([
+                'message' => 'success',
+                'data' => $data
+            ], 201);
+        }
     }
     public function addProd(Request $request){
 
