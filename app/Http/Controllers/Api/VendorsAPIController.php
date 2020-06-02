@@ -48,6 +48,24 @@ class VendorsAPIController extends Controller
             ],201);
         }
     }
+    public function getVendor(Request $request){
+        $ven_id = $request->id;
+
+        $vendorData = app(Vendor::class)->getVendorDetail($ven_id);
+
+        if($vendorData){
+            return response()->json([
+                'status' => 'Ok',
+                'data' =>  $vendorData
+            ],201);
+        }else{
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'No Products',
+                'data' => 0
+            ],201);
+        }
+    }
     public function addVendorProduct(Request $request){
 
         $data = array(
