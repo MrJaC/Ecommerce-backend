@@ -28,8 +28,8 @@ class SubCategories extends Model
             'categories.cat_name',
             'categories.cat_img'
         )
-        ->leftJoin('categories', 'subcategories.sub_id', '=', 'categories.id')->get();
-
+        ->leftJoin('categories', 'subcategories.cat_id', '=', 'categories.id')
+        ->get();
         return $data;
     }
     public function getCurrData($id){
