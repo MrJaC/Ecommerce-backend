@@ -7,12 +7,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Products</h1>
+                <h1 class="m-0 text-dark">Orders</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item">Products</li>
+                  <li class="breadcrumb-item">Orders</li>
                   <li class="breadcrumb-item active">View</li>
                 </ol>
               </div><!-- /.col -->
@@ -20,7 +20,7 @@
           </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
+
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
@@ -29,36 +29,37 @@
                     <div class="col-12">
                       <div class="card">
                         <div class="card-header">
-                          <h3 class="card-title">Product list  <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('products.create-products') }}">Add Product </a></h3>
-    
+                          <h3 class="card-title">Orders list </h3>
+
                         </div>
                         @if ($message = Session::get('message'))
                         <div class="alert alert-success alert-block">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $message }}</strong>
                         </div>
-    
+
                         @endif
                         <!-- /.card-header -->
                         <div class="card-body">
                           <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                              <th>ID</th>
-                              <th>Product Image</th>
+                              <th>Order ID</th>
+                              <th>Product Name</th>
                               <th>Vendor Name</th>
                               <th>Product Name</th>
                               <th>Product Price</th>
+                              <th>Buyer</th>
                               <th>Actions</th>
-    
+
                             </tr>
                             </thead>
-    
+
                                 <tbody>
                                     @foreach ($errors as $prod)
                                     <tr>
                                     <td>{{$prod->prod_id}}</td>
-    
+
                                     <td><img src="{{ route('image.displayImage',$prod->product_main_image) }}" ></td>
                                     <td></td>
                                     <td>{{$prod->product_name}}</td>
@@ -74,14 +75,15 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-    
+
                             <tfoot>
                             <tr>
-                                <th>ID</th>
-                                <th>Product Image</th>
+                                <th>Order ID</th>
+                                <th>Product Name</th>
                                 <th>Vendor Name</th>
                                 <th>Product Name</th>
                                 <th>Product Price</th>
+                                <th>Buyer</th>
                                 <th>Actions</th>
                             </tr>
                             </tfoot>

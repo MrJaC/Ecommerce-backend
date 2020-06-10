@@ -7,13 +7,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Vendors</h1>
+          <h1 class="m-0 text-dark">{{ $name}}: Documents</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item">Vendors</li>
-              <li class="breadcrumb-item active">View</li>
+              <li class="breadcrumb-item">Vendor Documents</li>
+            <li class="breadcrumb-item active">View : {{ $name}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -29,7 +29,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Vendors list <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a></h3>
+                      <h3 class="card-title">Documents list <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a></h3>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">
@@ -43,21 +43,19 @@
                       <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>Approval Status</th>
-                            <th>Logo</th>
+                            <th>ID</th>
+                            <th>Vendor ID</th>
                             <th>Business Name</th>
-                            <th>Name</th>
-                            <th>Mobile</th>
-                            <th>Landline</th>
-                            <th>Category</th>
-                            <th>Subcategory</th>
-                            <th>Details</th>
+                            <th>User Name</th>
+                            <th>Document Description</th>
+                            <th>Document Name</th>
+                            <th>Document View</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
 
                             <tbody>
-                                @foreach ($vendors as $ven)
+                                @foreach ($errors as $ven)
                                 <tr>
                                     @if($ven->approval_status == 2)
                                     <td>Approved</td>

@@ -22,6 +22,8 @@ class Vendor extends Model
             'vendors.vendor_website',
             'vendors.vendor_email',
             'vendors.vendor_landline',
+            'vendors.approval_status',
+            'vendors.about',
             'categories.id',
             'categories.cat_name',
             'categories.cat_img',
@@ -54,6 +56,8 @@ class Vendor extends Model
             'vendors.vendor_website',
             'vendors.vendor_email',
             'vendors.vendor_landline',
+            'vendors.approval_status',
+            'vendors.about',
             'categories.id',
             'categories.cat_name',
             'categories.cat_img',
@@ -70,6 +74,23 @@ class Vendor extends Model
         ->where('vendors.id', '=', $id)
         ->get();
         return $vendor;
+    }
+    public function getDocuments($id){
+        $documents = DB::table('vendor_documents')->select(
+            'vendors.id',
+            'vendors.vendor_logo',
+            'vendors.vendor_business_name',
+            'vendors.user_id',
+            'vendor_documents.vendor_doc_id',
+            'vendor_documents.vendor_id',
+            'vendor_documents.time_created',
+            'vendor_documents.document_description',
+            'vendor_documents.document_name',
+            'vendor_documents.document_location'
+        )
+        ->leftJoin('vendors','vendors.id' , '=' , 'vendor_documents.vendor_id')
+        ->where('vendor_documents.vendor_id', '=' , $id)->get();
+        return $documents;
     }
     public function getUserVendor($id){
         $vendor = DB::table('vendors')->select(

@@ -87,6 +87,7 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::post('/update-vendor', 'VendorsController@update')->name('update-vendor');
     Route::post('/add-vendor', 'VendorsController@add')->name('add-vendor');
     Route::get('/delete-vendor', 'VendorsController@delete')->name('delete-vendor');
+    Route::get('/documents/{id}/{name}', 'VendorsController@documents')->name('documents');
 });
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 

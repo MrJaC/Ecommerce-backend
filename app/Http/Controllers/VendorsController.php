@@ -59,6 +59,27 @@ class VendorsController extends Controller
             ]
         );
     }
+    public function documents($id,$name){
+
+        $data = app(Vendor::class)->getDocuments($id);
+        error_log(print_r($data,true));
+
+
+        return view('vendors/documents',
+        [
+        'name' => $name ,
+        'id' => $id,
+        'data' => $data
+        ]
+    );
+    }
+    public function documentAdd(Request $request){
+
+    }
+    public function documentDelete(Request $request){
+
+    }
+    public function documentEdit(){}
     public function delete(Request $request)
     {
         $v = app(Vendor::class)->deleteVendor($request->id);

@@ -75,6 +75,56 @@
               </div>
               <!-- /.card -->
             </div>
+            <div class="col-lg-6">
+
+                <!-- /.card -->
+
+                <div class="card">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">Orders</h3>
+                    <div class="card-tools">
+                      <a href="#" class="btn btn-tool btn-sm">
+                        <i class="fas fa-download"></i>
+                      </a>
+                      <a href="#" class="btn btn-tool btn-sm">
+                        <i class="fas fa-bars"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-striped table-valign-middle">
+                      <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Product Name</th>
+                        <th>Vendor Name</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Buyer</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                          @foreach ($product as $prod)
+                          <tr>
+                          <td>{{$prod->prod_id}}</td>
+
+                          <td><img class="product-image-thumb" src="{{ url('storage/main-images/',$prod->product_main_image) }}" ></td>
+                          <td>{{$prod->product_name}}</td>
+                          <td></td>
+                          <td>R{{$prod->product_price}}</td>
+                          <td>TBA</td>
+                          <td>                        <a href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}" class="text-muted">
+                              <i class="fas fa-search"></i>
+                            </a></td>
+                          </tr>
+                          @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div>
             <!-- /.col-md-6 -->
           <!-- /.row -->
         </div>
