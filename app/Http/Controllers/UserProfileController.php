@@ -55,7 +55,8 @@ class UserProfileController extends Controller
     }
     public function edit(Request $request){
 
-        $user = Auth::user()->id;
+        $user = Auth::user();
+        error_log(print_r($user,true));
         $data = array(
             'address' => $request->input('address'),
             'landline_number'  => $request->input('landline'),
@@ -68,8 +69,9 @@ class UserProfileController extends Controller
         $q = app(UserProfile::class)->updateProfile($user->id, $data);
 
         if($q == true){
-            return view('profile/profile')->with('message', 'Profile updated');
+            return redirect('profile/profile')->with('message', 'Profile updated');
         }else{
+
             return back()->with('message', 'Something went wrong UP2');
         }
     }

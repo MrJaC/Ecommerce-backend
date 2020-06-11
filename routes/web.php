@@ -88,6 +88,8 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::post('/add-vendor', 'VendorsController@add')->name('add-vendor');
     Route::get('/delete-vendor', 'VendorsController@delete')->name('delete-vendor');
     Route::get('/documents/{id}/{name}', 'VendorsController@documents')->name('documents');
+    Route::post('document-add', 'VendorsController@documentAdd')->name('add-document');
+    Route::get('delete-doc','VendorsController@documentDelete')->name('delete-document');
 });
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 
@@ -100,7 +102,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/', 'UserProfileController@index')->name('profile');
     Route::get('/edit-profile/{id}/{name}', 'UserProfileController@edit')->name('edit-profile');
     Route::post('/add-user-profile', 'UserProfileController@add')->name('user-profile-add');
-    Route::post('/update-user-profile', 'UserProfileController@update')->name('user-profile-update');
+    Route::post('/update-user-profile', 'UserProfileController@edit')->name('user-profile-update');
 });
 //Staff
 Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {

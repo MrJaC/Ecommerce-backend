@@ -34,6 +34,7 @@ class UserProfile extends Model
     }
     public function updateProfile($id, $data){
         $q = DB::table('user_details')->where('used_id',$id)->update($data);
+        error_log(print_r($q,true));
         if($q == true){
             return true;
         }else{

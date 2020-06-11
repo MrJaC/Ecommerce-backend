@@ -25,11 +25,57 @@
     <div class="content">
       <div class="container-fluid">
         <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                                <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Add Document</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="{{ route('vendors.add-document', ['id' => $id] ) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                    <div class="form-group">
+                      <label for="banner-name">Document name</label>
+                      <input type="text" class="form-control" id="document-name" name="document-name" placeholder="Enter Document Name" required>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="banner-name">Document description</label>
+                      <input type="text" class="form-control" id="document-description" name="document-description" placeholder="Document Description" required>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="form-group">
+                        <label for="banner-item">Document File</label>
+                        <input type="file"  id="document-item" name="document-item" placeholder="Choose document" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
             <div class="row">
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Documents list <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a></h3>
+                      <h3 class="card-title">Documents list </h3>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">
@@ -46,7 +92,7 @@
                             <th>ID</th>
                             <th>Vendor ID</th>
                             <th>Business Name</th>
-                            <th>User Name</th>
+                            <th>Created</th>
                             <th>Document Description</th>
                             <th>Document Name</th>
                             <th>Document View</th>
@@ -55,78 +101,21 @@
                         </thead>
 
                             <tbody>
-                                @foreach ($errors as $ven)
+                                @foreach ($data as $docs)
                                 <tr>
-                                    @if($ven->approval_status == 2)
-                                    <td>Approved</td>
-                                    @elseif($ven->approval_status == 3)
-                                    <td>Rejected</td>
-                                    @elseif($ven->approval_status == 0)
-                                    <td>Pending</td>
-                                    @endif
-                                    <td><a href="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" data-toggle="lightbox" data-title="{{$ven->vendor_logo}}">
-                                        <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
-                                      </a></td>
-
-                                <td>{{ $ven->vendor_business_name}}</td>
-                                <td>{{ $ven->name}}</td>
-                                <td>{{ $ven->vendor_mobile}}</td>
-                                <td>{{ $ven->vendor_landline}}</td>
-                                @if($ven->cat_id == null)
-                                <td>TBA</td>
-                                @elseif($ven->cat_id == !null)
-                                <td>{{ $ven->cat_name}}</td>
-                                @endif
-                                @if($ven->sub_id == null)
-                                <td>TBA</td>
-                                @elseif($ven->sub_id == !null)
-
-                                <td>{{ $ven->subcat_name}}</td>
-                                @endif
-                                <td>                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-{{$ven->vendorID}}">
-                                    View Details
-                                  </button>
-                                <!--Modal-->
-                                <div class="modal fade" id="modal-{{$ven->vendorID}}">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h4 class="modal-title">{{ $ven->vendor_business_name}}</h4>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                         <p>{{ $ven->vendor_address_street}}</p>
-                                         <p>{{ $ven->vendor_address_number }}</p>
-                                            <p>{{ $ven->vendor_address_suburb }}</p>
-                                                <p>{{ $ven->vendor_address_postcode}}</p>
-                                                    <p> {{ $ven->vendor_website}}</p>
-                                                        <p> {{ $ven->vendor_email}}</p>
-
-                                        @if($ven->about == null)
-                                        <p>Description TBA</p>
-                                        @elseif($ven->about == !null)
-                                        <p>{{$ven->about}}</p>
-                                        @endif
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                                        </div>
-                                      </div>
-                                      <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                  </div>
-                                <!--End Modal-->
-                                </td>
+                                <td>{{$docs->vendor_doc_id}}</td>
+                                <td>{{$docs->vendor_id}}</td>
+                                <td>{{$docs->vendor_business_name}}</td>
+                                <td>{{$docs->time_created}}</td>
+                                <td>{{$docs->document_description}}</td>
+                                <td>{{$docs->document_name}}</td>
                                 <td>
-                                    <a href="{{ route('vendors.edit-vendor', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
-                                    <a href="{{ route('vendors.documents', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-file"></i></a>
+                                    <a href="{{ url('storage/vendor/vendor-documents/'.$docs->document_location) }}">
+                                        <i class="far fa-eye"></i>
+                                  </a>
 
-                                    <a href="{{ route('vendors.delete-vendor', ['id' => $ven->vendorID])}}"><i class="far fa-trash-alt"></i></a>
-                                    </td>
+                                </td>
+                                <td>     <a href="{{ route('vendors.delete-document', ['venID' => $docs->vendor_id, 'id' => $docs->vendor_doc_id])}}"><i class="far fa-trash-alt"></i></a>      </td>
                                 </tr>
                                 @endforeach
                             </tbody>

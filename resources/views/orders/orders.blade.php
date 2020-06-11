@@ -56,14 +56,11 @@
                             </thead>
 
                                 <tbody>
-                                    @foreach ($errors as $prod)
+                                    @foreach ($data as $orders)
                                     <tr>
-                                    <td>{{$prod->prod_id}}</td>
-
-                                    <td><img src="{{ route('image.displayImage',$prod->product_main_image) }}" ></td>
-                                    <td></td>
-                                    <td>{{$prod->product_name}}</td>
-                                    <td>R{{$prod->product_price}}</td>
+                                    <td>{{$orders->order_id}}</td>
+                                    <td>{{$orders->product_name}}</td>
+                                    <td>R{{$orders->vendor_}}</td>
                                     <td>{{$prod->cat_name}}</td>
                                     <td>{{$prod->subcat_name}}</td>
                                     <td>

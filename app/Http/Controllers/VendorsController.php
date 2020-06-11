@@ -75,11 +75,37 @@ class VendorsController extends Controller
     }
     public function documentAdd(Request $request){
 
+        $curProd = app(Vendor::class)->getVendorDetail($request->id);
+
+        $docName = $request->input('document-name');
+        $docDesc = $request->input('document-description');
+        $docItem = $request->input('document-item');
+        //image logo
+        $path = $request->file('document-item')->store('public/vendor/vendor-documents');
+        $fileName = str_replace("public/vendor/vendor-documents/", "", $path);
+        $document = array(
+            'vendor_id' => $request->id,
+            'user_id' => $curProd[0]->user_id,
+            'document_description' => $docDesc,
+            'document_name' => $docName,
+            'document_location' => $fileName ,
+        );
+        $q = app(Vendor::class)->addDocumentData($document);
+        if ($q == true) {
+            return redirect()->route('vendors.documents', ['id' => $request->id, 'name' => $curProd[0]->vendor_business_name])->with('message', 'Added document');
+        } else {
+            return back()->with('message', 'Error occured D1');
+        }
     }
     public function documentDelete(Request $request){
-
+        $doc = app(Vendor::class)->deleteDocument($request->id);
+        $curProd = app(Vendor::class)->getVendorDetail($request->venID);
+        if($doc == true){
+            return redirect()->route('vendors.documents', ['id' => $request->id, 'name' => $curProd[0]->vendor_business_name])->with('message', 'Deleted document');
+        } else {
+            return back()->with('message', 'Error occured D2');
+        }
     }
-    public function documentEdit(){}
     public function delete(Request $request)
     {
         $v = app(Vendor::class)->deleteVendor($request->id);

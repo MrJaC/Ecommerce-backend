@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Orders;
 class OrdersController extends Controller
 {
     public function __construct()
@@ -12,7 +12,9 @@ class OrdersController extends Controller
     }
 
     public function index(){
-        return view('orders/orders');
+        $data = app(Orders::class)->getOrders();
+
+        return view('orders/orders', ['data' => $data]);
     }
 
 }

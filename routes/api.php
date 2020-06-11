@@ -38,6 +38,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     Route::group(['prefix' => 'subcat', 'name' => 'subcategory'], function () {
         Route::get('/subcategories', 'Api\SubcategoriesAPIController@index')->name('subcategories');
         Route::get('/get-subcat', 'Api\SubcategoriesAPIController@getSubcat')->name('cat-sub');
+        Route::get('/get-prod-sub', 'Api\SubcategoriesAPIController@getProdViaSub')->name('prod-sub');
     });
     //Vendors
     Route::group(['prefix' => 'ven', 'name' => 'vendors'], function () {

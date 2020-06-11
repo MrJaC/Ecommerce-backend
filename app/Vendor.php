@@ -144,4 +144,21 @@ class Vendor extends Model
         ->get();
         return $vendor;
     }
+    //Document Section
+    public function addDocumentData($data){
+
+        if($q = DB::table('vendor_documents')->insert($data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function deleteDocument($id){
+        if($q = DB::table('vendor_documents')->where('vendor_doc_id',$id)->delete()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //End Document Section
 }

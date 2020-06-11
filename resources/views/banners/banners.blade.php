@@ -44,19 +44,21 @@
 
                       @endif
                       <div class="row">
-                          <div class="col-6">
+                          <div class="col-12">
                       <div class="form-group">
                         <label for="banner-name">Banner name</label>
                         <input type="text" class="form-control" id="banner-name" name="banner-name" placeholder="Enter Banner Name">
                       </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                          <label for="banner-item">Banner Item</label>
-                          <input type="file"  id="banner-item" name="banner-item" placeholder="Choose your banner">
-                        </div>
-                      </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                              <label for="banner-item">Banner Item</label>
+                              <input type="file"  id="banner-item" name="banner-item" placeholder="Choose your banner">
+                            </div>
+                          </div>
+                        </div>
                     <!-- /.card-body -->
 
                     <div class="card-footer">
@@ -93,6 +95,8 @@
                           <th>ID</th>
                           <th>Banner Name</th>
                           <th>Image</th>
+                          <th>Active</th>
+                          <th>Tappable</th>
                           <th>Actions</th>
 
                         </tr>
@@ -106,6 +110,20 @@
                                 <img src="{{ url('storage/banners/'.$ban->banner_image) }}" class="product-image-thumb" alt="{{$ban->banner_image}}"/>
                               </a></td>
                             <td>
+                                @if($ban->active == 1)
+                                Active
+                                @elseif($ban->active == 0)
+                                Deactivated
+                                @endif
+                            </td>
+                        <td>
+                            @if($ban->vendor_id == null)
+                            No
+                            @elseif($ban->vendor_id == !null)
+                            Yes
+                            @endif
+                        </td>
+                            <td>
                             <a   href="{{ route('categories.edit-cat',['id' => $ban->id, 'name' => $ban->banner_name])}}"><i class="far fa-edit"></i></a>
                             <a href="{{ route('categories.delete', ['id' => $ban->id])}}"><i class="far fa-trash-alt"></i></a>
                                 </td>
@@ -117,6 +135,8 @@
                             <th>ID</th>
                             <th>Cat Name</th>
                             <th>Image</th>
+                            <th>Active</th>
+                            <th>Tappable</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>
