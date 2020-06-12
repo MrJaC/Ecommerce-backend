@@ -125,6 +125,8 @@
                         </div>
                       </div>
                       <div class="col-md-6">
+                          @if(Auth::user()->role == 4)
+                          @elseif(Auth::user()->role == 1)
                         <div class="form-group">
                             <label>Vendor</label>
                             <select class="form-control select2" name="vendor" id="vendor" style="width: 100%;" required>
@@ -137,6 +139,7 @@
 
                             </select>
                           </div>
+                          @endif
                     </div>
                 </div>
             </div>

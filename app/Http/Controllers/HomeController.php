@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Categories;
 use App\Products;
 use App\SubCategories;
+use App\Vendor;
 use Illuminate\Support\Facades\Auth;
 use DB;
 class HomeController extends Controller
@@ -31,18 +32,42 @@ class HomeController extends Controller
          Get all data
 
         */
-        $cat = app(Categories::class)->getCat();
-        $prod = app(Products::class)->getProducts();
-        $subcat = app(SubCategories::class)->getData();
-        $user = DB::table('users')->get();
-        return view('dashboard/dashboard',
-    [
-        'cat' => $cat,
-        'subcat' => $subcat,
-        'product' => $prod,
-        'users' => $user
 
-    ]);
+
+        if(Auth::user()->role == 1){
+
+            $cat = app(Categories::class)->getCat();
+            $prod = app(Products::class)->getProducts();
+            $subcat = app(SubCategories::class)->getData();
+            $user = DB::table('users')->get();
+
+            return view('dashboard/dashboard',
+            [
+                'cat' => $cat,
+                'subcat' => $subcat,
+                'product' => $prod,
+                'users' => $user
+
+            ]);
+        }elseif(Auth::user()->role == 4){
+
+            //getting vendor data
+
+
+            $prod = app(Vendor::class)->getMyVendorProducts(Auth::user()->id);
+
+            $user = DB::table('users')->get();
+            return view('dashboard/vendor/dashboard',
+            [
+
+                'product' => $prod,
+                'users' => $user
+
+            ]);
+        }
+
+
+
     }
 
 

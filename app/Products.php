@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class Products extends Model
 {
+    //Admin Functions
     public function getProducts(){
         $prod = DB::table('products')
         ->select(
@@ -122,4 +123,40 @@ class Products extends Model
         $q = DB::table('products')->where('prod_id', $id)->delete();
         return $q;
     }
+
+    //End Admin functions
+
+    //Vendor Functions
+    public function getVendorProducts($id){
+        $prod = DB::table('products')
+        ->select(
+            'products.prod_id',
+            'products.product_name',
+            'products.product_price',
+            'products.product_cat',
+            'products.product_subcat',
+            'products.product_main_image',
+            'products.product_sku',
+            'products.product_description',
+            'products.product_amount',
+            'products.vendor_id',
+            'products.user_id',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'vendors.id AS vendorID',
+            'vendors.vendor_business_name'
+        )
+        ->leftJoin('categories','products.product_cat', '=', 'categories.id')
+        ->leftJoin('subcategories', 'products.product_subcat', '=', 'subcategories.sub_id')
+        ->leftJoin('vendors', 'products.vendor_id','=', 'vendors.id')
+        ->where('products.vendor_id', '=', $id)
+        ->get();
+        error_log(print_r($prod,true));
+        return $prod;
+    }
+    //End Vendor Functions
 }

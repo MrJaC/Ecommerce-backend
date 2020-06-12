@@ -34,15 +34,26 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $prod = app(Products::class)->getProducts();
-        error_log(print_r($prod,true));
-        return view('products/products', ['products' => $prod]);
+        $id = Auth::id();
+        if (Auth::user()->role == 1) {
+            $prod = app(Products::class)->getProducts();
+            return view('products/products', ['products' => $prod]);
+        } elseif (Auth::user()->role == 4) {
+            $vendorID = app(Vendor::class)->getUserVendor($id);
+            $prod = app(Vendor::class)->getMyVendorProducts($vendorID[0]->vendorID);
+            error_log(print_r($prod, true));
+            return view('products/products', ['products' => $prod]);
+        }
     }
     public function create()
     {
         $cat = app(Categories::class)->getCat();
         $subcat = app(SubCategories::class)->getData();
         $vendors = app(Vendor::class)->getVendors();
+
+        $id = Auth::id();
+        $vendorID = app(Vendor::class)->getUserVendor($id);
+        error_log(print_r($vendorID, true));
         return view('products/create-products', ['category' => $cat, 'subcategory' => $subcat, 'vendors' => $vendors]);
     }
     public function add(Request $request)
@@ -60,18 +71,36 @@ class ProductsController extends Controller
 
 
         $id = Auth::id();
-        $data = array(
-            'product_name' => $prodName,
-            'product_price' => $prodPrice,
-            'product_cat' => $prodCat,
-            'product_subcat' => $prodSubcat,
-            'product_description' => $prodDescription,
-            'product_sku' => $prodSky,
-            'product_main_image' => $fileName,
-            'product_amount' => $prodStock,
-            'user_id' => $id,
-            'vendor_id' => $vendor
-        );
+        $vendorID = app(Vendor::class)->getUserVendor($id);
+
+        if (Auth::user()->role == 4) {
+            $data = array(
+                'product_name' => $prodName,
+                'product_price' => $prodPrice,
+                'product_cat' => $prodCat,
+                'product_subcat' => $prodSubcat,
+                'product_description' => $prodDescription,
+                'product_sku' => $prodSky,
+                'product_main_image' => $fileName,
+                'product_amount' => $prodStock,
+                'user_id' => $id,
+                'vendor_id' => $vendorID[0]->vendorID
+            );
+        } else {
+            $data = array(
+                'product_name' => $prodName,
+                'product_price' => $prodPrice,
+                'product_cat' => $prodCat,
+                'product_subcat' => $prodSubcat,
+                'product_description' => $prodDescription,
+                'product_sku' => $prodSky,
+                'product_main_image' => $fileName,
+                'product_amount' => $prodStock,
+                'user_id' => $id,
+                'vendor_id' => $vendor
+            );
+        }
+
         //Log::debug('Check', $data);
 
         $q = app(Products::class)->addProd($data);

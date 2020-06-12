@@ -13,15 +13,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
-              <li class="breadcrumb-item active">                          @if ($cus->role == 1)
-                Admin
-           @elseif ($cus->role == 2)
-               Employee
-               @elseif ($cus->role == 3)
-               Staff
-               @elseif ($cus->role == 4)
-               Vendor
-           @endif</li>
+
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,7 +32,7 @@
 
               <div class="card">
                 <div class="card-header border-0">
-                  <h3 class="card-title">Products</h3>
+                  <h3 class="card-title">Your Products</h3>
                   <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-sm">
                       <i class="fas fa-download"></i>
