@@ -135,19 +135,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/vendors" class="nav-link">
+                <a href="{{ route('vendors.approved-vendors') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/vendors" class="nav-link">
+                <a href="{{ route('vendors.pending-vendors') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/vendors" class="nav-link">
+                <a href="{{ route('vendors.rejected-vendors') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Rejected</p>
                 </a>

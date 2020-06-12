@@ -105,18 +105,16 @@
                       </tr>
                       </thead>
                       <tbody>
-                          @foreach ($product ?? '' as $prod)
+                          @foreach ($data as $order)
                           <tr>
-                          <td>{{$prod->prod_id}}</td>
-
-                          <td><img class="product-image-thumb" src="{{ url('storage/main-images/',$prod->product_main_image) }}" ></td>
-                          <td>{{$prod->product_name}}</td>
+                          <td>{{$order->order_id}}</td>
+                          <td>{{$order->vendor_business_name}}</td>
                           <td></td>
-                          <td>R{{$prod->product_price}}</td>
+                          <td>R{{$order->total_price}}</td>
                           <td>TBA</td>
-                          <td>                        <a href="{{ route('products.view-product',['id' => $prod->prod_id, 'name' => $prod->product_name])}}" class="text-muted">
+                          <td>
                               <i class="fas fa-search"></i>
-                            </a></td>
+                           </td>
                           </tr>
                           @endforeach
                       </tbody>

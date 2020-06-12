@@ -59,6 +59,7 @@ class VendorsController extends Controller
             ]
         );
     }
+
     public function documents($id,$name){
 
         $data = app(Vendor::class)->getDocuments($id);
@@ -228,5 +229,26 @@ class VendorsController extends Controller
         } else {
             return back()->with('message', 'Error occured V3');
         }
+    }
+
+    //approval methods
+    public function vendorApproved(){
+
+        $vendors = app(Vendor::class)->getAppVendors();
+
+        return view('vendors/status/approved', ['vendors' => $vendors]);
+    }
+    public function vendorPending(){
+        $vendors = app(Vendor::class)->getPenVendors();
+
+        return view('vendors/status/pending', ['vendors' => $vendors]);
+    }
+    public function vendorRejected(){
+        $vendors = app(Vendor::class)->getRejVendors();
+
+        return view('vendors/status/rejected', ['vendors' => $vendors]);
+    }
+    public function updatedStatus(){
+
     }
 }

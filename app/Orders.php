@@ -24,10 +24,14 @@ class Orders extends Model
             'products.vendor_id',
             'products.product_name',
             'products.product_sku',
+            'vendors.id',
+            'vendors.vendor_business_name'
 
         )
         ->leftJoin('users', 'orders.user_id', '=', 'users.id')
-        ->leftJoin('products', 'orders.product_id', '=', 'products.prod_id')->get();
+        ->leftJoin('products', 'orders.product_id', '=', 'products.prod_id')
+        ->leftJoin('vendors', 'orders.vendor_id', '=' , 'vendors.id')
+        ->get();
 
         return $query;
     }

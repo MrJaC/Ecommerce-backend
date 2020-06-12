@@ -54,7 +54,8 @@ class ProductsAPIController extends Controller
         if ($data = app(Products::class)->getProdViaSub($request->subID,$request->catID)->IsEmpty()) {
             return response()->json([
                 'message' => 'No Data',
-            ], 401);
+                'data' => 0
+            ], 201);
         } else {
             $data = app(Products::class)->getProdViaSub($request->subID,$request->catID);
             return response()->json([

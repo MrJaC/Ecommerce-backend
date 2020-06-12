@@ -39,7 +39,7 @@ class VendorsAPIController extends Controller
         if($myProducts){
             return response()->json([
                 'status' => 'Ok',
-                'message' =>  $myProducts
+                'data' =>  $myProducts
             ],201);
         }else{
             return response()->json([

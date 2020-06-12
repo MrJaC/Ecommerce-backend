@@ -63,7 +63,8 @@ class SubcategoriesAPIController extends Controller
         error_log(print_r($data, true));
         if (app(Products::class)->getProdViaSub($subID, $catID)->isEmpty()) {
             return response()->json(
-                ['message' => 'No data'],
+                ['message' => 'No data',
+                'data' => 0],
                 201
             );
         } else {

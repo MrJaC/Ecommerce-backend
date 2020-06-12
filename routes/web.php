@@ -90,6 +90,9 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::get('/documents/{id}/{name}', 'VendorsController@documents')->name('documents');
     Route::post('document-add', 'VendorsController@documentAdd')->name('add-document');
     Route::get('delete-doc','VendorsController@documentDelete')->name('delete-document');
+    Route::get('/pending-vendors', 'VendorsController@vendorPending')->name('pending-vendors');
+    Route::get('/rejected-vendors', 'VendorsController@vendorRejected')->name('rejected-vendors');
+    Route::get('/approved-vendors', 'VendorsController@vendorApproved')->name('approved-vendors');
 });
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 

@@ -39,7 +39,111 @@ class Vendor extends Model
         ->leftJoin('users', 'vendors.user_id', '=', 'users.id')->get();
         return $vendor;
     }
-
+    public function getAppVendors(){
+        $vendor = DB::table('vendors')->select(
+            'vendors.id AS vendorID',
+            'vendors.vendor_logo',
+            'vendors.vendor_business_name',
+            'vendors.user_id',
+            'vendors.vendor_mobile',
+            'vendors.vendor_category',
+            'vendors.vendor_subcategory',
+            'vendors.vendor_address_street',
+            'vendors.vendor_address_number',
+            'vendors.vendor_address_suburb',
+            'vendors.vendor_address_postcode',
+            'vendors.vendor_website',
+            'vendors.vendor_email',
+            'vendors.vendor_landline',
+            'vendors.approval_status',
+            'vendors.about',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'users.id',
+            'users.name',
+            'users.email'
+        )
+        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
+        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+        ->where('vendors.approval_status', '=', 2)
+        ->get();
+        return $vendor;
+    }
+    public function getPenVendors(){
+        $vendor = DB::table('vendors')->select(
+            'vendors.id AS vendorID',
+            'vendors.vendor_logo',
+            'vendors.vendor_business_name',
+            'vendors.user_id',
+            'vendors.vendor_mobile',
+            'vendors.vendor_category',
+            'vendors.vendor_subcategory',
+            'vendors.vendor_address_street',
+            'vendors.vendor_address_number',
+            'vendors.vendor_address_suburb',
+            'vendors.vendor_address_postcode',
+            'vendors.vendor_website',
+            'vendors.vendor_email',
+            'vendors.vendor_landline',
+            'vendors.approval_status',
+            'vendors.about',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'users.id',
+            'users.name',
+            'users.email'
+        )
+        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
+        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+        ->where('vendors.approval_status', '=', 0)
+        ->get();
+        return $vendor;
+    }
+    public function getRejVendors(){
+        $vendor = DB::table('vendors')->select(
+            'vendors.id AS vendorID',
+            'vendors.vendor_logo',
+            'vendors.vendor_business_name',
+            'vendors.user_id',
+            'vendors.vendor_mobile',
+            'vendors.vendor_category',
+            'vendors.vendor_subcategory',
+            'vendors.vendor_address_street',
+            'vendors.vendor_address_number',
+            'vendors.vendor_address_suburb',
+            'vendors.vendor_address_postcode',
+            'vendors.vendor_website',
+            'vendors.vendor_email',
+            'vendors.vendor_landline',
+            'vendors.approval_status',
+            'vendors.about',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'users.id',
+            'users.name',
+            'users.email'
+        )
+        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
+        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+        ->where('vendors.approval_status', '=', 3)
+        ->get();
+        return $vendor;
+    }
     public function getVendorDetail($id){
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',

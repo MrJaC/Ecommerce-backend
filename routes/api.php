@@ -53,7 +53,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
         Route::get('/products', 'Api\ProductsAPIController@index')->name('products');
         Route::get('/get-products', 'Api\ProductsAPIController@getProductID')->name('product-id');
         Route::post('add-products', 'Api\ProductsAPIController@addProd');
-        Route::get('/get-prod-subcat', 'Api\ProductsAPIController@getProdIDViaSub')->name('get-prodsubcat');
+        Route::get('/get-prod-subcat', 'Api\ProductsAPIController@getProdIDViaSub')->name('get-prod-subcat');
     });
     //Banners
     Route::group(['prefix' => 'ban', 'name' => 'banners'], function () {
