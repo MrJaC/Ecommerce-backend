@@ -144,6 +144,11 @@ class Vendor extends Model
         ->get();
         return $vendor;
     }
+    //vendor check
+    public function getApproval($id){
+
+    }
+
     //Document Section
     public function addDocumentData($data){
 
@@ -159,6 +164,9 @@ class Vendor extends Model
         }else{
             return false;
         }
+    }
+    public function checkDocument($id){
+
     }
     //End Document Section
 }

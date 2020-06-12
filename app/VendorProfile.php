@@ -17,4 +17,6 @@ class VendorProfile extends Model
         }
 
     }
+
+
 }

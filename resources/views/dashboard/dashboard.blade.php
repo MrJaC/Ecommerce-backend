@@ -55,7 +55,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product as $prod)
+                        @foreach ($product ?? '' as $prod)
                         <tr>
                         <td>{{$prod->prod_id}}</td>
 
@@ -105,7 +105,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                          @foreach ($product as $prod)
+                          @foreach ($product ?? '' as $prod)
                           <tr>
                           <td>{{$prod->prod_id}}</td>
 
