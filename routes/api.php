@@ -59,5 +59,8 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     Route::group(['prefix' => 'ban', 'name' => 'banners'], function () {
         Route::get('/banners', 'Api\BannersAPIController@index')->name('banners');
     });
+    Route::group(['prefix' => 'user', 'name' => 'user'], function () {
+        Route::get('/user-address', 'Api\UsersAPIController@getUserAddresses')->name('user-address');
+    });
 });
 //Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');

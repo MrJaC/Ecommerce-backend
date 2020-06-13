@@ -102,6 +102,7 @@
                               <label for="category-name">Email</label>
                               <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                             </div>
+                            <!--
                             <div class="form-group">
                               <label>Categories</label>
                               <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
@@ -125,7 +126,7 @@
 
 
                               </select>
-                            </div>
+                            </div>-->
 
 
                         <!-- /.card-body -->

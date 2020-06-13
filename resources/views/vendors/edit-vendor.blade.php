@@ -113,7 +113,7 @@
                                   <input type="email" class="form-control" id="email" name="email" value="{{$ven->vendor_email}}" placeholder="Enter your email" required>
                                 </div>
                                 @endforeach
-                                <div class="form-group">
+                               <!-- <div class="form-group">
                                   <label>Categories</label>
                                   <select class="form-control select2" name="prod-cat" id="prod-cat" style="width: 100%;" required>
                                     @foreach($current ?? '' as $curr)
@@ -140,7 +140,7 @@
 
 
                                   </select>
-                                </div>
+                                </div>-->
 
 
                             <!-- /.card-body -->

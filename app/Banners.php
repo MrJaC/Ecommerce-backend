@@ -21,4 +21,14 @@ class Banners extends Model
             return false;
         }
     }
+    public function deleteBanner($id){
+        $banner = DB::table('banners')->where('id', $id)->delete();
+
+        if($banner){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

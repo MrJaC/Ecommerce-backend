@@ -123,11 +123,18 @@ Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
 
     Route::get('/', 'OrdersController@index')->name('orders');
 });
+//Payment settings
+Route::group(['prefix' => 'payment-settings', 'as' => 'pay-settings.'], function () {
+
+    Route::get('/', 'PaymentSettingsController@index')->name('view-payment-settings');
+
+});
 //Banners
 Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
 
     Route::get('/', 'BannersController@index')->name('banners');
     Route::post('/add-banner', 'BannersController@add')->name('add-banner');
+    Route::get('/delete-banner', 'BannersController@delete')->name('delete-banner');
 });
 
 //test image
