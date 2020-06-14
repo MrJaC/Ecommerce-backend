@@ -41,5 +41,23 @@ class UserProfile extends Model
             return false;
         }
     }
+    public function updateUserAddress($id, $data){
+        $q = DB::table('user_details')->where('details_id',$id)->update($data);
+        error_log(print_r($q,true));
+        if($q == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function deleteUserAddress($id){
+        if($q = DB::table('user_details')->where('details_id', $id)->delete()){
+            return true;
+        }else{
+            return false;
+        }
+
+
+    }
 
 }

@@ -61,6 +61,9 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     });
     Route::group(['prefix' => 'user', 'name' => 'user'], function () {
         Route::get('/user-address', 'Api\UsersAPIController@getUserAddresses')->name('user-address');
+        Route::post('update-address', 'Api\UsersAPIController@updateAddress')->name('update-address');
+        Route::post('add-address', 'Api\UsersAPIController@addUserAddress')->name('add-address');
+        Route::post('del-address', 'Api\UsersAPIController@deleteAddress')->name('del-address');
     });
 });
 //Route::get('/', 'Api\CategoryAPIController@index')->name('categories-api');
