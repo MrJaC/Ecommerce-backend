@@ -24,6 +24,7 @@ Route::group([
     ], function () {
         Route::get('logout', 'Auth\AuthController@logout');
         Route::get('user', 'Auth\AuthController@user');
+        Route::get('check-login','Auth\AuthController@checkLogin');
     });
     Route::post('userdetails', 'Auth\AuthController@userdetails');
 });
@@ -62,6 +63,9 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     Route::group(['prefix' => 'user', 'name' => 'user'], function () {
         Route::get('/user-address', 'Api\UsersAPIController@getUserAddresses')->name('user-address');
         Route::post('update-address', 'Api\UsersAPIController@updateAddress')->name('update-address');
+        Route::post('update-mobile', 'Api\UsersAPIController@updateMobile')->name('update-mobile');
+        Route::post('update-landline', 'Api\UsersAPIController@updateLandline')->name('update-landline');
+        Route::post('update-name', 'Api\UsersAPIController@updateName')->name('update-name');
         Route::post('add-address', 'Api\UsersAPIController@addUserAddress')->name('add-address');
         Route::post('del-address', 'Api\UsersAPIController@deleteAddress')->name('del-address');
     });

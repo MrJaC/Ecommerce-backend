@@ -37,13 +37,14 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
+            'auth' => 'Authorized',
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString(),
             'user_name' => $user->name,
             'user_email' => $user->email,
             'user_role' => $user->role,
-            'user_id'=> $user->id
+            'user_id' => $user->id
 
         ]);
     }
@@ -55,7 +56,7 @@ class AuthController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ]);
-            //laziness
+        //laziness
         $staffCheck =  app(Staff::class)->checkEmail($request->input('email'));
         if ($staffCheck != true) {
             $user = new User;
@@ -73,14 +74,40 @@ class AuthController extends Controller
             ], 201);
         }
     }
-    public function logout(Request $request)
+    public function checkLogin(Request $res)
     {
-        $request->user()->token()->revoke();
-        return response()->json([
-            'message' => 'Successfully logged out'
-        ],201);
+        if (Auth::user()) {
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Logged in'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Not Logged in'
+            ]);
+        }
     }
-    public function userdetails(Request $request){
+    public function logout(Request $res)
+    {
+        if (Auth::user()) {
+            $user = Auth::user()->token();
+            $user->revoke();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Logout successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to Logout'
+            ]);
+        }
+    }
+    public function userdetails(Request $request)
+    {
         //error_log(print_r($request,true));
         $id = $request->id;
         $data = [
@@ -91,17 +118,17 @@ class AuthController extends Controller
             'state' => $request->province,
             'country' => $request->country
         ];
-        $userData = app(UserProfile::class)->updateProfile($id,$data);
-        if($userData == true){
+        $userData = app(UserProfile::class)->updateProfile($id, $data);
+        if ($userData == true) {
             return response()->json([
                 'message' => 'Details updated'
-            ],201);
-        }else{
+            ], 201);
+        } else {
             return response()->json([
                 'message' => 'Something went wrong ERR_UP1'
-            ],201);
+            ], 201);
         }
-        error_log(print_r($data,true));
+        error_log(print_r($data, true));
     }
     /**
      * Get the authenticated User

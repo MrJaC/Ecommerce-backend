@@ -36,22 +36,21 @@ class SubcategoriesAPIController extends Controller
     {
         $id = $request->id;
         $data = app(Subcategories::class)->getSubcats($id);
-        error_log(print_r($request->id, true));
-        error_log(print_r($data, true));
-        if ($data) {
+        if(app(Subcategories::class)->getSubcats($id)->isEmpty()){
+
+           $data = array('none');
             return response()->json(
                 [
-                    'message' => 'success',
+                    'status' => 'Good',
+                    'message' => 'No data',
                     'data' => $data
-
-                ],
-                201
-            );
-        } else {
-            return response()->json(
-                ['message' => 'No data'],
-                201
-            );
+                ],201);
+        }else{
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Got Data',
+                'data' => $data
+            ]);
         }
     }
     public function getProdViaSub(Request $request)
@@ -59,15 +58,18 @@ class SubcategoriesAPIController extends Controller
         $subID = $request->subID;
         $catID = $request->catID;
 
-        $data = app(Products::class)->getProdViaSub($subID, $catID);
-        error_log(print_r($data, true));
+
+
         if (app(Products::class)->getProdViaSub($subID, $catID)->isEmpty()) {
+
             return response()->json(
                 ['message' => 'No data',
                 'data' => 0],
                 201
             );
         } else {
+            $data = app(Products::class)->getProdViaSub($subID, $catID);
+            error_log(print_r($data, true));
             return response()->json(
                 [
                     'message' => 'success',

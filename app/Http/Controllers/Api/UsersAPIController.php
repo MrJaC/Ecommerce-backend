@@ -57,6 +57,69 @@ class UsersAPIController extends Controller
             ], 201);
         }
     }
+    //update mobile
+    public function updateMobile(Request $request){
+        $id = $request->id;
+        //$user_id = $request->user_id;
+        $data = array(
+            'mobile_number' => $request->mobile
+        );
+        error_log(print_r($data,true));
+        error_log(print_r($id,true));
+        $updateAddress = app(UserProfile::class)->updateProfile($id, $data);
+        if ($updateAddress == true) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Mobile number updated'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Failed Mobile number update, try again'
+            ], 201);
+        }
+    }
+    //update landline
+    public function updateLandline(Request $request){
+        $id = $request->id;
+        //$user_id = $request->user_id;
+        $data = array(
+            'landline_number' => $request->landline
+        );
+        error_log(print_r($data,true));
+        error_log(print_r($id,true));
+        $updateAddress = app(UserProfile::class)->updateProfile($id, $data);
+        if ($updateAddress == true) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Landline number updated'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Landline number update, try again'
+            ], 201);
+        }
+    }
+    public function updateName(Request $request){
+        $user_id = $request->user_id;
+        $data = array(
+            'name' => $request->name
+        );
+
+        $updateAddress = app(UserProfile::class)->updateUName($user_id,$data);
+        if ($updateAddress == true) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Name updated'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Failed Name update, try again'
+            ], 201);
+        }
+    }
     //add user address
     public function addUserAddress(Request $request){
         //$details_id = $request->details_id;
