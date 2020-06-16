@@ -48,6 +48,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
         Route::post('/add-vend-product', 'Api\VendorsAPIController@addVendorProduct');
         Route::get('/get-my-products', 'Api\VendorsAPIController@getMyVendorProducts');
         Route::get('/vendor-get', 'Api\VendorsAPIController@getVendor');
+        Route::post('/apply-vendor', 'Api\VendorsAPIController@addVendor')->name('apply-vendor');
     });
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {

@@ -96,4 +96,46 @@ class VendorsAPIController extends Controller
             ],201);
         }
     }
+
+
+    //addVendor
+    public function addVendor(Request $request){
+
+        $data = array(
+            'vendor_business_name'      => $request->business_name,
+            'user_id'                   => $request->user_id,
+            'vendor_mobile'             => $request->mobile,
+            'vendor_landline'           => $request->landline,
+            'vendor_address_street'     => $request->streetAddress,
+            'vendor_address_number'     => $request->streetNumber,
+            'vendor_address_suburb'     => $request->suburb,
+            'vendor_address_postcode'   => $request->postcode,
+            'vendor_email'              => $request->email,
+            'vendor_website'            => $request->website,
+            'about'              => $request->about,
+            'approval_status'           => 0
+
+        );
+
+
+        $check = app(Vendor::class)->checkVendor($request->user_id)->isEmpty();
+        error_log(print_r($check,true));
+        if($check){
+            //add vendor
+            //app(VendorProfile::class)->add($data);
+            app(VendorProfile::class)->add($data);
+            return response()->json([
+                'status' => 'Sent for ',
+                'message' => 'Vendor Added'
+            ],201);
+
+        }else{
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Vendor already exists'
+            ], 201);
+
+
+        }
+    }
 }

@@ -273,4 +273,10 @@ class Vendor extends Model
 
     }
     //End Document Section
+    public function checkVendor($id){
+        $vendor = DB::table('vendors')
+        ->where('user_id', '=', $id)
+        ->get();
+        return $vendor;
+    }
 }
