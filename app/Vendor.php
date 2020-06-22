@@ -252,6 +252,14 @@ class Vendor extends Model
             return false;
         }
     }
+    public function updateMyVendor($id, $data){
+        $vendor = DB::table('vendors')->where('user_id', $id)->update($data);
+        if ($vendor == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function getMyVendorProducts($id)
     {
         $vendor = DB::table('products')

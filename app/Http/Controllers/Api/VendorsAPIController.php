@@ -99,6 +99,39 @@ class VendorsAPIController extends Controller
             ], 201);
         }
     }
+    public function updateVendorProduct(Request $request)
+    {
+        $user_id = $request->user_id;
+        $vendor_id = $request->vendor_id;
+
+        $data = array(
+            'product_name' => $request->prod_name,
+            'product_price' => $request->prod_price,
+            'product_cat' => $request->prod_cat,
+            'product_subcat' => $request->prod_subcat,
+            'product_description' => $request->prod_desc,
+            'product_sku' => $request->prod_sku,
+            //'product_main_image' => $fileName,
+            'product_amount' => $request->prod_amount,
+            'user_id' => $request->user_id,
+            'vendor_id' => $request->vend_id
+        );
+
+        error_log(print_r($data, true));
+        $updateProd = app(Products::class)->editProduct($user_id,$data);
+
+        if ($updateProd) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Updated Product'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Failed Product update'
+            ], 201);
+        }
+    }
 
 
     //addVendor
@@ -139,6 +172,23 @@ class VendorsAPIController extends Controller
             ], 201);
         }
     }
+    //delete vendor product
+    public function deleteProd(Request $request){
+        $id = $request->prod_id;
+        $query = app(Products::class)->deleteProd($id);
+        if ($query) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Deleted product'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Failed product delete, try again'
+            ], 201);
+        }
+
+    }
     //edit vendor details
     public function editVendorName(Request $request)
     {
@@ -146,7 +196,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_business_name' => $request->v_name);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -165,7 +215,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_mobile' => $request->v_mobile);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -184,7 +234,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_landline' => $request->v_landline);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -201,9 +251,9 @@ class VendorsAPIController extends Controller
     {
         $vendor_id = $request->vendor_id;
         $user_id = $request->user_id;
-        $data = array('vendor_emaile' => $request->v_email);
+        $data = array('vendor_email' => $request->v_email);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -222,7 +272,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_address_street' => $request->v_streetAddress);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -241,7 +291,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_address_number' => $request->v_streetNumber);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -260,7 +310,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_address_suburb' => $request->v_suburb);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -279,7 +329,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_address_postcode' => $request->v_postcode);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -298,7 +348,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('vendor_website' => $request->v_website);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',
@@ -317,7 +367,7 @@ class VendorsAPIController extends Controller
         $user_id = $request->user_id;
         $data = array('about' => $request->v_about);
 
-        $updateDetails = app(Vendor::class)->updateVendor($user_id, $data);
+        $updateDetails = app(Vendor::class)->updateMyVendor($user_id, $data);
         if ($updateDetails == true) {
             return response()->json([
                 'status' => 'Good',

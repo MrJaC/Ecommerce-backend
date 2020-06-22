@@ -62,6 +62,11 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
         Route::post('edit-vendor-website', 'Api\VendorsAPIController@editVendorWebsite')->name('edit-vendor-website');
         Route::post('edit-vendor-about', 'Api\VendorsAPIController@editVendorAbout')->name('edit-vendor-about');
         //EndDetails update
+
+        //vendor product delete
+        Route::post('delete-prod', 'Api\VendorsAPIController@deleteProd')->name('delete-prod');
+        //vendor product update
+        Route::post('update-product', 'Api\VendorsAPIController@updateVendorProduct')->name('update-product');
     });
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {
