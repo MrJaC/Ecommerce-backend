@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+
 class Vendor extends Model
 {
-    public function getVendors(){
+    public function getVendors()
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -34,12 +36,13 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')->get();
         return $vendor;
     }
-    public function getAppVendors(){
+    public function getAppVendors()
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -67,14 +70,15 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
-        ->where('vendors.approval_status', '=', 2)
-        ->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+            ->where('vendors.approval_status', '=', 2)
+            ->get();
         return $vendor;
     }
-    public function getPenVendors(){
+    public function getPenVendors()
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -102,14 +106,15 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
-        ->where('vendors.approval_status', '=', 0)
-        ->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+            ->where('vendors.approval_status', '=', 0)
+            ->get();
         return $vendor;
     }
-    public function getRejVendors(){
+    public function getRejVendors()
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -137,14 +142,15 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
-        ->where('vendors.approval_status', '=', 3)
-        ->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+            ->where('vendors.approval_status', '=', 3)
+            ->get();
         return $vendor;
     }
-    public function getVendorDetail($id){
+    public function getVendorDetail($id)
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -172,14 +178,15 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
-        ->where('vendors.id', '=', $id)
-        ->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+            ->where('vendors.id', '=', $id)
+            ->get();
         return $vendor;
     }
-    public function getDocuments($id){
+    public function getDocuments($id)
+    {
         $documents = DB::table('vendor_documents')->select(
             'vendors.id',
             'vendors.vendor_logo',
@@ -192,11 +199,12 @@ class Vendor extends Model
             'vendor_documents.document_name',
             'vendor_documents.document_location'
         )
-        ->leftJoin('vendors','vendors.id' , '=' , 'vendor_documents.vendor_id')
-        ->where('vendor_documents.vendor_id', '=' , $id)->get();
+            ->leftJoin('vendors', 'vendors.id', '=', 'vendor_documents.vendor_id')
+            ->where('vendor_documents.vendor_id', '=', $id)->get();
         return $documents;
     }
-    public function getUserVendor($id){
+    public function getUserVendor($id)
+    {
         $vendor = DB::table('vendors')->select(
             'vendors.id AS vendorID',
             'vendors.vendor_logo',
@@ -222,61 +230,67 @@ class Vendor extends Model
             'users.name',
             'users.email'
         )
-        ->leftJoin('categories','vendors.vendor_category', '=', 'categories.id')
-        ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
-        ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
-        ->where('vendors.user_id', '=', $id)
-        ->get();
+            ->leftJoin('categories', 'vendors.vendor_category', '=', 'categories.id')
+            ->leftJoin('subcategories', 'vendors.vendor_subcategory', '=', 'subcategories.sub_id')
+            ->leftJoin('users', 'vendors.user_id', '=', 'users.id')
+            ->where('vendors.user_id', '=', $id)
+            ->get();
         return $vendor;
     }
-    public function deleteVendor($id){
+    public function deleteVendor($id)
+    {
         $vendor = DB::table('vendors')->where('id', $id)->delete();
 
         return $vendor;
     }
-    public function updateVendor($id, $data){
-        $vendor = DB::table('vendors')->where('id',$id)->update($data);
-        if($vendor == true){
+    public function updateVendor($id, $data)
+    {
+        $vendor = DB::table('vendors')->where('id', $id)->update($data);
+        if ($vendor == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public function getMyVendorProducts($id){
+    public function getMyVendorProducts($id)
+    {
         $vendor = DB::table('products')
-        ->where('vendor_id', '=', $id)
-        ->get();
+            ->where('vendor_id', '=', $id)
+            ->get();
         return $vendor;
     }
     //vendor check
-    public function getApproval($id){
-
+    public function getApproval($id)
+    {
     }
 
     //Document Section
-    public function addDocumentData($data){
+    public function addDocumentData($data)
+    {
 
-        if($q = DB::table('vendor_documents')->insert($data)){
+        if ($q = DB::table('vendor_documents')->insert($data)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public function deleteDocument($id){
-        if($q = DB::table('vendor_documents')->where('vendor_doc_id',$id)->delete()){
+    public function deleteDocument($id)
+    {
+        if ($q = DB::table('vendor_documents')->where('vendor_doc_id', $id)->delete()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public function checkDocument($id){
-
+    public function checkDocument($id)
+    {
     }
     //End Document Section
-    public function checkVendor($id){
+    public function checkVendor($id)
+    {
         $vendor = DB::table('vendors')
-        ->where('user_id', '=', $id)
-        ->get();
+            ->where('user_id', '=', $id)
+            ->get();
         return $vendor;
     }
 }

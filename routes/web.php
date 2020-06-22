@@ -135,6 +135,7 @@ Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
     Route::get('/', 'BannersController@index')->name('banners');
     Route::post('/add-banner', 'BannersController@add')->name('add-banner');
     Route::get('/delete-banner', 'BannersController@delete')->name('delete-banner');
+    Route::get('/active', 'BannersController@active')->name('active');
 });
 
 //test image

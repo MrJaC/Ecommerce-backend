@@ -40,7 +40,7 @@ class BannersController extends Controller
     public function delete(Request $request){
         $banner = app(Banners::class)->deleteBanner($request->id);
         if ($banner == true) {
-            return redirect('/banners')->with('message', 'Delete Banner');
+            return redirect('/banners')->with('message', 'Deleted Banner');
         } else {
             return back()->with('message', 'Error occured B2');
         }

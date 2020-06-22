@@ -124,8 +124,8 @@
                             @endif
                         </td>
                             <td>
-                            <a   href="{{ route('categories.edit-cat',['id' => $ban->id, 'name' => $ban->banner_name])}}"><i class="far fa-edit"></i></a>
-                            <a href="{{ route('categories.delete', ['id' => $ban->id])}}"><i class="far fa-trash-alt"></i></a>
+
+                            <a href="{{ route('banners.delete-banner', ['id' => $ban->id])}}"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endforeach
