@@ -15,10 +15,10 @@
 Auth::routes();
 //default middlewear
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
-Route::get('/vendor', 'VendorController@index')->name('admin')->middleware('admin');
+/*Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/vendor', 'VendorsController@index')->name('admin')->middleware('admin');
 Route::get('/staff', 'StaffController@index')->name('admin')->middleware('admin');
-Route::get('/customer', 'CustomerController@index')->name('admin')->middleware('admin');
+Route::get('/customer', 'CustomerController@index')->name('admin')->middleware('admin');*/
 
 
 Route::get('/register', function () {
@@ -140,3 +140,8 @@ Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
 
 //test image
 Route::get('/{filename}', 'ProductsController@displayImage')->name('image.displayImage');
+
+Route::group(['prefix' => 'policy', 'as' => 'policy.'], function () {
+
+    Route::get('/', 'PrivacyController@privacy')->name('privacy');
+});
