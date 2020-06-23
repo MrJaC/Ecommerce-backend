@@ -172,6 +172,26 @@ class VendorsAPIController extends Controller
             ], 201);
         }
     }
+    //vendor documents
+    public function getVendorDocuments(Request $request){
+        $vendor_id = $request->id;
+        $user_id = $request->user_id;
+
+        $query = app(Vendor::class)->getDocuments($vendor_id);
+        if (!$query->isEmpty()) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => $query
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'No Documents'
+            ], 201);
+        }
+
+
+    }
     //delete vendor product
     public function deleteProd(Request $request){
         $id = $request->prod_id;

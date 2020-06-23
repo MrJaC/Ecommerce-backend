@@ -24,7 +24,7 @@ Route::group([
     ], function () {
         Route::get('logout', 'Auth\AuthController@logout');
         Route::get('user', 'Auth\AuthController@user');
-        Route::get('check-login','Auth\AuthController@checkLogin');
+        Route::get('check-login', 'Auth\AuthController@checkLogin');
     });
     Route::post('userdetails', 'Auth\AuthController@userdetails');
 });
@@ -67,6 +67,9 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
         Route::post('delete-prod', 'Api\VendorsAPIController@deleteProd')->name('delete-prod');
         //vendor product update
         Route::post('update-product', 'Api\VendorsAPIController@updateVendorProduct')->name('update-product');
+
+        //vendor documents
+        Route::get('vendor-documents', 'Api\VendorsAPIController@getVendorDocuments')->name('vendor-documents');
     });
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {
