@@ -109,6 +109,7 @@ class VendorsAPIController extends Controller
             'product_price' => $request->prod_price,
             'product_cat' => $request->prod_cat,
             'product_subcat' => $request->prod_subcat,
+            'product_excerpt' => $request->prod_excerpt,
             'product_description' => $request->prod_desc,
             'product_sku' => $request->prod_sku,
             //'product_main_image' => $fileName,
