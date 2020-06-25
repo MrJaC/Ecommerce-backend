@@ -103,7 +103,7 @@ class VendorsAPIController extends Controller
     {
         $user_id = $request->user_id;
         $vendor_id = $request->vendor_id;
-
+        $prod_id = $request->prod_id;
         $data = array(
             'product_name' => $request->prod_name,
             'product_price' => $request->prod_price,
@@ -119,7 +119,7 @@ class VendorsAPIController extends Controller
         );
 
         error_log(print_r($data, true));
-        $updateProd = app(Products::class)->editProduct($user_id,$data);
+        $updateProd = app(Products::class)->editProduct($prod_id,$data);
 
         if ($updateProd) {
             return response()->json([
