@@ -87,12 +87,19 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::post('/update-vendor', 'VendorsController@update')->name('update-vendor');
     Route::post('/add-vendor', 'VendorsController@add')->name('add-vendor');
     Route::get('/delete-vendor', 'VendorsController@delete')->name('delete-vendor');
+    //documents
     Route::get('/documents/{id}/{name}', 'VendorsController@documents')->name('documents');
     Route::post('document-add', 'VendorsController@documentAdd')->name('add-document');
-    Route::get('delete-doc','VendorsController@documentDelete')->name('delete-document');
+    Route::get('delete-doc', 'VendorsController@documentDelete')->name('delete-document');
+    //vendor status
     Route::get('/pending-vendors', 'VendorsController@vendorPending')->name('pending-vendors');
     Route::get('/rejected-vendors', 'VendorsController@vendorRejected')->name('rejected-vendors');
     Route::get('/approved-vendors', 'VendorsController@vendorApproved')->name('approved-vendors');
+
+    // allow deny
+    Route::get('approve', 'VendorsController@approve')->name('approve');
+    Route::get('deny', 'VendorsController@deny')->name('deny');
+    Route::get('pending', 'VendorsController@pending')->name('pending');
 });
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 
@@ -127,7 +134,6 @@ Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
 Route::group(['prefix' => 'payment-settings', 'as' => 'pay-settings.'], function () {
 
     Route::get('/', 'PaymentSettingsController@index')->name('view-payment-settings');
-
 });
 //Banners
 Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {

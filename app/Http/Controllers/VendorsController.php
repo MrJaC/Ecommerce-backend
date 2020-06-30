@@ -60,21 +60,24 @@ class VendorsController extends Controller
         );
     }
 
-    public function documents($id,$name){
+    public function documents($id, $name)
+    {
 
         $data = app(Vendor::class)->getDocuments($id);
-        error_log(print_r($data,true));
+        error_log(print_r($data, true));
 
 
-        return view('vendors/documents',
-        [
-        'name' => $name ,
-        'id' => $id,
-        'data' => $data
-        ]
-    );
+        return view(
+            'vendors/documents',
+            [
+                'name' => $name,
+                'id' => $id,
+                'data' => $data
+            ]
+        );
     }
-    public function documentAdd(Request $request){
+    public function documentAdd(Request $request)
+    {
 
         $curProd = app(Vendor::class)->getVendorDetail($request->id);
 
@@ -89,7 +92,7 @@ class VendorsController extends Controller
             'user_id' => $curProd[0]->user_id,
             'document_description' => $docDesc,
             'document_name' => $docName,
-            'document_location' => $fileName ,
+            'document_location' => $fileName,
         );
         $q = app(Vendor::class)->addDocumentData($document);
         if ($q == true) {
@@ -98,10 +101,11 @@ class VendorsController extends Controller
             return back()->with('message', 'Error occured D1');
         }
     }
-    public function documentDelete(Request $request){
+    public function documentDelete(Request $request)
+    {
         $doc = app(Vendor::class)->deleteDocument($request->id);
         $curProd = app(Vendor::class)->getVendorDetail($request->venID);
-        if($doc == true){
+        if ($doc == true) {
             return redirect()->route('vendors.documents', ['id' => $request->id, 'name' => $curProd[0]->vendor_business_name])->with('message', 'Deleted document');
         } else {
             return back()->with('message', 'Error occured D2');
@@ -232,23 +236,69 @@ class VendorsController extends Controller
     }
 
     //approval methods
-    public function vendorApproved(){
+    public function vendorApproved()
+    {
 
         $vendors = app(Vendor::class)->getAppVendors();
 
         return view('vendors/status/approved', ['vendors' => $vendors]);
     }
-    public function vendorPending(){
+    public function vendorPending()
+    {
         $vendors = app(Vendor::class)->getPenVendors();
 
         return view('vendors/status/pending', ['vendors' => $vendors]);
     }
-    public function vendorRejected(){
+    public function vendorRejected()
+    {
         $vendors = app(Vendor::class)->getRejVendors();
 
         return view('vendors/status/rejected', ['vendors' => $vendors]);
     }
-    public function updatedStatus(){
+    public function approve(Request $request)
+    {
+        $vendor_id = $request->id;
+        $approval_status = 2;
+        $data = array(
+            'approval_status' => $approval_status
+        );
 
+        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+            return redirect('/vendors')->with('message', 'Status updated');
+        }else{
+            return back()->with('message', 'Error status could not be updated EVApprove_1');
+        }
+
+
+    }
+    public function deny(Request $request)
+    {
+
+        $vendor_id = $request->id;
+        $approval_status = 3;
+        $data = array(
+            'approval_status' => $approval_status
+        );
+
+        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+            return redirect('/vendors')->with('message', 'Status updated');
+        }else{
+            return back()->with('message', 'Error status could not be updated EVApprove_2');
+        }
+    }
+    public function pending(Request $request)
+    {
+
+        $vendor_id = $request->id;
+        $approval_status = 0;
+        $data = array(
+            'approval_status' => $approval_status
+        );
+
+        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+            return redirect('/vendors')->with('message', 'Status updated');
+        }else{
+            return back()->with('message', 'Error status could not be updated EVApprove_3');
+        }
     }
 }

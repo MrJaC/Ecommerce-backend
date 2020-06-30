@@ -44,6 +44,7 @@
                         <thead>
                         <tr>
                             <th>Approval Status</th>
+                            <th>Approval Actions</th>
                             <th>Logo</th>
                             <th>Business Name</th>
                             <th>Name</th>
@@ -60,12 +61,28 @@
                                 @foreach ($vendors as $ven)
                                 <tr>
                                     @if($ven->approval_status == 2)
-                                    <td>Approved</td>
+                                    <td>
+                                        Approved
+                                    </td>
                                     @elseif($ven->approval_status == 3)
                                     <td>Rejected</td>
                                     @elseif($ven->approval_status == 0)
                                     <td>Pending</td>
                                     @endif
+                                    <td>
+                                        @if($ven->approval_status == 2)
+
+                                    <a href="{{ route('vendors.deny', ['id' => $ven->vendorID ,'status' => $ven->approval_status ]) }}" class="btn btn-sm btn-danger">Reject <i class="fa fa-times"></i></a>
+                                    <a href="{{ route('vendors.pending', ['id' => $ven->vendorID ,'status' => $ven->approval_status ])}}" class="btn btn-sm btn-warning">Pending <i class="fa fa-hourglass-end"></i></a>
+                                        @elseif($ven->approval_status == 3)
+                                        <a href="{{ route('vendors.pending', ['id' => $ven->vendorID ,'status' => $ven->approval_status ])}}" class="btn btn-sm btn-danger">Pending <i class="fa fa-hourglass-end"></i></a>
+                                        <a href="{{ route('vendors.approve', ['id' => $ven->vendorID ,'status' => $ven->approval_status ])}}" class="btn btn-sm btn-success">Approve <i class="fa fa-check"></i></a>
+                                        @elseif($ven->approval_status == 0)
+                                        <a href="{{ route('vendors.deny', ['id' => $ven->vendorID ,'status' => $ven->approval_status ])}}" class="btn btn-sm btn-danger">Reject <i class="fa fa-times"></i></a>
+                                        <a href="{{ route('vendors.approve', ['id' => $ven->vendorID ,'status' => $ven->approval_status ])}}" class="btn btn-sm btn-success">Approve <i class="fa fa-check"></i></a>
+                                        @endif
+
+                                    </td>
                                     <td><a href="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" data-toggle="lightbox" data-title="{{$ven->vendor_logo}}">
                                         <img src="{{ url('storage/business-logo/'.$ven->vendor_logo) }}" class="product-image-thumb" alt="{{$ven->vendor_logo}}"/>
                                       </a></td>

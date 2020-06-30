@@ -268,8 +268,14 @@ class Vendor extends Model
         return $vendor;
     }
     //vendor check
-    public function getApproval($id)
+    public function updateStatus($id, $data)
     {
+        $vendor = DB::table('vendors')->where('id', $id)->update($data);
+        if ($vendor == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //Document Section
