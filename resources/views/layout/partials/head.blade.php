@@ -3,7 +3,9 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <title>{{config('app.name') }}</title>
-
+<link rel="icon"
+type="image/png"
+href="{{ asset('favicon.png')}}">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}} ">
 <!-- IonIcons -->
