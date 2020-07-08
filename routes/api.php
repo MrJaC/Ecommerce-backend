@@ -70,6 +70,9 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
 
         //vendor documents
         Route::get('vendor-documents', 'Api\VendorsAPIController@getVendorDocuments')->name('vendor-documents');
+
+        //delete vendor documents
+        Route::post('delete-doc', 'Api\VendorsAPIController@deleteDocument')->name('delete-doc');
     });
     //Products
     Route::group(['prefix' => 'prod', 'name' => 'products'], function () {

@@ -119,7 +119,7 @@ class VendorsAPIController extends Controller
         );
 
         error_log(print_r($data, true));
-        $updateProd = app(Products::class)->editProduct($prod_id,$data);
+        $updateProd = app(Products::class)->editProduct($prod_id, $data);
 
         if ($updateProd) {
             return response()->json([
@@ -174,7 +174,8 @@ class VendorsAPIController extends Controller
         }
     }
     //vendor documents
-    public function getVendorDocuments(Request $request){
+    public function getVendorDocuments(Request $request)
+    {
         $vendor_id = $request->id;
         $user_id = $request->user_id;
 
@@ -182,7 +183,8 @@ class VendorsAPIController extends Controller
         if (!$query->isEmpty()) {
             return response()->json([
                 'status' => 'Good',
-                'message' => $query
+                'message' => 'Documents recieved',
+                'data' => $query
             ], 201);
         } else {
             return response()->json([
@@ -190,11 +192,10 @@ class VendorsAPIController extends Controller
                 'message' => 'No Documents'
             ], 201);
         }
-
-
     }
     //delete vendor product
-    public function deleteProd(Request $request){
+    public function deleteProd(Request $request)
+    {
         $id = $request->prod_id;
         $query = app(Products::class)->deleteProd($id);
         if ($query) {
@@ -208,7 +209,6 @@ class VendorsAPIController extends Controller
                 'message' => 'Failed product delete, try again'
             ], 201);
         }
-
     }
     //edit vendor details
     public function editVendorName(Request $request)
@@ -403,4 +403,25 @@ class VendorsAPIController extends Controller
     }
 
     //end vendor details
+
+    //document section
+    public function deleteDocument(Request $request)
+    {
+        $id = $request->id;
+        error_log(print_r($id,true));
+
+        $query = app(Vendor::class)->deleteDocument($id);
+        if ($query == true) {
+            return response()->json([
+                'status' => 'Good',
+                'message' => 'Document deleted'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Failed delete, try again'
+            ], 201);
+        }
+    }
+    //end document section
 }

@@ -100,6 +100,19 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::get('approve', 'VendorsController@approve')->name('approve');
     Route::get('deny', 'VendorsController@deny')->name('deny');
     Route::get('pending', 'VendorsController@pending')->name('pending');
+    //vendor specific products
+    Route::group(['prefix' => 'ven-details', 'as' => 'ven-details.'], function () {
+        //vendor main products
+        Route::get('vendor-products', 'VendorProductController@index')->name('vendor-products');
+        Route::get('view-vendor-product', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
+        //post group
+        Route::group(['prefix' => 'ven-post', 'as' => 'ven-post.'], function () {
+            Route::get('delete', 'VendorProductController@deleteVendorProduct')->name('delete');
+            Route::get('add', 'VendorProductController@addVendorProduct')->name('add');
+            Route::get('update', 'VendorProductController@updateVendorProduct')->name('update');
+            Route::get('create', 'VendorProductController@createVendorProduct')->name('create');
+        });
+    });
 });
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 

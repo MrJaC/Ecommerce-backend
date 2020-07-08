@@ -9,7 +9,7 @@
         <a href="/" class="nav-link">Home</a>
       </li>
 
-      @if(Auth::user()->role == 4)
+      @if(Auth::user()->role == 4 || Auth::user()->role == 1)
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/vendor-profile" class="nav-link">Vendor Profile</a>
       </li>
