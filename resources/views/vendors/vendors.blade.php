@@ -29,7 +29,14 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Vendors list <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a></h3>
+                        <div class="row">
+                            <div class="col-3">
+                      <h3 class="card-title">Vendors list</h3>
+                            </div>
+                            <div class="col-9">
+                                <a  class="btn btn-primary btn-flat btn-sm float-right" href="{{ route('vendors.create-vendors') }}">Add Vendor </a>
+                            </div>
+                        </div>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">
@@ -40,9 +47,10 @@
                     @endif
                     <!-- /.card-header -->
                     <div class="card-body">
-                      <table id="example2" class="table table-bordered table-hover">
+                      <table id="example2" class="table table-bordered table-striped dataTable dtr-inline">
                         <thead>
                         <tr>
+                            <th>Actions</th>
                             <th>Approval Status</th>
                             <th>Approval Actions</th>
                             <th>Logo</th>
@@ -53,13 +61,32 @@
                             <th>Category</th>
                             <th>Subcategory</th>
                             <th>Details</th>
-                            <th>Actions</th>
+
                         </tr>
                         </thead>
 
                             <tbody>
                                 @foreach ($vendors as $ven)
                                 <tr>
+                                    <td>
+                                        {{-- <a href="{{ route('vendors.edit-vendor', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
+                                        <a href="{{ route('vendors.documents', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-file"></i></a>
+                                        <a href="{{ route('vendors.ven-details.vendor-products', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="fas fa-shopping-cart"></i></a>
+                                        <a href="{{ route('vendors.delete-vendor', ['id' => $ven->vendorID])}}"><i class="far fa-trash-alt"></i></a> --}}
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                Actions
+                                            </button>
+                                            <div class="dropdown-menu">
+                                              <a class="dropdown-item" href="{{ route('vendors.edit-vendor', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i> Edit</a>
+                                              <a class="dropdown-item" href="{{ route('vendors.documents', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-file"></i> Documents</a>
+                                              <a class="dropdown-item" href="{{ route('vendors.ven-details.vendor-products', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="fas fa-shopping-cart"></i> Vendor Products</a>
+                                              <a class="dropdown-item" href="{{ route('vendors.ven-details.view-vendor-orders', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="fas fa-credit-card"></i> Vendor Orders</a>
+                                              <div class="dropdown-divider"></div>
+                                              <a class="dropdown-item"href="{{ route('vendors.delete-vendor', ['id' => $ven->vendorID])}}"><i class="far fa-trash-alt"></i> Delete</a>
+                                            </div>
+                                          </div>
+                                    </td>
                                     @if($ven->approval_status == 2)
                                     <td>
                                         Approved
@@ -140,12 +167,7 @@
                                   </div>
                                 <!--End Modal-->
                                 </td>
-                                <td>
-                                    <a href="{{ route('vendors.edit-vendor', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-edit"></i></a>
-                                    <a href="{{ route('vendors.documents', ['id' => $ven->vendorID, 'name' => $ven->vendor_business_name])}}"><i class="far fa-file"></i></a>
 
-                                    <a href="{{ route('vendors.delete-vendor', ['id' => $ven->vendorID])}}"><i class="far fa-trash-alt"></i></a>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

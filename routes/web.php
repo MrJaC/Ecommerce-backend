@@ -12,7 +12,10 @@
 */
 
 //Auth routes
+
+
 Auth::routes();
+
 //default middlewear
 Route::get('/', 'HomeController@index')->name('home');
 /*Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
@@ -103,8 +106,9 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     //vendor specific products
     Route::group(['prefix' => 'ven-details', 'as' => 'ven-details.'], function () {
         //vendor main products
-        Route::get('vendor-products', 'VendorProductController@index')->name('vendor-products');
-        Route::get('view-vendor-product', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
+        Route::get('vendor-products/{id}', 'VendorProductController@index')->name('vendor-products');
+        Route::get('view-vendor-product/{id}', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
+        Route::get('view-vendor-orders/{id}','VendorOrderController@index')->name('view-vendor-orders');
         //post group
         Route::group(['prefix' => 'ven-post', 'as' => 'ven-post.'], function () {
             Route::get('delete', 'VendorProductController@deleteVendorProduct')->name('delete');
@@ -114,6 +118,7 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
         });
     });
 });
+
 Route::group(['prefix' => 'vendor-profile', 'as' => 'vendor-profile.'], function () {
 
     Route::get('/', 'VendorProfileController@index')->name('vendor-profile');

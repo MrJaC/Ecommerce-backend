@@ -3,7 +3,7 @@
     <head>
         @include('layout.partials.head')
     </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse sidebar-closed">
 
     @include('layout.partials.header-menu')
     @if(Auth::user()->role == 1)
