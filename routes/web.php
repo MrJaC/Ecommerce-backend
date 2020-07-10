@@ -106,9 +106,9 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     //vendor specific products
     Route::group(['prefix' => 'ven-details', 'as' => 'ven-details.'], function () {
         //vendor main products
-        Route::get('vendor-products/{id}', 'VendorProductController@index')->name('vendor-products');
-        Route::get('view-vendor-product/{id}', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
-        Route::get('view-vendor-orders/{id}','VendorOrderController@index')->name('view-vendor-orders');
+        Route::get('vendor-products/{id}/{name}', 'VendorProductController@index')->name('vendor-products');
+        Route::get('view-vendor-product/{id}/{name}', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
+        Route::get('view-vendor-orders/{id}/{name}','VendorOrderController@index')->name('view-vendor-orders');
         //post group
         Route::group(['prefix' => 'ven-post', 'as' => 'ven-post.'], function () {
             Route::get('delete', 'VendorProductController@deleteVendorProduct')->name('delete');

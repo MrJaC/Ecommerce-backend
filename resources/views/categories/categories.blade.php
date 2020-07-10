@@ -29,7 +29,14 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">View all categories <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('categories.create-cat') }}">Add Categories </a></h3>
+                        <div class="row">
+                     <div class="col-3">
+                      <h3 class="card-title">View all categories </h3>
+                     </div>
+                     <div class="col-9">
+                        <a  class="btn btn-primary btn-flat btn-sm float-right" href="{{ route('categories.create-cat') }}">Add Categories </a>
+                     </div>
+                    </div>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">

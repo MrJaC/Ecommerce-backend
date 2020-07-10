@@ -19,5 +19,22 @@ class VendorProductController extends Controller
         $this->middleware('auth');
     }
 
-    //
+    //get vendor products
+    public function index($id, $name)
+    {
+        //get vendor products
+        $vendorProducts = app(Vendor::class)->getMyVendorProducts($id);
+        error_log(print_r($vendorProducts,true));
+        //return view
+        return view(
+            'vendors/product-details/admin/vendor-products',
+            [
+                'id' => $id,
+                'name' => $name,
+                'vendor_products' => $vendorProducts
+            ]
+        );
+    }
+
+
 }

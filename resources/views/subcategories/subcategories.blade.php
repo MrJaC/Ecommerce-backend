@@ -29,7 +29,14 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">View all subcategories <a  class="btn btn-default btn-flat btn-sm pull-right" href="{{ route('subcategories.add-subcat')}}"> Add Subcategory </a></h3>
+                        <div class="row">
+                            <div class="col-3">
+                      <h3 class="card-title">View all subcategories </h3>
+                            </div>
+                            <div class="col-9">
+                                <a  class="btn btn-primary btn-flat btn-sm float-right" href="{{ route('subcategories.add-subcat')}}"> Add Subcategory </a>
+                            </div>
+                    </div>
                     </div>
                     @if ($message = Session::get('message'))
                     <div class="alert alert-success alert-block">
