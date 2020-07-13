@@ -24,6 +24,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-header">General</li>
           <li class="nav-item  menu-closed">
             <a href="/" class="nav-link active">
               <i class="nav-icon fas fa-columns"></i>
@@ -52,7 +53,7 @@
           </li>
           <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-th"></i>
               <p>
                 Categories
                 <i class="right fas fa-angle-left"></i>
@@ -75,7 +76,7 @@
           </li>
           <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-th"></i>
               <p>
                 Subcategories
                 <i class="right fas fa-angle-left"></i>
@@ -185,7 +186,7 @@
               <li class="nav-header">Settings</li>
               <li class="nav-item has-treeview menu-closed">
                 <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-cogs"></i>
+                  <i class="nav-icon fas fa-credit-card"></i>
                   <p>
                     Payment Settings
                     <i class="right fas fa-angle-left"></i>
@@ -202,7 +203,24 @@
                 </li>
                 <li class="nav-item has-treeview menu-closed">
                     <a href="#" class="nav-link active">
-                      <i class="nav-icon fas fa-cogs"></i>
+                      <i class="nav-icon fas fa-truck"></i>
+                      <p>
+                        Delivery Settings
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                      <a href="{{ route('pay-settings.view-payment-settings')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>View </p>
+                        </a>
+                      </li>
+                    </ul>
+                    </li>
+                <li class="nav-item has-treeview menu-closed">
+                    <a href="#" class="nav-link active">
+                      <i class="nav-icon fas fa-bell"></i>
                       <p>
                         Notifications
                         <i class="right fas fa-angle-left"></i>
@@ -242,7 +260,7 @@
                       </li>
                 <li class="nav-item has-treeview menu-closed">
                     <a href="#" class="nav-link active">
-                      <i class="nav-icon fas fa-cogs"></i>
+                      <i class="nav-icon fas fa-user-cog"></i>
                       <p>
                         Staff
                         <i class="right fas fa-angle-left"></i>

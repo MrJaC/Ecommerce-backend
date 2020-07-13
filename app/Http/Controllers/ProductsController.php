@@ -211,6 +211,7 @@ class ProductsController extends Controller
             return back()->with('message', 'Failed Image upload');
         }
     }
+    //defunct
     public function displayImage($filename)
     {
         $path = app(Storage::get('storage/' . $filename));

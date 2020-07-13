@@ -11,6 +11,7 @@ use App\Categories;
 use App\Subcategories;
 use App\VendorProfile;
 use App\Customers;
+use App\Gallery;
 
 class VendorsController extends Controller
 {
@@ -36,6 +37,7 @@ class VendorsController extends Controller
         $subcat = app(SubCategories::class)->getData();
         $curProd = app(Vendor::class)->getVendorDetail($id);
         $customers = app(Customers::class)->getCustomers();
+        $gallery  = app(Gallery::class)->getVendorGallery($id);
         error_log(print_r($id, true));
         error_log(print_r('Data', true));
         $data = array(
@@ -55,7 +57,8 @@ class VendorsController extends Controller
                 'category' => $cat,
                 'subcategory' => $subcat,
                 'current' => $curProd,
-                'customers' => $customers
+                'customers' => $customers,
+                'gallery' => $gallery
             ]
         );
     }
@@ -263,13 +266,11 @@ class VendorsController extends Controller
             'approval_status' => $approval_status
         );
 
-        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+        if (app(Vendor::class)->updateStatus($vendor_id, $data) == true) {
             return redirect('/vendors')->with('message', 'Status updated');
-        }else{
+        } else {
             return back()->with('message', 'Error status could not be updated EVApprove_1');
         }
-
-
     }
     public function deny(Request $request)
     {
@@ -280,9 +281,9 @@ class VendorsController extends Controller
             'approval_status' => $approval_status
         );
 
-        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+        if (app(Vendor::class)->updateStatus($vendor_id, $data) == true) {
             return redirect('/vendors')->with('message', 'Status updated');
-        }else{
+        } else {
             return back()->with('message', 'Error status could not be updated EVApprove_2');
         }
     }
@@ -295,9 +296,9 @@ class VendorsController extends Controller
             'approval_status' => $approval_status
         );
 
-        if(app(Vendor::class)->updateStatus($vendor_id,$data) == true){
+        if (app(Vendor::class)->updateStatus($vendor_id, $data) == true) {
             return redirect('/vendors')->with('message', 'Status updated');
-        }else{
+        } else {
             return back()->with('message', 'Error status could not be updated EVApprove_3');
         }
     }

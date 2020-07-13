@@ -42,7 +42,7 @@
                     @endif
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('products.image-upload',['id' => $id]) }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ route('products.gal-post.add',['id' => $id,'name' => $name ]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                       <div class="card-body">
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Categories;
 use App\Subcategories;
 use App\VendorProfile;
+use App\Gallery;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
@@ -78,4 +79,9 @@ class VendorProfileController extends Controller
             return back()->with('message','Error occured VP1');
         }
     }
+
+    //vendor gallery functions
+
+
+    //end vendor gallery functions
 }

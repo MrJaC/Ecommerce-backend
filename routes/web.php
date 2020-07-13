@@ -71,6 +71,12 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/product-view/{id}/{name}', 'ProductsController@view')->name('view-product');
     Route::get('/product-gallery-add/{id}/{name}', 'ProductsController@addImage')->name('add-image');
     Route::get('/product-gallery/{id}/{name}', 'ProductsController@gallery')->name('product-gallery');
+    //gallery image delete
+    Route::group(['prefix' => 'gallery-post', 'as' => 'gal-post.'], function (){
+        //crud stuff
+        Route::get('delete', 'GalleryController@delete')->name('delete');
+        Route::post('add', 'GalleryController@addImage')->name('add');
+    });
 });
 
 //Customers
@@ -112,9 +118,11 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
         //post group
         Route::group(['prefix' => 'ven-post', 'as' => 'ven-post.'], function () {
             Route::get('delete', 'VendorProductController@deleteVendorProduct')->name('delete');
-            Route::get('add', 'VendorProductController@addVendorProduct')->name('add');
             Route::get('update', 'VendorProductController@updateVendorProduct')->name('update');
-            Route::get('create', 'VendorProductController@createVendorProduct')->name('create');
+            Route::get('create/{id}/{name}', 'VendorProductController@createVendorProduct')->name('create');
+            Route::post('add/{id}/{name}', 'VendorProductController@addVendorProduct')->name('add');
+            //vendor product edit
+            Route::get('edit-vendor-product','VendorProductController@editVendorProduct')->name('edit');
         });
     });
 });
