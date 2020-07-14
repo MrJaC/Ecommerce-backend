@@ -75,4 +75,6 @@ class UserProfileController extends Controller
             return back()->with('message', 'Something went wrong UP2');
         }
     }
+
+    public function userDetails($id){}
 }

@@ -176,6 +176,8 @@
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                     <div class="row">
+                                    </div>
+                                    <div class="row">
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">

@@ -126,6 +126,63 @@
             <!-- /.col-md-6 -->
           <!-- /.row -->
         </div>
+        <div class="row">
+            <div class="col-lg-6">
+
+                <!-- /.card -->
+
+                <div class="card">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">Customers</h3>
+                    <div class="card-tools">
+                      <a href="#" class="btn btn-tool btn-sm">
+                        <i class="fas fa-download"></i>
+                      </a>
+                      <a href="#" class="btn btn-tool btn-sm">
+                        <i class="fas fa-bars"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-striped table-valign-middle">
+                      <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Users Name</th>
+                        <th>Users Email</th>
+                        <th>Created at:</th>
+                        <th>Role</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($customers as $cus)
+                          <tr>
+                            <td>{{$cus->id}}</td>
+                            <td>{{$cus->name}}</td>
+                            <td>{{$cus->email}}</td>
+                            <td>{{$cus->created_at}}</td>
+                            <td>
+                                @if ($cus->role == 1)
+                                 Admin
+                            @elseif ($cus->role == 2)
+                                Employee
+                                @elseif ($cus->role == 3)
+                                Users
+                                @elseif ($cus->role == 4)
+                                Vendor
+                            @endif
+
+                            </td>
+                          </tr>
+                          @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div>
+        </div>
         <!-- /.container-fluid -->
       </div>
       <!-- /.content -->

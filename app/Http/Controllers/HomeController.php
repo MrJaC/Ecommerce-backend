@@ -8,6 +8,7 @@ use App\Products;
 use App\SubCategories;
 use App\Vendor;
 use App\Orders;
+use App\Customers;
 use Illuminate\Support\Facades\Auth;
 use DB;
 class HomeController extends Controller
@@ -42,6 +43,7 @@ class HomeController extends Controller
             $subcat = app(SubCategories::class)->getData();
             $orders = app(Orders::class)->getOrders();
             $user = DB::table('users')->get();
+            $customers = app(Customers::class)->getCustomers();
 
             return view('dashboard/dashboard',
             [
@@ -49,7 +51,8 @@ class HomeController extends Controller
                 'subcat' => $subcat,
                 'product' => $prod,
                 'users' => $user,
-                'data' => $orders
+                'data' => $orders,
+                'customers' => $customers
 
             ]);
         }elseif(Auth::user()->role == 4){

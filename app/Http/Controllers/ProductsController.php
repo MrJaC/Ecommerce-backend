@@ -64,6 +64,7 @@ class ProductsController extends Controller
         $prodSubcat = $request->input('prod-subcat');
         $prodDescription = $request->input('description');
         $prodSky = $request->input('product-sku');
+        $prodExcerpt = $request->input('excerpt');
         $prodStock = $request->input('product-stock');
         $vendor = $request->input('vendor');
         $path = $request->file('product-main-image')->store('public/main-images');
@@ -80,6 +81,7 @@ class ProductsController extends Controller
                 'product_cat' => $prodCat,
                 'product_subcat' => $prodSubcat,
                 'product_description' => $prodDescription,
+                'product_excerpt' => $prodExcerpt,
                 'product_sku' => $prodSky,
                 'product_main_image' => $fileName,
                 'product_amount' => $prodStock,
@@ -93,6 +95,7 @@ class ProductsController extends Controller
                 'product_cat' => $prodCat,
                 'product_subcat' => $prodSubcat,
                 'product_description' => $prodDescription,
+                'product_excerpt' => $prodExcerpt,
                 'product_sku' => $prodSky,
                 'product_main_image' => $fileName,
                 'product_amount' => $prodStock,

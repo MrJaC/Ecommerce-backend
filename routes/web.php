@@ -169,7 +169,11 @@ Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
     Route::get('/delete-banner', 'BannersController@delete')->name('delete-banner');
     Route::get('/active', 'BannersController@active')->name('active');
 });
+//Delivery Settings
 
+Route::group(['prefix' => 'delivery', 'as' => 'delivery.'], function () {
+    Route::get('/', 'DeliverySettingsController@index')->name('delivery-settings');
+});
 //test image
 Route::get('/{filename}', 'ProductsController@displayImage')->name('image.displayImage');
 
