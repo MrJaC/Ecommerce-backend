@@ -169,6 +169,13 @@ Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
     Route::get('/delete-banner', 'BannersController@delete')->name('delete-banner');
     Route::get('/active', 'BannersController@active')->name('active');
 });
+//Notifications
+Route::group(['prefix' => 'notifications', 'as', 'notifications.'], function () {
+
+    //default route
+    Route::get('' , 'NotificationsController@index')->name('notifications');
+
+});
 //Delivery Settings
 
 Route::group(['prefix' => 'delivery', 'as' => 'delivery.'], function () {

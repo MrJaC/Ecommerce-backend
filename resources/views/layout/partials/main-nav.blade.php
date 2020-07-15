@@ -211,13 +211,30 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                      <a href="{{ route('pay-settings.view-payment-settings')}}" class="nav-link">
+                      <a href="{{ route('delivery.delivery-settings')}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>View </p>
                         </a>
                       </li>
                     </ul>
                     </li>
+                    <li class="nav-item has-treeview menu-closed">
+                        <a href="#" class="nav-link active">
+                          <i class="nav-icon fas fa-map"></i>
+                          <p>
+                            Location Settings
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                          <a href="{{ route('delivery.delivery-settings')}}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>View </p>
+                            </a>
+                          </li>
+                        </ul>
+                        </li>
                 <li class="nav-item has-treeview menu-closed">
                     <a href="#" class="nav-link active">
                       <i class="nav-icon fas fa-bell"></i>
@@ -228,7 +245,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="#" class="nav-link">
+                      <a href="{{ route('notifications')}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>View </p>
                         </a>
