@@ -21,6 +21,9 @@ class Products extends Model
             'products.product_amount',
             'products.vendor_id',
             'products.user_id',
+            'products.featured_prod',
+            'products.created_at',
+            'products.updated_at',
             'categories.id',
             'categories.cat_name',
             'categories.cat_img',
@@ -122,6 +125,15 @@ class Products extends Model
     public function deleteProd($id){
         $q = DB::table('products')->where('prod_id', $id)->delete();
         return $q;
+    }
+
+    public function updateFeatured($id, $data){
+        $q = DB::table('products')->where('prod_id', $id)->update($data);
+        if ($q == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //End Admin functions

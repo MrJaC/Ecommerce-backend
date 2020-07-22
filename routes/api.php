@@ -43,24 +43,24 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
     });
     //Vendors
     Route::group(['prefix' => 'ven', 'name' => 'vendors'], function () {
-        Route::get('/vendors', 'Api\VendorsAPIController@index')->name('vendors');
-        Route::get('/get-vendor', 'Api\VendorsAPIController@getMyVendors');
+        Route::get('/vendors',          'Api\VendorsAPIController@index')->name('vendors');
+        Route::get('/get-vendor',       'Api\VendorsAPIController@getMyVendors');
         Route::post('/add-vend-product', 'Api\VendorsAPIController@addVendorProduct');
-        Route::get('/get-my-products', 'Api\VendorsAPIController@getMyVendorProducts');
-        Route::get('/vendor-get', 'Api\VendorsAPIController@getVendor');
-        Route::post('/apply-vendor', 'Api\VendorsAPIController@addVendor')->name('apply-vendor');
+        Route::get('/get-my-products',  'Api\VendorsAPIController@getMyVendorProducts');
+        Route::get('/vendor-get',       'Api\VendorsAPIController@getVendor');
+        Route::post('/apply-vendor',    'Api\VendorsAPIController@addVendor')->name('apply-vendor');
 
         //Vendor details update
-        Route::post('edit-vendor-name', 'Api\VendorsAPIController@editVendorName')->name('edit-vendor-name');
-        Route::post('edit-vendor-mobile', 'Api\VendorsAPIController@editVendorMobile')->name('edit-vendor-mobile');
+        Route::post('edit-vendor-name',     'Api\VendorsAPIController@editVendorName')->name('edit-vendor-name');
+        Route::post('edit-vendor-mobile',   'Api\VendorsAPIController@editVendorMobile')->name('edit-vendor-mobile');
         Route::post('edit-vendor-landline', 'Api\VendorsAPIController@editVendorLandline')->name('edit-vendor-landline');
-        Route::post('edit-vendor-email', 'Api\VendorsAPIController@editVendorEmail')->name('edit-vendor-email');
-        Route::post('edit-vendor-stadd', 'Api\VendorsAPIController@editVendorStreetAddress')->name('edit-vendor-street-address');
-        Route::post('edit-vendor-stnum', 'Api\VendorsAPIController@editVendorStreetNumber')->name('edit-vendor-street-number');
-        Route::post('edit-vendor-suburb', 'Api\VendorsAPIController@editVendorSuburb')->name('edit-vendor-suburb');
+        Route::post('edit-vendor-email',    'Api\VendorsAPIController@editVendorEmail')->name('edit-vendor-email');
+        Route::post('edit-vendor-stadd',    'Api\VendorsAPIController@editVendorStreetAddress')->name('edit-vendor-street-address');
+        Route::post('edit-vendor-stnum',    'Api\VendorsAPIController@editVendorStreetNumber')->name('edit-vendor-street-number');
+        Route::post('edit-vendor-suburb',   'Api\VendorsAPIController@editVendorSuburb')->name('edit-vendor-suburb');
         Route::post('edit-vendor-postcode', 'Api\VendorsAPIController@editVendorPostCode')->name('edit-vendor-postcode');
-        Route::post('edit-vendor-website', 'Api\VendorsAPIController@editVendorWebsite')->name('edit-vendor-website');
-        Route::post('edit-vendor-about', 'Api\VendorsAPIController@editVendorAbout')->name('edit-vendor-about');
+        Route::post('edit-vendor-website',  'Api\VendorsAPIController@editVendorWebsite')->name('edit-vendor-website');
+        Route::post('edit-vendor-about',    'Api\VendorsAPIController@editVendorAbout')->name('edit-vendor-about');
         //EndDetails update
 
         //vendor product delete

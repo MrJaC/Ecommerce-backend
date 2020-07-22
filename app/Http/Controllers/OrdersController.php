@@ -17,4 +17,6 @@ class OrdersController extends Controller
         return view('orders/orders', ['data' => $data]);
     }
 
+
+
 }

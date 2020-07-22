@@ -214,6 +214,27 @@ class ProductsController extends Controller
             return back()->with('message', 'Failed Image upload');
         }
     }
+
+    // Featured Products
+    public function isFeatured(Request $request)
+    {
+        $item = $request->item;
+        error_log(print_r($item,true));
+        $name = $request->name;
+        $id = $request->id;
+        $data = array(
+            'featured_prod' => $item
+        );
+        if (app(Products::class)->updateFeatured($id, $data) == true) {
+            $message = $name . ' is now featured';
+            return redirect('/products')->with('message', $message);
+        } else {
+            return back()->with('message', 'Error status could not be updated Prod_ERROR_FEATURE');
+        }
+    }
+
+
+    // End Featured Products
     //defunct
     public function displayImage($filename)
     {

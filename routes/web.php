@@ -71,8 +71,12 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/product-view/{id}/{name}', 'ProductsController@view')->name('view-product');
     Route::get('/product-gallery-add/{id}/{name}', 'ProductsController@addImage')->name('add-image');
     Route::get('/product-gallery/{id}/{name}', 'ProductsController@gallery')->name('product-gallery');
+    //Featured
+
+    Route::get('featured', 'ProductsController@isFeatured')->name('featured');
+
     //gallery image delete
-    Route::group(['prefix' => 'gallery-post', 'as' => 'gal-post.'], function (){
+    Route::group(['prefix' => 'gallery-post', 'as' => 'gal-post.'], function () {
         //crud stuff
         Route::get('delete', 'GalleryController@delete')->name('delete');
         Route::post('add', 'GalleryController@addImage')->name('add');
@@ -109,12 +113,13 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
     Route::get('approve', 'VendorsController@approve')->name('approve');
     Route::get('deny', 'VendorsController@deny')->name('deny');
     Route::get('pending', 'VendorsController@pending')->name('pending');
+
     //vendor specific products
     Route::group(['prefix' => 'ven-details', 'as' => 'ven-details.'], function () {
         //vendor main products
         Route::get('vendor-products/{id}/{name}', 'VendorProductController@index')->name('vendor-products');
         Route::get('view-vendor-product/{id}/{name}', 'VendorProductController@viewVendorProduct')->name('view-vendor-product');
-        Route::get('view-vendor-orders/{id}/{name}','VendorOrderController@index')->name('view-vendor-orders');
+        Route::get('view-vendor-orders/{id}/{name}', 'VendorOrderController@index')->name('view-vendor-orders');
         //post group
         Route::group(['prefix' => 'ven-post', 'as' => 'ven-post.'], function () {
             Route::get('delete', 'VendorProductController@deleteVendorProduct')->name('delete');
@@ -122,7 +127,7 @@ Route::group(['prefix' => 'vendors', 'as' => 'vendors.'], function () {
             Route::get('create/{id}/{name}', 'VendorProductController@createVendorProduct')->name('create');
             Route::post('add/{id}/{name}', 'VendorProductController@addVendorProduct')->name('add');
             //vendor product edit
-            Route::get('edit-vendor-product','VendorProductController@editVendorProduct')->name('edit');
+            Route::get('edit-vendor-product', 'VendorProductController@editVendorProduct')->name('edit');
         });
     });
 });
@@ -173,13 +178,27 @@ Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
 Route::group(['prefix' => 'notifications', 'as', 'notifications.'], function () {
 
     //default route
-    Route::get('' , 'NotificationsController@index')->name('notifications');
-
+    Route::get('', 'NotificationsController@index')->name('notifications');
 });
 //Delivery Settings
 
 Route::group(['prefix' => 'delivery', 'as' => 'delivery.'], function () {
     Route::get('/', 'DeliverySettingsController@index')->name('delivery-settings');
+    //post
+    Route::group(['prefix' => 'delivery-crud', 'as', 'del-post.'], function () {
+        Route::get('create', 'DeliverySettingsController@createDelSettings')->name('create');
+        Route::post('add', 'DeliverySettingsController@addDelSettings')->name('add');
+        Route::get('delete', 'DeliverySettingsController@deleteDelSettings')->name('delete');
+        Route::get('edit', 'DeliverySettingsController@editDelSettings')->name('edit');
+    });
+});
+
+//Location Settings
+
+Route::group(['prefix' => 'location', 'as' => 'locations.'], function () {
+
+    //default route
+    Route::get('/', 'LocationsController@index')->name('locations');
 });
 //test image
 Route::get('/{filename}', 'ProductsController@displayImage')->name('image.displayImage');

@@ -26,4 +26,10 @@ class DeliverySettingsController extends Controller
             ]
         );
     }
+
+    public function addDelSettings(){
+        return view('delivery.settings.add');
+    }
+    public function deladdDelSettings(){}
+    public function editDelSettings(){}
 }
