@@ -40,6 +40,40 @@ class Products extends Model
         error_log(print_r($prod,true));
         return $prod;
     }
+    public function getFeatProducts(){
+        $prod = DB::table('products')
+        ->select(
+            'products.prod_id',
+            'products.product_name',
+            'products.product_price',
+            'products.product_cat',
+            'products.product_subcat',
+            'products.product_main_image',
+            'products.product_sku',
+            'products.product_description',
+            'products.product_amount',
+            'products.vendor_id',
+            'products.user_id',
+            'products.featured_prod',
+            'products.created_at',
+            'products.updated_at',
+            'categories.id',
+            'categories.cat_name',
+            'categories.cat_img',
+            'subcategories.sub_id',
+            'subcategories.cat_id',
+            'subcategories.subcat_name',
+            'vendors.id AS vendorID',
+            'vendors.vendor_business_name'
+        )
+        ->leftJoin('categories','products.product_cat', '=', 'categories.id')
+        ->leftJoin('subcategories', 'products.product_subcat', '=', 'subcategories.sub_id')
+        ->leftJoin('vendors', 'products.vendor_id','=', 'vendors.id')
+        ->where('products.featured_prod', '=' , '1')
+        ->get();
+        error_log(print_r($prod,true));
+        return $prod;
+    }
     public function addProd($data){
 
         $query = DB::table('products')->insert($data);

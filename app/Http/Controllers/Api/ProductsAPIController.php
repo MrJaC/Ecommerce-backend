@@ -25,6 +25,7 @@ class ProductsAPIController extends Controller
         if ($prod = app(Products::class)->getProducts()->isEmpty()) {
             return response()->json([
                 'message' => 'No Data',
+                'data' => 0
             ], 401);
         } else {
             $prod = app(Products::class)->getProducts();
@@ -41,6 +42,7 @@ class ProductsAPIController extends Controller
         if (!$data = app(Products::class)->getCurrProducts($request->id)) {
             return response()->json([
                 'message' => 'No Data',
+                'data' => 0
             ], 401);
         } else {
             return response()->json([
@@ -61,6 +63,22 @@ class ProductsAPIController extends Controller
             return response()->json([
                 'message' => 'success',
                 'data' => $data
+            ], 201);
+        }
+    }
+    //getFeatured Products
+
+    public function getFeaturedProducts(){
+        if ($prod = app(Products::class)->getFeatProducts()->isEmpty()) {
+            return response()->json([
+                'message' => 'No Data',
+                'data' => 0
+            ], 401);
+        } else {
+            $prod = app(Products::class)->getFeatProducts();
+            return response()->json([
+                'message' => 'success',
+                'data' => $prod
             ], 201);
         }
     }

@@ -12,7 +12,6 @@ class Orders extends Model
     public function getOrders(){
         $query = DB::table('orders')->select(
             'orders.order_id',
-            'orders.product_id',
             'orders.total_price',
             'orders.order_time',
             'orders.user_id',
@@ -20,16 +19,11 @@ class Orders extends Model
             'users.id',
             'users.name',
             'users.email',
-            'products.prod_id',
-            'products.vendor_id',
-            'products.product_name',
-            'products.product_sku',
             'vendors.id',
             'vendors.vendor_business_name'
 
         )
         ->leftJoin('users', 'orders.user_id', '=', 'users.id')
-        ->leftJoin('products', 'orders.product_id', '=', 'products.prod_id')
         ->leftJoin('vendors', 'orders.vendor_id', '=' , 'vendors.id')
         ->get();
 

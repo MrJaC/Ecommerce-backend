@@ -80,6 +80,7 @@ Route::group(['prefix' => 'v1', 'name' => 'v1'], function () {
         Route::get('/get-products', 'Api\ProductsAPIController@getProductID')->name('product-id');
         Route::post('add-products', 'Api\ProductsAPIController@addProd');
         Route::get('/get-prod-subcat', 'Api\ProductsAPIController@getProdIDViaSub')->name('get-prod-subcat');
+        Route::get('featured-products', 'Api\ProductsAPIController@getFeaturedProducts')->name('get-featured-products');
     });
     //Banners
     Route::group(['prefix' => 'ban', 'name' => 'banners'], function () {
