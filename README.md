@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<p>Administration Panel for Petrol & Oil</p>
+
+<p>Administration Panel for Ecommerce - multi-vendor</p>
 =======
 # Ecommerce-backend
->>>>>>> a8249a05f9851a16ba86075f2afd6bdb1ace447c
+
